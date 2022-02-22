@@ -10,8 +10,8 @@ function Log() {
          </div>
          
          <div className='Buttons'>
-            <button className='styleBtn'><Link to="/cliente">CLIENTE</Link></button>
-            <button className='styleBtn'><Link to="/">PERSONAL</Link></button>
+            <button className='styleBtn'><Link to="/cliente" className='link'>CLIENTE</Link></button>
+            <button className='styleBtn'><Link to="/" className='link'>PERSONAL</Link></button>
 
          </div>
         
