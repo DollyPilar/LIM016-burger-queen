@@ -1,10 +1,10 @@
 import React from 'react';
-// import logo from './logo.svg';
-// import { fah } from "@fortawesome/free-regular-svg-icons";
-import { faHome} from "@fortawesome/free-solid-svg-icons";
+// // import logo from './logo.svg';
+import { faSignOut, faHome, faShop} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import './App.css';
-import hulu from './hulu.png';
+import logoDos from './hp_ccexpress.png';
+import oh from './oh.png'
 
 function App() {
   return (
@@ -12,9 +12,12 @@ function App() {
       <header className="App-header">
 
       <div className='flex'>
-      <img src={hulu} alt ="hulu" className='hul'/>
-      < FontAwesomeIcon icon={faHome} className= 'home' style={{cursor:"pointer"}}/>
-      </div>
+        <img src={logoDos} alt ="hulu" className='hul'/>
+        <img src={oh} alt ="hulu" className='order'/>
+          <FontAwesomeIcon icon ={faSignOut} className= 'signOut' />
+          <FontAwesomeIcon icon ={faShop} className= 'home' />
+        < FontAwesomeIcon icon={faHome} className= 'home' style={{cursor:"pointer"}}/>
+        </div>
       </header>
       <div className='body'>
       <p>
