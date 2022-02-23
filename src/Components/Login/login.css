@@ -1,0 +1,45 @@
+/* Naranja: #FFA46C
+Marron: #C2845E
+Marron #gris: B29B8B
+gris: #CFCFCF
+fondo: #FFFAF8
+negro: #3C3C3C */
+.letra{
+    font-size: 5rem;
+}
+.Log{
+    display:flex;
+    flex-direction: row;
+    float: left;
+}
+.form{
+    float: right;
+}
+.logo{
+    width:2rem;
+}
+/* .Logo{
+    display: flex;
+    justify-content: center;
+}
+.Buttons{
+    display: flex;
+    justify-content: center;
+    gap:4rem;
+}
+.styleBtn{
+    background-color: #FFA46C;
+    width: 15rem;
+    height: 5rem;
+    color:white;
+    font-size: 2rem;
+    border-radius: 2rem;
+    border:none;
+}
+.styleBtn:hover{
+    background-color: #C2845E ;
+}
+.link{
+    text-decoration: none;
+    color: white;
+} */
