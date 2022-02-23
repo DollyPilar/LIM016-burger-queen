@@ -10,8 +10,12 @@ negro: #3C3C3C */
 .Log{
     display:flex;
     flex-direction: column;
+    float: left;
 }
-.Logo{
+.form{
+    float: right;
+}
+/* .Logo{
     display: flex;
     justify-content: center;
 }
@@ -35,4 +39,4 @@ negro: #3C3C3C */
 .link{
     text-decoration: none;
     color: white;
-}
+} */
