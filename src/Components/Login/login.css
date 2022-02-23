@@ -9,11 +9,14 @@ negro: #3C3C3C */
 }
 .Log{
     display:flex;
-    flex-direction: column;
+    flex-direction: row;
     float: left;
 }
 .form{
     float: right;
+}
+.logo{
+    width:2rem;
 }
 /* .Logo{
     display: flex;

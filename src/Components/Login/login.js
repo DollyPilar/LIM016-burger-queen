@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {createUserWithEmailAndPassword
-   // onAuthStateChanged, signOut, signInWithEmailAndPassword
+   // ,onAuthStateChanged, signOut, signInWithEmailAndPassword
 } from 'firebase/auth';
 import { auth } from '../../firebase-config'; 
 
