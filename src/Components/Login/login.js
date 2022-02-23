@@ -29,6 +29,7 @@ function Log() {
             <img src={logo} alt="logo" className="logo"/>
          </div>
          <div className='form'>
+         <React.Fragment className="form">
          <label>
             <h2> ¡BIENVENIDOS A HAPPY PAWS!</h2>
                <input type="text" placeholder='Correo' name="name" 
@@ -47,7 +48,9 @@ function Log() {
                <p>¿No tienes una cuenta?</p>
                <p>Regístrate</p>
          </label>
+         </React.Fragment>
   </div>
+  
          
         
          
