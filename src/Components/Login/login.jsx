@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import {createUserWithEmailAndPassword
-   // ,onAuthStateChanged, signOut, signInWithEmailAndPassword
+import {Link} from 'react-router-dom';
+import { useNavigate } from "react-router-dom"
+import {signInWithEmailAndPassword
 } from 'firebase/auth';
 import { auth } from '../../firebase-config'; 
 
@@ -8,15 +9,20 @@ import { auth } from '../../firebase-config';
 import './login.css';
 import logo from '../../img/logo.png';
 function Log() {
-   const [registerPaswword, setRegisterPaswword] = useState('')
-   const [registerEmail, setRegisterEmail] = useState('')
-   // const [logInPaswword, setLogInPaswword] = useState('')
-   // const [logInEmail, setLogInEmail] = useState('')
+const [logInPaswword, setLogInPaswword] = useState('')
+const [logInEmail, setLogInEmail] = useState('')
+let navigate = useNavigate();
 
-   const register = async () => {
+
+   const login = async () => {
       try {
-       const user = await createUserWithEmailAndPassword(auth, registerEmail, registerPaswword);
-       console.log(user)
+       const client = await signInWithEmailAndPassword(auth, logInEmail, logInPaswword);
+       if (client.user.emailVerified){
+         navigate("/product");
+       }
+       else{
+          alert("Por favor, verifica tu correo")
+       }
     }
     catch(error){
        console.log(error.message);
@@ -24,37 +30,34 @@ function Log() {
  
     }
    return (
+      <React.Fragment>
       <div className="Log">
          <div className = 'Logo'>
             <img src={logo} alt="logo" className="logo"/>
          </div>
          <div className='form'>
-         <React.Fragment className="form">
          <label>
             <h2> ¡BIENVENIDOS A HAPPY PAWS!</h2>
                <input type="text" placeholder='Correo' name="name" 
                   onChange={(e) => {
-                     setRegisterEmail(e.target.value);
+                     setLogInEmail(e.target.value);
                   }}
                /> 
                <br/>
                <input type="text" placeholder='Contraseña' name="name" 
                   onChange={(e) => {
-                     setRegisterPaswword(e.target.value);
+                     setLogInPaswword(e.target.value);
                   }}
                />
                <p>¿Olvidaste tu contraseña?</p>
-               <button onClick={register}>REGISTRAR</button>
+               <button onClick={login}>INICIAR SESIÓN</button>
                <p>¿No tienes una cuenta?</p>
-               <p>Regístrate</p>
+               <Link to="/Register">Regístrate</Link>
          </label>
-         </React.Fragment>
   </div>
-  
-         
-        
-         
         </div>
+
+        </React.Fragment>
     );
   }
   
