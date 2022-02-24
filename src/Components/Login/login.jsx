@@ -31,12 +31,11 @@ let navigate = useNavigate();
     }
    return (
       <React.Fragment>
-      <div className="Log">
-         <div className = 'Logo'>
+      <div className="logInContainer">
+         <div className = 'logoContainer'>
             <img src={logo} alt="logo" className="logo"/>
          </div>
-         <div className='form'>
-         <label>
+         <div className='formContainer'>
             <h2> ¡BIENVENIDOS A HAPPY PAWS!</h2>
                <input type="text" placeholder='Correo' name="name" 
                   onChange={(e) => {
@@ -44,7 +43,7 @@ let navigate = useNavigate();
                   }}
                /> 
                <br/>
-               <input type="text" placeholder='Contraseña' name="name" 
+               <input type="password" placeholder='Contraseña' name="name" 
                   onChange={(e) => {
                      setLogInPaswword(e.target.value);
                   }}
@@ -53,9 +52,8 @@ let navigate = useNavigate();
                <button onClick={login}>INICIAR SESIÓN</button>
                <p>¿No tienes una cuenta?</p>
                <Link to="/Register">Regístrate</Link>
-         </label>
-  </div>
         </div>
+      </div>
 
         </React.Fragment>
     );
