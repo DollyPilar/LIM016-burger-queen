@@ -4,6 +4,9 @@ import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import Log from './Components/Login/login.jsx'
 import Register from './Components/Register/register.jsx';
 import Product from './Components/View-clients/products.jsx';
+import Admin from './Components/Admin/admin.jsx';
+import Delivery from './Components/Delivery/delivery.jsx';
+import Store from './Components/Store/store.jsx';
 
 function App() {
   return (
@@ -12,6 +15,9 @@ function App() {
         <Route path="/" element={<Log/>} />
         <Route path="/Register" element={<Register/>} />
         <Route path="/Product" element={<Product/>} />
+        <Route path="/Admin" element={<Admin/>} />
+        <Route path="/Delivery" element={<Delivery/>} />
+        <Route path="/Store" element={<Store/>} />
     </Routes>
   </BrowserRouter>
   );

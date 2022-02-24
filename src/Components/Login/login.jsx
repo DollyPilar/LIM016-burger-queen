@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import {Link} from 'react-router-dom';
 import { useNavigate } from "react-router-dom"
-import {signInWithEmailAndPassword
-} from 'firebase/auth';
-import { auth } from '../../firebase-config'; 
+import {signInWithEmailAndPassword} from 'firebase/auth';
+import {doc, getDoc} from 'firebase/firestore';
+import { auth, db } from '../../firebase-config'; 
 
 // import { Link } from 'react-router-dom';
 import './login.css';
@@ -14,21 +14,43 @@ const [logInEmail, setLogInEmail] = useState('')
 let navigate = useNavigate();
 
 
+
+// if (docSnap.exists()) {
+//   console.log("Document data:", docSnap.data());
+// } else {
+//   // doc.data() will be undefined in this case
+//   console.log("No such document!");
+// }
+
    const login = async () => {
       try {
        const client = await signInWithEmailAndPassword(auth, logInEmail, logInPaswword);
        if (client.user.emailVerified){
-         navigate("/product");
-       }
-       else{
-          alert("Por favor, verifica tu correo")
-       }
-    }
-    catch(error){
-       console.log(error.message);
-    }
+         const docRef = doc(db, "users", client.user.uid);
+         const docSnap = await getDoc(docRef);
+         //console.log (docSnap.doc.data())
+         const userRol = docSnap.data().rol;
+         if (userRol==="client"){
+            navigate("/product")
+         }
+         else if (userRol==="admin"){
+            navigate("/Admin")
+         } else if (userRol==="store"){
+            navigate("/Store")
+         }
+         else if (userRol==="delivery"){
+            navigate("/Delivery")
+         }
+      
+    }  else{
+      alert("Por favor, verifica tu correo")
+   }
+   
  
-    }
+    }  catch(error){
+      console.log(error.message);
+   }
+}
    return (
       <React.Fragment>
       <div className="logInContainer">
