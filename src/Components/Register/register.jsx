@@ -39,13 +39,12 @@ function Register () {
   }
     return (
         <React.Fragment>
-        <div className="Log">
-           <div className = 'Logo'>
+        <div className="logInContainer">
+           <div className = 'logoContainer'>
               <img src={logo} alt="logo" className="logo"/>
            </div>
-           <div className='form'>
+           <div className='formContainer'>
 
-           <label>
               <h2> ¡BIENVENIDOS A HAPPY PAWS!</h2>
             <input type="text" placeholder='Nombre completo'
 
@@ -65,9 +64,8 @@ function Register () {
                     }}
                  />
                  <button onClick={register}>REGISTRAR</button>
-           </label>
-    </div>
-          </div>
+         </div>
+         </div>
   </React.Fragment>
       );
 
