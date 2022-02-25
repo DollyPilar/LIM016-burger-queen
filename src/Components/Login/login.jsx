@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import { useNavigate } from "react-router-dom"
 import {signInWithEmailAndPassword} from 'firebase/auth';
 import {doc, getDoc} from 'firebase/firestore';
-import { auth, db } from '../../firebase-config'; 
+import { auth, db } from '../../firebase/firebase-config.jsx'; 
 
 // import { Link } from 'react-router-dom';
 import './login.css';
@@ -13,16 +13,9 @@ const [logInPaswword, setLogInPaswword] = useState('')
 const [logInEmail, setLogInEmail] = useState('')
 let navigate = useNavigate();
 
+const login = async () => {
 
 
-// if (docSnap.exists()) {
-//   console.log("Document data:", docSnap.data());
-// } else {
-//   // doc.data() will be undefined in this case
-//   console.log("No such document!");
-// }
-
-   const login = async () => {
       try {
        const client = await signInWithEmailAndPassword(auth, logInEmail, logInPaswword);
        if (client.user.emailVerified){

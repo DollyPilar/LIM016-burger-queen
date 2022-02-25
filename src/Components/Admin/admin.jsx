@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import logo from '../../img/logo.png';
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import {doc, setDoc
 } from 'firebase/firestore';
 import {createUserWithEmailAndPassword, sendEmailVerification
  } from 'firebase/auth';
- import { auth, db } from '../../firebase-config'; 
+ import { auth, db } from '../../firebase/firebase-config.jsx'; 
 
 function Admin () { 
   const [registerPaswword, setRegisterPaswword] = useState('')
@@ -14,7 +14,7 @@ function Admin () {
   const [registerEmail, setRegisterEmail] = useState('')
 
 
-   let navigate = useNavigate();
+  // let navigate = useNavigate();
    const createUserColl = async (idUser, name, rol, email) => {
     await setDoc( doc(db, 'users', idUser), {
       name,

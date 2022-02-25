@@ -1,0 +1,8 @@
+.btnContainer{
+    display: flex;
+    justify-content: center;
+    gap:4rem;
+}
+.btnDog{
+    background-color: aqua;
+}

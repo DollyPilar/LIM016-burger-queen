@@ -1,8 +1,15 @@
 import React from 'react';
+import catExam from '../../img/catExam.jpg'
 
 function CatProducts(){
     return(
-        <div>Lista productos de gatos</div>
+  
+        <React.Fragment>
+              <div>Lista productos de gatos</div>
+        <img src={catExam} alt="" />
+
+    </React.Fragment>
+
     )
 }
 
