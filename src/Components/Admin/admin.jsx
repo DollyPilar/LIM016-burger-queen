@@ -12,6 +12,7 @@ function Admin () {
   const [registerName, setRegisterName] = useState('')
   const [registerRol, setRegisterRol] = useState('')
   const [registerEmail, setRegisterEmail] = useState('')
+  const [errorMsg, setErrorMsg]=useState('');
 
 
   // let navigate = useNavigate();
@@ -25,7 +26,14 @@ function Admin () {
   };
   
 
-   const register = async () => {
+   const handleRegister = async (e) => {
+      e.preventDefault();
+      const data = new FormData(e.target)
+      const fields = Object.fromEntries(data.entries())
+      if(fields.name.length === 0 || fields.email.length === 0
+         ||fields.password.length === 0 || fields.rol.length === 0){
+         setErrorMsg('No puedes dejar el formulario vacio')
+      } 
     try {
      const client = await createUserWithEmailAndPassword(auth, registerEmail, registerPaswword);
     await sendEmailVerification(auth.currentUser)
@@ -35,7 +43,14 @@ function Admin () {
      //console.log(client.user.email)
   }
   catch(error){
-     console.log(error.message);
+   const errMsg = error.code;
+   if(errMsg === 'auth/email-already-in-use'){
+
+      setErrorMsg('email en uso')
+   }
+   else{
+     setErrorMsg('La contraseña debe tener al menos 6 caracteres')
+   }
   }
 
   }
@@ -48,29 +63,35 @@ function Admin () {
            <div className='formContainer'>
 
               <h2> ¡BIENVENIDOS A HAPPY PAWS!</h2>
-            <input type="text" placeholder='Nombre completo'
+             <form onSubmit={handleRegister}>
+            <input type="text" placeholder='Nombre completo' name ='name'
 
             onChange={(e) => {
                 setRegisterName(e.target.value);
              }}/><br/>
-             <input type="text" placeholder='rol'
+
+             <input type="text" placeholder='rol' name ='rol'
 
             onChange={(e) => {
            setRegisterRol(e.target.value);
            }}/><br/>
 
-            <input type="text" placeholder='Correo' name="name" 
+            <input type="text" placeholder='Correo' name="email" 
                     onChange={(e) => {
                        setRegisterEmail(e.target.value);
                     }}
                  /> 
                  <br/>
-                 <input type="password" placeholder='Contraseña' name="name" 
+                 <input type="password" placeholder='Contraseña' name="password" 
                     onChange={(e) => {
                        setRegisterPaswword(e.target.value);
                     }}
                  />
-                 <button onClick={register}>REGISTRAR</button>
+                  {errorMsg&&<>
+                <br></br>
+                <div className='error-msg'>{errorMsg}</div></>}
+                 <button type ='submit'>REGISTRAR</button>
+                 </form>
          </div>
          </div>
   </React.Fragment>

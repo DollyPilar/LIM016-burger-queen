@@ -7,7 +7,7 @@ import Product from './Components/View-clients/products.jsx';
 import Admin from './Components/Admin/admin.jsx';
 import Delivery from './Components/Delivery/delivery.jsx';
 import Store from './Components/Store/store.jsx';
-import DogProduct from './Components/View-clients/dog.jsx';
+import Home from './Components/homeProducts/home.jsx';
 
 function App() {
   return (
@@ -15,8 +15,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Log/>} />
         <Route path="/Register" element={<Register/>} />
-        <Route path="/Product" element={<Product/>} />
-        <Route path="/Product" element={<DogProduct/>} />
+        <Route path="/product" element={<Home/>} />
         <Route path="/Admin" element={<Admin/>} />
         <Route path="/Delivery" element={<Delivery/>} />
         <Route path="/Store" element={<Store/>} />
