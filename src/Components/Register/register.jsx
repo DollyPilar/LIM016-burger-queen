@@ -19,6 +19,7 @@ function Register () {
       name,
       rol: "client",
       email,
+      idUser,
     });
   };
   

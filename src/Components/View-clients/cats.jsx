@@ -7,6 +7,9 @@ function CatProducts(){
         <React.Fragment>
               <div>Lista productos de gatos</div>
         <img src={catExam} alt="" />
+        <button >arbol</button>
+            <button >pluma</button>
+            <button >rascadero</button>
 
     </React.Fragment>
 

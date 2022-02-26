@@ -1,23 +1,30 @@
 import React, {useState, useEffect} from 'react';
 import { useNavigate } from "react-router-dom";
 import {signOut, onAuthStateChanged} from 'firebase/auth';
-import { auth } from '../../firebase/firebase-config.jsx';
+import { auth, db } from '../../firebase/firebase-config.jsx';
 import Dog from "./dog.jsx";
 import Cat from "./cats.jsx";
-
+import {doc, getDoc} from 'firebase/firestore';
 function Product(){
 let navigate = useNavigate();
 const [show, setShow] = useState(true);
 
-const [ createUser, setCreateUser] = useState('');
+const [ userName, setuserName] = useState('');
+
+onAuthStateChanged(auth, async (user) => {
+    if(user){
+const userUID = user.uid;
+const docRef = doc(db, "users", userUID);
+const docSnap = await getDoc(docRef);
+         //console.log (docSnap.doc.data())
+const userInfo = docSnap.data();
+setuserName(userInfo.name)
+
+    }
+})
 
 
-useEffect(()=>{
-    onAuthStateChanged(auth,(user) => {
-        setCreateUser(user.uid);
-})
-})
-console.log('el uid del ususario'+ createUser)
+
 
 const logOut = () => {
 signOut(auth)
@@ -40,7 +47,7 @@ return (
     }
 
 <p>Nombre del cliente: </p>
-{/* <p>{createUser}</p> */}
+<p>{userName}</p>
 {/* {
     <p>{createUser && {createUser}}</p>
 } */}

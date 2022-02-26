@@ -20,6 +20,7 @@ function Admin () {
       name,
       rol,
       email,
+      idUser,
     });
   };
   
