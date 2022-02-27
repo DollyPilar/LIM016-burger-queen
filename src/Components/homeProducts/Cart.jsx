@@ -48,7 +48,32 @@ useEffect(
     ),
     []
   );
-//console.log(cartProducts)
+// console.log(cartProducts)
+
+// obteniendo la cantidad de CartProducts en un array separado
+const quantityArr = cartProducts.map((carProduct)=>{
+        return carProduct.Product.quantity
+})
+// console.log(quantityArr)
+
+// reduciendo el valor del número total de productos en un valor único
+const totalQty = quantityArr.reduce((acc, cur)=> acc + cur, 0);
+//console.log(totalQty)
+
+// obteniendo el Precio final de CartProducts en un array separado
+const totalPriceArr = cartProducts.map((carProduct)=>{
+    return carProduct.Product.TotalProductPrice
+})
+// console.log(quantityArr)
+
+// reduciendo el valor del Precio final en un valor único
+const totalPrice = totalPriceArr.reduce((acc, cur)=> acc + cur, 0);
+//console.log(totalQty)
+
+
+
+
+
 
 //variable global
 let Product;
@@ -104,6 +129,18 @@ const cartProductDecrease=(cartProduct) =>{
             {cartProducts.length < 1 && (
                 <div >No hay productos</div>
             ) }  
+            <div>
+                        <h5>Resumen de compra</h5>
+                        <br></br>
+                        <div>
+                        Número total de productos: 
+                        <span>{totalQty}</span>
+                        </div>
+                        <div>
+                        Precio a pagar: 
+                        <span>$ {totalPrice}</span>
+                        </div>
+            </div>
         </React.Fragment>
     )
 }

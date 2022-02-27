@@ -32,7 +32,7 @@ export function Home() {
         
         // función que trae los productos
         const getProducts = async () => {
-            const collRef = query(collection(db, 'Products'), where('Tipo', '==', 'Perro'));
+            const collRef = collection(db, 'Products');
             const allColl = await getDocs(collRef);
             const productsArray = [];
             allColl.forEach((doc) => {
