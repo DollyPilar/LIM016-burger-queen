@@ -1,9 +1,11 @@
 import React, {useState, useEffect} from 'react';
 import {auth, db} from '../../firebase/firebase-config.jsx'
 import {onAuthStateChanged} from 'firebase/auth';
-import {doc, getDoc, setDoc, collection, getDocs, query, where} from 'firebase/firestore';
-import { Products } from './productss'
+import {doc, setDoc, collection, getDocs} from 'firebase/firestore';
+import { Products } from './productss.jsx'
 import {Cart} from './Cart.jsx'
+import {IndividualFilteredProduct} from './FilteredProducts.jsx'
+import './home.css';
 
 
 export function Home() {
@@ -38,6 +40,7 @@ export function Home() {
             allColl.forEach((doc) => {
                let data = doc.data();
                data.ID = doc.id
+               data.TotalQtyNav = 0;
                 //console.log(doc.id)
                 productsArray.push({...data})
               
@@ -68,22 +71,78 @@ export function Home() {
         }
     // console.log(uid)
 
+        // se muestran los tipos en la tah span
+        const [spans]=useState([
+            {id: 'DogProducts', text: 'Dog Products'},
+            {id: 'CatProducts', text: 'Cat Products'},       
+        ])
+
+     // el estado de la clase o hover a decidir
+    const [active, setActive] = useState('');
+
+    // el estado de las categorías
+    const [category, setCategory] = useState('');
+
+    // manejando el evento de los cambios
+    const handleChange =(indivSpan)=>{
+    setActive(indivSpan.id);
+    setCategory(indivSpan.text);
+    filterFunction(indivSpan.text);
+    }
+
+    //el estado de los productos filtrados
+    const [filteredProducts, setfilteredProducts] = useState([]);
+
+    const filterFunction = (text)=>{
+        const filter = products.filter((product)=>product.Tipo ===text);
+        setfilteredProducts(filter)
+    }
+
+    const showAllProducts = () =>{
+        setActive('');
+        setCategory('');
+        setfilteredProducts([]);
+    }
+
     return (
         <React.Fragment>
             <div>Home</div>
-            
-            {products.length > 0 && (
-                <div>
-                    <h1 >Products</h1>
-                    <div >
-                        <Products products={products} addToCart={addToCart}/>
-                    </div>
-                </div>
-            )}
-            {products.length < 1 && (
-                <div >Please wait....</div>
-            )}
-            <br/>
+            {spans.map((individualSpan,index)=>(
+                        <span key={index} id={individualSpan.id}
+                        onClick={()=>handleChange(individualSpan)}
+                        className={individualSpan.id===active ? active:'deactive'}>{individualSpan.text}</span>
+                    ))}
+         <button onClick={showAllProducts}>Mira todos los productos</button>
+
+
+            {filteredProducts.length > 0&&(
+                // <IndividualFilteredProduct/>
+                  <div className='my-products'>
+                       <h1 className='text-center'>{category}</h1>
+                       <div className='products-box'>
+                       {filteredProducts.map(individualFilteredProduct=>(
+                              <IndividualFilteredProduct key={individualFilteredProduct.ID}
+                              individualFilteredProduct={individualFilteredProduct}
+                              addToCart={addToCart}/>
+                          ))}
+                      </div>
+                  </div>  
+                )}
+                {filteredProducts.length < 1&&(
+                    <>
+                        {products.length > 0&&(
+                            <div className='my-products'>
+                                <h1 className='text-center'>Nuestros productos</h1>
+                                <div className='products-box'>
+                                    <Products products={products} addToCart={addToCart}/>
+                                </div>
+                            </div>
+                        )}
+                        {products.length < 1&&(
+                            <div className='my-products please-wait'>Por favor espera</div>
+                        )}
+                    </>
+                )}
             <div><Cart/></div>
         </React.Fragment>
     )

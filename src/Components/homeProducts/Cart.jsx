@@ -56,9 +56,11 @@ const quantityArr = cartProducts.map((carProduct)=>{
 })
 // console.log(quantityArr)
 
+
 // reduciendo el valor del número total de productos en un valor único
-const totalQty = quantityArr.reduce((acc, cur)=> acc + cur, 0);
+let totalQty = quantityArr.reduce((acc, cur)=> acc + cur, 0);
 //console.log(totalQty)
+
 
 // obteniendo el Precio final de CartProducts en un array separado
 const totalPriceArr = cartProducts.map((carProduct)=>{
@@ -82,12 +84,14 @@ const cartProductIncrease=(cartProduct)=>{
     Product = cartProduct;
     Product.quantity = Product.quantity +1;
     Product.TotalProductPrice = Product.quantity*Product.Precio
+    Product.TotalQtyNav = totalQty
     // actualizando Firebase
     onAuthStateChanged(auth, async (user) => {
         if(user){
             const prodRef = doc(db, 'Cart' + user.uid, cartProduct.ID)
       await updateDoc(prodRef,{
-       Product
+       Product,
+       
       })
     }
     })
