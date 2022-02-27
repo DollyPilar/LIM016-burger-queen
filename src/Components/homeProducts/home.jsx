@@ -39,7 +39,7 @@ export function Home() {
                let data = doc.data();
                data.ID = doc.id
                 //console.log(doc.id)
-                productsArray.push(data)
+                productsArray.push({...data})
               
               });
                     setProducts(productsArray);
@@ -55,7 +55,7 @@ export function Home() {
               // console.log(product);
             Product= product
             Product['quantity']=1;
-            Product['TotalProductPrice']=Product.quantity*Product.price;
+            Product['TotalProductPrice']=Product.quantity*Product.Precio;
             try{
 
                 await setDoc( doc(db,'Cart' + uid, product.ID), {
