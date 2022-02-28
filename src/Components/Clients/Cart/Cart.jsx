@@ -1,14 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import { auth, db } from '../../../firebase/firebase-config.jsx';
-import { onAuthStateChanged } from 'firebase/auth';
-import { CartProducts } from './CartProducts.jsx';
+import React, { useState, useEffect } from "react";
+import { auth, db } from "../../../firebase/firebase-config.jsx";
+import { onAuthStateChanged } from "firebase/auth";
+import { CartProducts } from "./CartProducts.jsx";
+import { ButtonCancel } from "./Buttons/ButtonIndividualCancel.jsx";
 import {
   doc,
   getDoc,
   collection,
   onSnapshot,
   updateDoc,
-} from 'firebase/firestore';
+} from "firebase/firestore";
 
 export const Cart = () => {
   // función que trae el nombre del usuario que está logueado
@@ -17,7 +18,7 @@ export const Cart = () => {
     useEffect(() => {
       onAuthStateChanged(auth, async (user) => {
         if (user) {
-          const docRef = doc(db, 'users', user.uid);
+          const docRef = doc(db, "users", user.uid);
           try {
             const docSnap = await getDoc(docRef);
             //console.log (docSnap.doc.data())
@@ -42,7 +43,7 @@ export const Cart = () => {
     () =>
       onAuthStateChanged(auth, (user) => {
         if (user) {
-          onSnapshot(collection(db, 'Cart' + user.uid), (snapshot) => {
+          onSnapshot(collection(db, "Cart" + user.uid), (snapshot) => {
             const newCartProduct = snapshot.docs.map((doc) => ({
               ID: doc.id,
               ...doc.data(),
@@ -86,7 +87,7 @@ export const Cart = () => {
     // actualizando Firebase
     onAuthStateChanged(auth, async (user) => {
       if (user) {
-        const prodRef = doc(db, 'Cart' + user.uid, cartProduct.ID);
+        const prodRef = doc(db, "Cart" + user.uid, cartProduct.ID);
         try {
           await updateDoc(prodRef, {
             Product,
@@ -106,7 +107,7 @@ export const Cart = () => {
       Product.TotalProductPrice = Product.quantity * Product.Precio;
       onAuthStateChanged(auth, async (user) => {
         if (user) {
-          const prodRef = doc(db, 'Cart' + user.uid, cartProduct.ID);
+          const prodRef = doc(db, "Cart" + user.uid, cartProduct.ID);
           try {
             await updateDoc(prodRef, {
               Product,
@@ -118,6 +119,11 @@ export const Cart = () => {
       });
     }
   };
+
+  // const handleDeleteColl = () => {
+  //   console.log("debes eliminarte");
+  //   //const prodRef = doc(db, "Cart" + user.uid, cartProduct.ID);
+  // };
 
   return (
     <React.Fragment>
@@ -147,6 +153,9 @@ export const Cart = () => {
         <div>
           Precio a pagar:
           <span>$ {totalPrice}</span>
+        </div>
+        <div>
+          <ButtonCancel />
         </div>
       </div>
     </React.Fragment>
