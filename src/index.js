@@ -1,19 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import {BrowserRouter} from 'react-router-dom';
 import './index.css';
 import App from './App';
-// import {Route, Router, Routes} from 'react-router-dom';
-// import Log from './Components/Login/login.js'
-// import Head from './Components/header/header.js';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-   <App/> 
-  </React.StrictMode>
-  ,
+    <App />
+  </React.StrictMode>,
   document.getElementById('root')
 );
 
