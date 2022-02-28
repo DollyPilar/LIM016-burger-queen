@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { auth, db } from "../../../firebase/firebase-config.jsx";
 import { onAuthStateChanged } from "firebase/auth";
 import { CartProducts } from "./CartProducts.jsx";
-import { ButtonCancel } from "./Buttons/ButtonIndividualCancel.jsx";
+import { ButtonCancel } from "./Buttons/ButtonCancel.jsx";
 import {
   doc,
   getDoc,
