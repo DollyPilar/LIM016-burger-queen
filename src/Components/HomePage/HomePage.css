@@ -1,0 +1,38 @@
+.homePageContainer {
+  display: flex;
+  flex-direction: column;
+  margin-top: 6rem;
+}
+.homeInfoContainer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  padding: 0rem 3rem;
+}
+.btnContainer {
+  display: flex;
+  align-items: center;
+}
+.btnBuy {
+  background-color: #ffa46c;
+  font-family: "Quantico", sans-serif;
+  color: white;
+  font-size: 1.4rem;
+  padding: 1rem;
+  border-radius: 0.7rem;
+  outline: none;
+  border: none;
+}
+h2 {
+  font-size: 2.5rem;
+  color: #c2845e;
+}
+span {
+  color: #ffa46c;
+}
+.homeBackgroundImgContainer {
+  width: 61rem;
+}
+.homeBackgroundImg {
+  width: 100%;
+  margin-left: 4rem;
+}

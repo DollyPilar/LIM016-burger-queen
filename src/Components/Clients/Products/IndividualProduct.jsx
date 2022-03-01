@@ -1,4 +1,6 @@
-import React from 'react';
+import React from "react";
+import "./IndividualProduct.css";
+import dogExam from "../../../assets/dogExam.jpg";
 
 export const IndividualProduct = ({ individualProduct, addToCart }) => {
   // console.log(individualProduct);
@@ -7,14 +9,16 @@ export const IndividualProduct = ({ individualProduct, addToCart }) => {
   };
   return (
     <React.Fragment>
-      <div className='product'>
-        {/* <div >
-                <img src={individualProduct.Imagen} alt='product-img'/>
-            </div> */}
+      <div className="productContainer">
+        <div className="productImgContainer">
+          {/* <img src={individualProduct.Imagen} alt='product-img'/> */}
+          <img src={dogExam} alt="product-img" className="productImg" />
+        </div>
         <div>{individualProduct.Nombre}</div>
-        <div>{individualProduct.Cantidad}</div>
         <div>S/.{individualProduct.Precio}</div>
-        <button onClick={handleAddToCart}>Añade a tu carrito</button>
+        <button className="btnAddProduct" onClick={handleAddToCart}>
+          Añade a tu carrito
+        </button>
       </div>
     </React.Fragment>
   );

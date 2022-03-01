@@ -1,0 +1,42 @@
+.navBarContainer {
+  display: flex;
+  flex-direction: column;
+}
+.logoIconsContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logoContainer {
+  width: 6.5rem;
+}
+.logo {
+  width: 59%;
+  padding-top: 0.5rem;
+  margin-left: 0.9rem;
+}
+.iconContainer {
+  display: flex;
+  gap: 2rem;
+  margin-right: 2rem;
+}
+.shoppingCart {
+  width: 2.2rem;
+}
+.lowBarContainer {
+  display: flex;
+  background-color: #ffa46c;
+  align-items: center;
+}
+.lowBarContainer a {
+  text-decoration: none;
+  color: white;
+  font-size: 2rem;
+  padding: 14px 16px;
+}
+.lowBarContainer a:hover {
+  color: #c2845e;
+}
+.lowBarContainer a.active {
+  color: #c2845e;
+}
