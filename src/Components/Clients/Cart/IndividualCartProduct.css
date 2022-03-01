@@ -1,0 +1,28 @@
+.cartProduct {
+  background-color: white;
+  display: flex;
+  align-items: center;
+  gap: 5rem;
+  margin: auto;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  border-radius: 0.5;
+  width: 60rem;
+}
+.cartImgContainer {
+  width: 6rem;
+}
+.cartImg {
+  width: 100%;
+}
+.btnCart {
+  font-family: "Quantico", sans-serif;
+  padding: 0.5rem;
+  color: white;
+  /* font-size: 0.8rem; */
+  background-color: #ffa46c;
+  border-radius: 0.2rem;
+  border: none;
+  outline: none;
+}

@@ -1,0 +1,28 @@
+.productContainer {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  border-radius: 0.5;
+  padding: 1rem;
+}
+.btnAddProduct {
+  font-family: "Quantico", sans-serif;
+  padding: 0.5rem;
+  color: white;
+  font-size: 0.8rem;
+  background-color: #ffa46c;
+  border-radius: 0.8rem;
+  border: none;
+  outline: none;
+}
+.productImgContainer {
+  width: 6rem;
+}
+.productImg {
+  width: 100%;
+}

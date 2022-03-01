@@ -1,6 +1,46 @@
-.DogProducts{
-    color:red;
+.storeContainer {
+  display: flex;
+  padding: 1rem;
+  align-items: center;
 }
-.CatProducts{
-    color:red;
+.categoriesContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+.categoriesContainer button {
+  font-family: "Quantico", sans-serif;
+  padding: 0.5rem;
+  color: white;
+  font-size: 1.2rem;
+  background-color: #ffa46c;
+  border-radius: 0.8rem;
+  border: none;
+  outline: none;
+}
+
+.DogProducts:hover {
+  background-color: #c2845e;
+}
+.CatProducts:hover {
+  background-color: #c2845e;
+}
+
+.myProducts {
+  /* border: 1px solid black; */
+  margin-left: 2rem;
+}
+.productsBox {
+  /* border: 1px solid red; */
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 10px;
+}
+.textCenter {
+  margin-left: 15rem;
+}
+.allMyProducts {
+  /* border: 1px solid green; */
+  width: 48 rem;
 }

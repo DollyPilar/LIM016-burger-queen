@@ -1,6 +1,7 @@
 import React from "react";
 import { auth, db } from "../../../../firebase/firebase-config";
 import { collection, doc, deleteDoc, getDocs } from "firebase/firestore";
+import "./Button.css";
 
 export const ButtonCancel = () => {
   const handleDelete = async () => {
@@ -23,7 +24,10 @@ export const ButtonCancel = () => {
   };
   return (
     <React.Fragment>
-      <button onClick={handleDelete}> Cancelar</button>
+      <button className="btnCancel" onClick={handleDelete}>
+        {" "}
+        Cancelar
+      </button>
     </React.Fragment>
   );
 };

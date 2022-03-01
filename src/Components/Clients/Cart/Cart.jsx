@@ -3,6 +3,9 @@ import { auth, db } from "../../../firebase/firebase-config.jsx";
 import { onAuthStateChanged } from "firebase/auth";
 import { CartProducts } from "./CartProducts.jsx";
 import { ButtonCancel } from "./Buttons/ButtonCancel.jsx";
+import { ButtonBuy } from "./Buttons/ButtonBuy.jsx";
+import { NavBar } from "../../HomePage/NavBar/NavBar.jsx";
+import "./Cart.css";
 import {
   doc,
   getDoc,
@@ -127,37 +130,46 @@ export const Cart = () => {
 
   return (
     <React.Fragment>
-      <div>soy tu carrito</div>
-      <div>Hola {user}</div>
-      <br />
-      {cartProducts.length > 0 && (
-        <div>
-          <h1>Cart</h1>
-          <div>
-            <CartProducts
-              cartProducts={cartProducts}
-              cartProductIncrease={cartProductIncrease}
-              cartProductDecrease={cartProductDecrease}
-            />
-          </div>
-        </div>
+      <NavBar />
+      {!user && <div>No hay productos por mostrar</div>}
+      {user && (
+        <>
+          <>
+            {cartProducts.length > 0 && (
+              <div>
+                <div>
+                  <CartProducts
+                    cartProducts={cartProducts}
+                    cartProductIncrease={cartProductIncrease}
+                    cartProductDecrease={cartProductDecrease}
+                  />
+                </div>
+              </div>
+            )}
+            {cartProducts.length < 1 && <div>No hay productos</div>}
+            <div className="cartSummary">
+              <div className="title">
+                <p>Resumen de compra</p>
+              </div>
+              <div className="name">
+                <p>Nombre: {user}</p>
+              </div>
+              <div className="cartInfo">
+                <p>Número total de productos:</p>
+                <p>{totalQty}</p>
+              </div>
+              <div className="cartInfo">
+                <p> Precio a pagar:</p>
+                <p>S/.{totalPrice}</p>
+              </div>
+              <div className="buttonsContainer">
+                <ButtonCancel />
+                <ButtonBuy />
+              </div>
+            </div>
+          </>
+        </>
       )}
-      {cartProducts.length < 1 && <div>No hay productos</div>}
-      <div>
-        <h5>Resumen de compra</h5>
-        <br></br>
-        <div>
-          Número total de productos:
-          <span>{totalQty}</span>
-        </div>
-        <div>
-          Precio a pagar:
-          <span>$ {totalPrice}</span>
-        </div>
-        <div>
-          <ButtonCancel />
-        </div>
-      </div>
     </React.Fragment>
   );
 };
