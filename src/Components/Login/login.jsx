@@ -64,37 +64,46 @@ function Log() {
         <div className='logoContainer'>
           <img src={logo} alt='logo' className='logo' />
         </div>
+        
         <div className='formContainer'>
+          <div className= "form">
           <h2> ¡BIENVENIDOS A HAPPY PAWS!</h2>
           <form onSubmit={handleLogin}>
-            <input
+            <div className='input'>
+            <input 
+              className='input'
               type='text'
               placeholder='Correo'
               name='email'
               id='email'
               onChange={handleInputChange}
               value={email}
-            />
+            /> </div>
             <br />
+            <div className='input'>
             <input
+              className='input'
               type='password'
               placeholder='Contraseña'
               name='password'
               id='password'
               onChange={handleInputChange}
               value={password}
-            />
+            /> </div>
             {errorMsg && (
               <>
                 <br></br>
                 <div className='error-msg'>{errorMsg}</div>
               </>
             )}
+            <div className='inputDos'>
             <p>¿Olvidaste tu contraseña?</p>
-            <button type='submit'>INICIAR SESIÓN</button>
+            <button className='input' id='btn' type='submit'>INICIAR SESIÓN</button>
             <p>¿No tienes una cuenta?</p>
             <Link to='/Register'>Regístrate</Link>
+            </div>
           </form>
+        </div>
         </div>
       </div>
     </React.Fragment>

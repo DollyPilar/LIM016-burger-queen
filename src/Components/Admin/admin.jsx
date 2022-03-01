@@ -74,39 +74,49 @@ function Admin() {
         <div className='logoContainer'>
           <img src={logo} alt='logo' className='logo' />
         </div>
+
         <div className='formContainer'>
+        <div className= "form">
           <h2> ¡BIENVENIDOS A HAPPY PAWS!</h2>
           <form onSubmit={handleRegister}>
+          <div className='input'>
             <input
+              className='input'
               type='text'
               placeholder='Nombre completo'
               name='name'
               onChange={(e) => {
                 setRegisterName(e.target.value);
               }}
-            />
+            /></div>
             <br />
-
+            <div className='input'>
             <input
+              className='input'
               type='text'
-              placeholder='rol'
+              placeholder='Rol'
               name='rol'
               onChange={(e) => {
                 setRegisterRol(e.target.value);
               }}
-            />
+            /></div>
             <br />
-
+            
+            <div className='input'>
             <input
+              className='input'
               type='text'
               placeholder='Correo'
               name='email'
               onChange={(e) => {
                 setRegisterEmail(e.target.value);
               }}
-            />
-            <br />
+            /></div>
+            <br/>
+
+            <div className='input'>
             <input
+              className='input'
               type='password'
               placeholder='Contraseña'
               name='password'
@@ -119,10 +129,14 @@ function Admin() {
                 <br></br>
                 <div className='error-msg'>{errorMsg}</div>
               </>
-            )}
-            <button type='submit'>REGISTRAR</button>
+            )} </div><br/>
+
+            <div className='input'>
+            <button className='input' type='submit' id="btn">REGISTRAR</button>
+            </div>
           </form>
         </div>
+      </div>
       </div>
     </React.Fragment>
   );

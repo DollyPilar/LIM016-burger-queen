@@ -46,37 +46,49 @@ function Register() {
         <div className='logoContainer'>
           <img src={logo} alt='logo' className='logo' />
         </div>
+
         <div className='formContainer'>
+          <div className= "form">
           <h2> ¡BIENVENIDOS A HAPPY PAWS!</h2>
+          <form>
+          <div className='input'>
           <input
+            className='input'
             type='text'
             placeholder='Nombre completo'
             onChange={(e) => {
               setRegisterName(e.target.value);
             }}
-          />
-          <br />
-
+          /> </div>
+          <br/>
+          <div className='input'>
           <input
+            className='input'
             type='text'
             placeholder='Correo'
             name='name'
             onChange={(e) => {
               setRegisterEmail(e.target.value);
             }}
-          />
-          <br />
+          /> </div>
+          <br/>
+          <div className='input'>
           <input
+            className='input'
             type='password'
             placeholder='Contraseña'
             name='name'
             onChange={(e) => {
               setRegisterPaswword(e.target.value);
             }}
-          />
-          <button onClick={register}>REGISTRAR</button>
+          /> </div> <br/>
+          <div className='input'>
+          <button onClick={register} className="input" id="btn">REGISTRAR</button>
+          </div>
+          </form>
         </div>
-      </div>
+        </div>
+        </div>
     </React.Fragment>
   );
 }

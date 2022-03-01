@@ -1,0 +1,50 @@
+/* .letra{
+    font-size: 5rem;
+}
+
+.logInContainer{
+    background-color: #FFF9DB;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    height: 100vh;
+
+}
+.logoContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.formContainer{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form{
+    background-color: #FFA46C;
+    border-radius: 5%; 
+    padding: 3.5em 2.5em;
+    width: 40%;
+    color: white;
+    text-align: center;
+}
+
+.logo{
+    width: 95%;
+    height: 80%;
+    justify-content: center;
+}
+
+.input{
+    width: 100%;
+    height: 33px;
+    border: none;
+    border-radius: 5px;
+}
+
+#btn:hover{
+    background-color: #C2845E ;
+} */
