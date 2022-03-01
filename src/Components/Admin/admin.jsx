@@ -6,6 +6,8 @@ import {
   sendEmailVerification,
 } from 'firebase/auth';
 import { auth, db } from '../../firebase/firebase-config.jsx';
+import { useNavigate } from 'react-router-dom';
+
 
 function Admin() {
   const [registerPaswword, setRegisterPaswword] = useState('');
@@ -68,17 +70,24 @@ function Admin() {
       }
     }
   };
+
+let navigate=useNavigate()
+
+const goToProducts = ()=>{
+  navigate("/AddProducts")
+}
+
   return (
     <React.Fragment>
       <div className='logInContainer'>
         <div className='logoContainer'>
           <img src={logo} alt='logo' className='logo' />
         </div>
-
+        <button onClick={goToProducts}>Añadir productos</button>
         <div className='formContainer'>
         <div className= "form">
           <h2> ¡BIENVENIDOS A HAPPY PAWS!</h2>
-          <form onSubmit={handleRegister}>
+           <form onSubmit={handleRegister}>
           <div className='input'>
             <input
               className='input'

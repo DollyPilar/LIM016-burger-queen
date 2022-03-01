@@ -28,14 +28,13 @@ export function Home() {
   const [products, setProducts] = useState([]);
   // función que trae los productos
   const getProducts = async () => {
-    const collRef = collection(db, "Products");
+    const collRef = collection(db, "products");
     try {
       const allColl = await getDocs(collRef);
       const productsArray = [];
       allColl.forEach((doc) => {
         let data = doc.data();
         data.ID = doc.id;
-        data.TotalQtyNav = 0;
         productsArray.push({ ...data });
       });
       setProducts(productsArray);
@@ -69,8 +68,8 @@ export function Home() {
 
   // se muestran los tipos en la tah span
   const [spans] = useState([
-    { id: "DogProducts", text: "Dog Products" },
-    { id: "CatProducts", text: "Cat Products" },
+    { id: "productoperro", text: "Sección Perros" },
+    { id: "productogato", text: "Sección Gatos" },
   ]);
 
   // el estado de la clase o hover a decidir

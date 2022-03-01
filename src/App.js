@@ -9,6 +9,7 @@ import Store from "./Components/Store/store.jsx";
 import Home from "./Components/Clients/Home.jsx";
 import { HomePage } from "./Components/HomePage/HomePage.jsx";
 import { Cart } from "./Components/Clients/Cart/Cart.jsx";
+import { AddProducts } from "./Components/Admin/AddProducts/AddProducts.jsx"; 
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/Admin" element={<Admin />} />
         <Route path="/Delivery" element={<Delivery />} />
         <Route path="/Store" element={<Store />} />
+        <Route path="/AddProducts" element={<AddProducts />} />
       </Routes>
     </BrowserRouter>
   );
