@@ -12,6 +12,7 @@ import {
   collection,
   onSnapshot,
   updateDoc,
+  setDoc,
 } from "firebase/firestore";
 
 export const Cart = () => {
@@ -41,7 +42,7 @@ export const Cart = () => {
 
   // el estado de los carritos
   const [cartProducts, setCartProducts] = useState([]);
-
+  
   useEffect(
     () =>
       onAuthStateChanged(auth, (user) => {
@@ -128,6 +129,23 @@ export const Cart = () => {
   //   //const prodRef = doc(db, "Cart" + user.uid, cartProduct.ID);
   // };
 
+  const createShoppingColl =async()=>{
+    const clientId=auth.currentUser.uid
+    try {
+      await setDoc(doc(db, 'compras', clientId), {
+        nombre: user,
+        hora: Date.now(),
+        cantidad: totalQty,
+        productos: cartProducts,
+        estado: "Pedido realizado",
+        compraId: clientId,
+        precioFinal: totalPrice,
+      });
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
   return (
     <React.Fragment>
       <NavBar />
@@ -165,6 +183,7 @@ export const Cart = () => {
               <div className="buttonsContainer">
                 <ButtonCancel />
                 <ButtonBuy />
+                <button onClick={createShoppingColl}>Comprar</button>
               </div>
             </div>
           </>

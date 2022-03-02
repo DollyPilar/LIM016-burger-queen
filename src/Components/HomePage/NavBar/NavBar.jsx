@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import PawLogo from "../../../assets/PawLogo.png";
 import { auth } from "../../../firebase/firebase-config";
-import { onAuthStateChanged } from "firebase/auth";
+import { onAuthStateChanged, signOut } from "firebase/auth";
 import "./NavBar.css";
 
 export const NavBar = () => {
@@ -15,6 +15,11 @@ export const NavBar = () => {
     });
   }, []);
   // console.log(userState);
+  const logOut=()=>{
+    signOut(auth)
+    alert("Cerraste sesión")
+  }
+
   return (
     <React.Fragment>
       <div className="navBarContainer">
@@ -39,7 +44,7 @@ export const NavBar = () => {
               />
             </Link>
 
-            {userState && <button>salir</button>}
+            {userState && <button onClick={logOut}>salir</button>}
           </div>
         </div>
         <div className="lowBarContainer">

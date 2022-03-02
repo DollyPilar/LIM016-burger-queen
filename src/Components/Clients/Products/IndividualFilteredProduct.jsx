@@ -1,5 +1,4 @@
 import React from "react";
-import dogExam from "../../../assets/dogExam.jpg";
 import "./IndividualFilteredProduct.css";
 
 export const IndividualFilteredProduct = ({

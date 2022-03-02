@@ -3,7 +3,6 @@ import { auth, db } from "../../../firebase/firebase-config.jsx";
 import { doc, deleteDoc } from "firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth";
 import "./IndividualCartProduct.css";
-import dogExam from "../../../assets/dogExam.jpg";
 export const IndividualCartProduct = ({
   cartProduct,
   cartProductIncrease,

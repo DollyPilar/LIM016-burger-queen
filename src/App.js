@@ -5,7 +5,7 @@ import LogIn from "./Components/Login/login.jsx";
 import Register from "./Components/Register/register.jsx";
 import Admin from "./Components/Admin/admin.jsx";
 import Delivery from "./Components/Delivery/delivery.jsx";
-import Store from "./Components/Store/store.jsx";
+import Dolly from "./Components/Store/store.jsx";
 import Home from "./Components/Clients/Home.jsx";
 import { HomePage } from "./Components/HomePage/HomePage.jsx";
 import { Cart } from "./Components/Clients/Cart/Cart.jsx";
@@ -22,7 +22,7 @@ function App() {
         <Route path="/cart" element={<Cart />} />
         <Route path="/Admin" element={<Admin />} />
         <Route path="/Delivery" element={<Delivery />} />
-        <Route path="/Store" element={<Store />} />
+        <Route path="/Store" element={<Dolly />} />
         <Route path="/AddProducts" element={<AddProducts />} />
       </Routes>
     </BrowserRouter>

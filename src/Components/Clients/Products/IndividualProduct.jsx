@@ -1,6 +1,5 @@
 import React from "react";
 import "./IndividualProduct.css";
-import dogExam from "../../../assets/dogExam.jpg";
 
 export const IndividualProduct = ({ individualProduct, addToCart }) => {
   // console.log(individualProduct);
