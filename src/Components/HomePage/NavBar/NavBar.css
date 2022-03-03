@@ -7,10 +7,10 @@
   justify-content: space-between;
   align-items: center;
 }
-.logoContainer {
+.logoNavContainer {
   width: 6.5rem;
 }
-.logo {
+.logoNav {
   width: 59%;
   padding-top: 0.5rem;
   margin-left: 0.9rem;

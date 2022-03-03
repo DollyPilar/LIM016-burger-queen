@@ -24,8 +24,8 @@ export const NavBar = () => {
     <React.Fragment>
       <div className="navBarContainer">
         <div className="logoIconsContainer">
-          <div className="logoContainer">
-            <img src={PawLogo} alt="Happy Paws" className="logo" />
+          <div className="logoNavContainer">
+            <img src={PawLogo} alt="Happy Paws" className="logoNav" />
           </div>
           <div className="iconContainer">
             <Link to="/LogIn">

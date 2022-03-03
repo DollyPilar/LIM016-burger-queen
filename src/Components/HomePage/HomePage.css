@@ -22,7 +22,7 @@
   outline: none;
   border: none;
 }
-h2 {
+.homeInfoContainer h2 {
   font-size: 2.5rem;
   color: #c2845e;
 }

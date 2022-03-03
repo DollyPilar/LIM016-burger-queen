@@ -4,9 +4,9 @@ import { useNavigate } from 'react-router-dom';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { doc, getDoc } from 'firebase/firestore';
 import { auth, db } from '../../firebase/firebase-config.jsx';
-// import { Link } from 'react-router-dom';
+import {NavBar} from "../HomePage/NavBar/NavBar.jsx"
 import './login.css';
-import logo from '../../assets/logo.png';
+import logo from '../../assets/PawLogo.png';
 
 function Log() {
   const [errorMsg, setErrorMsg] = useState('');
@@ -60,16 +60,17 @@ function Log() {
   };
   return (
     <React.Fragment>
+      <NavBar/>
       <div className='logInContainer'>
         <div className='logoContainer'>
           <img src={logo} alt='logo' className='logo' />
         </div>
         
         <div className='formContainer'>
-          <div className= "form">
+        
+          <form className= "form" onSubmit={handleLogin}>
           <h2> ¡BIENVENIDOS A HAPPY PAWS!</h2>
-          <form onSubmit={handleLogin}>
-            <div className='input'>
+        
             <input 
               className='input'
               type='text'
@@ -78,9 +79,7 @@ function Log() {
               id='email'
               onChange={handleInputChange}
               value={email}
-            /> </div>
-            <br />
-            <div className='input'>
+            />
             <input
               className='input'
               type='password'
@@ -89,23 +88,19 @@ function Log() {
               id='password'
               onChange={handleInputChange}
               value={password}
-            /> </div>
+            /> 
             {errorMsg && (
               <>
-                <br></br>
-                <div className='error-msg'>{errorMsg}</div>
+                <div className='errorMsg'>{errorMsg}</div>
               </>
             )}
-            <div className='inputDos'>
-            <p>¿Olvidaste tu contraseña?</p>
-            <button className='input' id='btn' type='submit'>INICIAR SESIÓN</button>
-            <p>¿No tienes una cuenta?</p>
-            <Link to='/Register'>Regístrate</Link>
-            </div>
+            <p className='infoLogin infoUnderline'>¿Olvidaste tu contraseña?</p>
+            <button className='btnLogin' id='btn' type='submit'>INICIAR SESIÓN</button>
+            <p className='infoLogin'>¿No tienes una cuenta?</p>
+            <Link to='/Register' className='infoLogin infoUnderline'>Regístrate</Link>
           </form>
         </div>
         </div>
-      </div>
     </React.Fragment>
   );
 }
