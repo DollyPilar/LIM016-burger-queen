@@ -38,6 +38,12 @@ export const AddProducts =()=>{
     Tipo: productType,
     Img: productPhoto,
   });
+  
+  setProductPhoto("")
+  setProductName("")
+  setProductPrice("")
+  setProductType("")
+
     }
 
     return(

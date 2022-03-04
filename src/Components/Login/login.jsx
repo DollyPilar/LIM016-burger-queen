@@ -6,7 +6,7 @@ import { doc, getDoc } from 'firebase/firestore';
 import { auth, db } from '../../firebase/firebase-config.jsx';
 import {NavBar} from "../HomePage/NavBar/NavBar.jsx"
 import './login.css';
-import logo from '../../assets/PawLogo.png';
+import logo from '../../assets/dogLogIn.png';
 
 function Log() {
   const [errorMsg, setErrorMsg] = useState('');
@@ -63,13 +63,15 @@ function Log() {
       <NavBar/>
       <div className='logInContainer'>
         <div className='logoContainer'>
+         <div className='welcomeContainer'>
+        <h2> ¡BIENVENIDOS A HAPPY PAWS!</h2>
           <img src={logo} alt='logo' className='logo' />
+        </div>
         </div>
         
         <div className='formContainer'>
         
           <form className= "form" onSubmit={handleLogin}>
-          <h2> ¡BIENVENIDOS A HAPPY PAWS!</h2>
         
             <input 
               className='input'
@@ -96,8 +98,10 @@ function Log() {
             )}
             <p className='infoLogin infoUnderline'>¿Olvidaste tu contraseña?</p>
             <button className='btnLogin' id='btn' type='submit'>INICIAR SESIÓN</button>
+            <div className='goToRegister'>
             <p className='infoLogin'>¿No tienes una cuenta?</p>
             <Link to='/Register' className='infoLogin infoUnderline'>Regístrate</Link>
+            </div>
           </form>
         </div>
         </div>

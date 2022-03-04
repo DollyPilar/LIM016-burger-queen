@@ -2,10 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import dogHome from "../../assets/dogHome.png";
 import { NavBar } from "./NavBar/NavBar.jsx";
-import "./HomePage.css";
+import "./HomePage.css" 
 
-export const HomePage = () => {
-  return (
+
+export const HomePage=()=>{
+   return(
     <React.Fragment>
       <NavBar />
       <div className="homePageContainer">
@@ -21,14 +22,14 @@ export const HomePage = () => {
             </Link>
           </div>
         </div>
-        <div className="homeBackgroundImgContainer">
+        
           <img
             src={dogHome}
             alt="dogs Background"
             className="homeBackgroundImg"
           />
-        </div>
       </div>
     </React.Fragment>
   );
 };
+    
