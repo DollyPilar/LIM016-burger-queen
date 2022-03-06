@@ -58,12 +58,13 @@ function Log() {
       }
     }
   };
+
   return (
     <React.Fragment>
       <NavBar/>
       <div className='logInContainer'>
         <div className='logoContainer'>
-         <div className='welcomeContainer'>
+        <div className='welcomeContainer'>
         <h2> ¡BIENVENIDOS A HAPPY PAWS!</h2>
           <img src={logo} alt='logo' className='logo' />
         </div>
@@ -97,7 +98,7 @@ function Log() {
               </>
             )}
             <p className='infoLogin infoUnderline'>¿Olvidaste tu contraseña?</p>
-            <button className='btnLogin' id='btn' type='submit'>INICIAR SESIÓN</button>
+            <button className='btnLogin' type='submit'>INICIAR SESIÓN</button>
             <div className='goToRegister'>
             <p className='infoLogin'>¿No tienes una cuenta?</p>
             <Link to='/Register' className='infoLogin infoUnderline'>Regístrate</Link>

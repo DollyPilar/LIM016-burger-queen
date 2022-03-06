@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { addDoc, collection} from 'firebase/firestore';
 import { db, storage } from '../../../firebase/firebase-config';
 import { ref, uploadBytes, getDownloadURL} from  'firebase/storage';
-
+import './addProducts.css';
 
 
 export const AddProducts =()=>{
@@ -48,51 +48,49 @@ export const AddProducts =()=>{
 
     return(
         <React.Fragment>
-            <form onSubmit={addProducts}>
-                <div>
+            <div className='addProductsSection'>
+            <form className='addProductsForm' onSubmit={addProducts}>
                     <input 
+                    className='inputAddProducts'
                     type="text"
                     placeholder="Name"
                     name='name'
                     onChange={(e) => {
                         setProductName(e.target.value);
-                      }}
-                    ></input>
-                </div>
-                <div>
+                    }}
+                    />
                     <input 
+                    className='inputAddProducts'
                     type="text"
                     placeholder="Precio"
                     name='precio'
                     onChange={(e) => {
                         setProductPrice(e.target.value);
                       }}
-                    ></input>
-                    
-                </div>
-                <div>
+                      />
                     <input 
+                    className='inputAddProducts'
                     type="text"
                     placeholder="Tipo"
                     name='tipo'
                     onChange={(e) => {
                         setProductType(e.target.value);
                       }}
-                    ></input>
-                </div>
-                <div>
+                      />
                     <input 
+                    className='inputAddProducts'
                     type="file"
                     placeholder="Imagen"
                     name='imagen'
                     onChange={(e) => {
                         subirFile(e.target);
                       }}
-                    ></input>
-                    <button type='submit'>Enviar </button>
-                </div>
+                      />
+                    <button className='btnAddProducts' type='submit'>Enviar </button>
             </form>
+            </div>
         </React.Fragment>
     )
 }
 
+export default AddProducts;

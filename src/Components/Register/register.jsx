@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
-import logo from '../../assets/logo.png';
 import { useNavigate } from 'react-router-dom';
 import { doc, setDoc } from 'firebase/firestore';
 import {
   createUserWithEmailAndPassword,
   sendEmailVerification,
 } from 'firebase/auth';
+import './register.css';
 import { auth, db } from '../../firebase/firebase-config.jsx';
+import logoRegister from '../../assets/dogLogIn.png';
+import {NavBar} from "../HomePage/NavBar/NavBar.jsx"
+
 function Register() {
   const [registerPaswword, setRegisterPaswword] = useState('');
 
@@ -40,53 +43,55 @@ function Register() {
       console.log(error.message);
     }
   };
-  return (
+
+  return(
     <React.Fragment>
-      <div className='logInContainer'>
-        <div className='logoContainer'>
-          <img src={logo} alt='logo' className='logo' />
+      <NavBar/>
+      <div className='registerContainer'>
+        <div className='logoSection'>
+        <div className='welcomeSection'>
+        <h2> ¡BIENVENIDOS A HAPPY PAWS!</h2>
+          <img src={logoRegister} alt='logo' className='logoRegister' />
+        </div>
         </div>
 
-        <div className='formContainer'>
-          <div className= "form">
-          <h2> ¡BIENVENIDOS A HAPPY PAWS!</h2>
-          <form>
-          <div className='input'>
+        <div className='formSection'>
+    
+          <form className= "registerForm">
+
           <input
-            className='input'
+            className='inputRegister'
             type='text'
             placeholder='Nombre completo'
             onChange={(e) => {
               setRegisterName(e.target.value);
             }}
-          /> </div>
-          <br/>
-          <div className='input'>
+          /> 
           <input
-            className='input'
+            className='inputRegister'
             type='text'
             placeholder='Correo'
             name='name'
             onChange={(e) => {
               setRegisterEmail(e.target.value);
             }}
-          /> </div>
-          <br/>
-          <div className='input'>
+          /> 
           <input
-            className='input'
+            className='inputRegister'
             type='password'
             placeholder='Contraseña'
             name='name'
             onChange={(e) => {
               setRegisterPaswword(e.target.value);
             }}
-          /> </div> <br/>
-          <div className='input'>
-          <button onClick={register} className="input" id="btn">REGISTRAR</button>
-          </div>
+          /> 
+          {/* {errorAlert && (
+              <>
+                <div className='errorAlert'>{errorAlert}</div>
+              </>
+            )} */}
+          <button onClick={register} className="btnRegister" type='submit'>REGISTRAR</button>
           </form>
-        </div>
         </div>
         </div>
     </React.Fragment>

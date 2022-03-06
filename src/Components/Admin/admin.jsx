@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
-import logo from '../../assets/logo.png';
 import { doc, setDoc } from 'firebase/firestore';
 import {
   createUserWithEmailAndPassword,
   sendEmailVerification,
 } from 'firebase/auth';
+import './admin.css';
+import logoAdmin from '../../assets/dogLogIn.png';
+import logoRegister from '../../assets/dogLogIn.png';
 import { auth, db } from '../../firebase/firebase-config.jsx';
 import { useNavigate } from 'react-router-dom';
+import {NavBar} from "../HomePage/NavBar/NavBar.jsx"
 
 
 function Admin() {
@@ -79,53 +82,47 @@ const goToProducts = ()=>{
 
   return (
     <React.Fragment>
-      <div className='logInContainer'>
-        <div className='logoContainer'>
-          <img src={logo} alt='logo' className='logo' />
+      <NavBar/>
+      <div className='adminContainer'>
+        <div className='adminSection'>
+          <div className='adminWelcome'>
+          <h2> ¡BIENVENIDOS A HAPPY PAWS!</h2> <br></br>
+          <button className='btnAddProducts' onClick={goToProducts}>Añadir productos</button>
+          <img src={logoAdmin} alt='logo' className='logoAdmin'/>
         </div>
-        <button onClick={goToProducts}>Añadir productos</button>
-        <div className='formContainer'>
-        <div className= "form">
-          <h2> ¡BIENVENIDOS A HAPPY PAWS!</h2>
-           <form onSubmit={handleRegister}>
-          <div className='input'>
+        </div>
+        
+        <div className='adminFormSection'>
+          <form className='adminForm' onSubmit={handleRegister}>
             <input
-              className='input'
+              className='inputAdmin'
               type='text'
               placeholder='Nombre completo'
               name='name'
               onChange={(e) => {
                 setRegisterName(e.target.value);
               }}
-            /></div>
-            <br />
-            <div className='input'>
+            />
             <input
-              className='input'
+              className='inputAdmin'
               type='text'
               placeholder='Rol'
               name='rol'
               onChange={(e) => {
                 setRegisterRol(e.target.value);
               }}
-            /></div>
-            <br />
-            
-            <div className='input'>
+            />
             <input
-              className='input'
+              className='inputAdmin'
               type='text'
               placeholder='Correo'
               name='email'
               onChange={(e) => {
                 setRegisterEmail(e.target.value);
               }}
-            /></div>
-            <br/>
-
-            <div className='input'>
+            />
             <input
-              className='input'
+              className='inputAdmin'
               type='password'
               placeholder='Contraseña'
               name='password'
@@ -135,18 +132,13 @@ const goToProducts = ()=>{
             />
             {errorMsg && (
               <>
-                <br></br>
                 <div className='error-msg'>{errorMsg}</div>
               </>
-            )} </div><br/>
-
-            <div className='input'>
-            <button className='input' type='submit' id="btn">REGISTRAR</button>
+            )}
+            <button className='btnAdmin' type='submit'>REGISTRAR</button>
+            </form>
             </div>
-          </form>
         </div>
-      </div>
-      </div>
     </React.Fragment>
   );
 }
