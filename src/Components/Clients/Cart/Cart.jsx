@@ -3,7 +3,6 @@ import { auth, db } from "../../../firebase/firebase-config.jsx";
 import { onAuthStateChanged } from "firebase/auth";
 import { CartProducts } from "./CartProducts.jsx";
 import { ButtonCancel } from "./Buttons/ButtonCancel.jsx";
-import { ButtonBuy } from "./Buttons/ButtonBuy.jsx";
 import { NavBar } from "../../HomePage/NavBar/NavBar.jsx";
 import "./Cart.css";
 import {
@@ -42,7 +41,7 @@ export const Cart = () => {
 
   // el estado de los carritos
   const [cartProducts, setCartProducts] = useState([]);
-  
+
   useEffect(
     () =>
       onAuthStateChanged(auth, (user) => {
@@ -129,10 +128,10 @@ export const Cart = () => {
   //   //const prodRef = doc(db, "Cart" + user.uid, cartProduct.ID);
   // };
 
-  const createShoppingColl =async()=>{
-    const clientId=auth.currentUser.uid
+  const createShoppingColl = async () => {
+    const clientId = auth.currentUser.uid;
     try {
-      await setDoc(doc(db, 'compras', clientId), {
+      await setDoc(doc(db, "compras", clientId), {
         nombre: user,
         hora: Date.now(),
         cantidad: totalQty,
@@ -144,7 +143,7 @@ export const Cart = () => {
     } catch (e) {
       console.log(e);
     }
-  }
+  };
 
   return (
     <React.Fragment>
@@ -167,7 +166,7 @@ export const Cart = () => {
             {cartProducts.length < 1 && <div>No hay productos</div>}
             <div className="cartSummary">
               <div className="title">
-                <p>Resumen de compra</p>
+                <h3>Resumen de compra</h3>
               </div>
               <div className="name">
                 <p>Nombre: {user}</p>
@@ -182,8 +181,9 @@ export const Cart = () => {
               </div>
               <div className="buttonsContainer">
                 <ButtonCancel />
-                <ButtonBuy />
-                <button onClick={createShoppingColl}>Comprar</button>
+                <button className="btnBuy" onClick={createShoppingColl}>
+                  Comprar
+                </button>
               </div>
             </div>
           </>

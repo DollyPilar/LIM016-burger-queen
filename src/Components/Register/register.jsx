@@ -7,7 +7,7 @@ import {
 } from "firebase/auth";
 import "./register.css";
 import { auth, db } from "../../firebase/firebase-config.jsx";
-import logoRegister from "../../assets/dogLogIn.png";
+import logoRegister from "../../assets/cat.png";
 import { NavBar } from "../HomePage/NavBar/NavBar.jsx";
 
 function Register() {
@@ -48,13 +48,6 @@ function Register() {
     <React.Fragment>
       <NavBar />
       <div className="registerContainer">
-        <div className="logoSection">
-          <div className="welcomeSection">
-            <h2> ¡BIENVENIDOS A HAPPY PAWS!</h2>
-            <img src={logoRegister} alt="logo" className="logoRegister" />
-          </div>
-        </div>
-
         <div className="formSection">
           <form className="registerForm">
             <h4>Crea tu cuenta para conocernos</h4>
@@ -99,6 +92,12 @@ function Register() {
               </Link>
             </div>
           </form>
+        </div>
+        <div className="logoSection">
+          <div className="welcomeSection">
+            <h2> Right Meow</h2>
+            <img src={logoRegister} alt="logo" className="logoRegister" />
+          </div>
         </div>
       </div>
     </React.Fragment>
