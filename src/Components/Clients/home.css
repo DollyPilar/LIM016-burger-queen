@@ -1,16 +1,14 @@
 .storeContainer {
   display: flex;
   padding: 1rem;
-  align-items: center;
 }
 .categoriesContainer {
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  margin-top: 2rem;
+  margin-top: 3rem;
 }
 .categoriesContainer button {
-  font-family: "Quantico", sans-serif;
   padding: 0.5rem;
   color: white;
   font-size: 1.2rem;
@@ -28,19 +26,19 @@
 }
 
 .myProducts {
-  /* border: 1px solid black; */
   margin-left: 2rem;
 }
 .productsBox {
-  /* border: 1px solid red; */
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-gap: 10px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 26px;
 }
 .textCenter {
-  margin-left: 15rem;
+  margin: 1.5rem 0;
+  text-align: center;
+  color: white;
+  font-size: 4rem;
 }
 .allMyProducts {
-  /* border: 1px solid green; */
   width: 48 rem;
 }

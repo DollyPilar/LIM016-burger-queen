@@ -9,8 +9,7 @@ import logoAdmin from '../../assets/dogLogIn.png';
 import logoRegister from '../../assets/dogLogIn.png';
 import { auth, db } from '../../firebase/firebase-config.jsx';
 import { useNavigate } from 'react-router-dom';
-import {NavBar} from "../HomePage/NavBar/NavBar.jsx"
-
+import {NavBar} from "../HomePage/NavBar/NavBar.jsx";
 
 function Admin() {
   const [registerPaswword, setRegisterPaswword] = useState('');

@@ -1,106 +1,104 @@
-.logInContainer{
-    display: grid;
-    grid-template-columns: repeat(2,1fr);
+.logInContainer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
 }
 
-.logoContainer{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.logoContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.welcomeContainer{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-top: 4rem;
+.welcomeContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 4rem;
 }
 
-.logo{
-width: 65%;
+.logo {
+  width: 65%;
 }
 
-
-.formContainer{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-.infoUnderline{
-    text-decoration: underline;
+.infoUnderline {
+  text-decoration: underline;
+  color: #bb53f3;
+  font-size: 1.8rem;
 }
-.goToRegister{
-    display: flex;
-    flex-direction: column;
-    background-color: transparent;
-}
-
-.input{
-    width: 100%;
-    height: 3rem;
-    padding: 0.5rem;
-    border: none;
-    border-radius: 5px;
-}
-.input:focus{
-    border: white;
-}
-.input::placeholder{
-font-size: 1.3rem;
-color: #0b3289;
+.goToRegister {
+  display: flex;
+  flex-direction: column;
+  background-color: transparent;
 }
 
-.btnLogin{
-    background-color: white;
-    padding: 0.5rem;
-    border:none;
-
-    border-radius: 5px;
-    cursor: pointer;
-    color: #0b3289
-;
-    font-size: 1.7rem;
-    font-weight: bolder;
+.input {
+  width: 100%;
+  height: 3rem;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 5px;
+}
+.input:focus {
+  border: white;
+}
+.input::placeholder {
+  font-size: 1.3rem;
+  color: #7a7a7a;
 }
 
-.errorMsg{
-    color: #d90606;
-    font-size: 1.6rem;
+.btnLogin {
+  background-color: white;
+  padding: 0.5rem;
+  border: none;
+
+  border-radius: 5px;
+  cursor: pointer;
+  color: #ce73ff;
+  font-size: 1.7rem;
+  font-weight: bolder;
 }
 
-.btnLogin:hover{
-    color: black;
-}
-.form{
-    margin-top: 2.5rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 1.5rem;
-    background-color: rgba(255, 255, 255, 0.3);
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-    border-radius: 5%; 
-    padding: 1.5em;
-    width: 72%;
-    height: 100%;
-    color: white;
-    text-align: center;
+.errorMsg {
+  color: #d90606;
+  font-size: 1.6rem;
 }
 
-.infoLogin{
-    background-color: transparent;
-    color: #0b3289
-;
-    font-size: 1.8rem;
+.btnLogin:hover {
+  color: black;
+}
+.form {
+  margin-top: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  background-color: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  border-radius: 5%;
+  padding: 1.5em;
+  width: 72%;
+  height: 100%;
+  color: white;
+  text-align: center;
 }
 
+.infoLogin {
+  background-color: transparent;
+  color: white;
+  font-size: 1.8rem;
+}
 
-.logoContainer h2{
-    color: white;
-    font-size: 3.5rem;
-    text-align: center;
+.logoContainer h2 {
+  color: white;
+  font-size: 3.5rem;
+  text-align: center;
 }

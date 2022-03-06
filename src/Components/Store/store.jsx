@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {db} from "../../firebase/firebase-config.jsx"
 import { onSnapshot, collection } from 'firebase/firestore';
+import { NavBar } from '../HomePage/NavBar/NavBar.jsx';
 
 
 function Store() {
@@ -26,6 +27,7 @@ console.log(compras)
 
   return (
     <React.Fragment>
+      <NavBar/>
     <div>Soy la vista del almacén</div>;
     <div>Soy el nombre</div>;
     <div>Soy la hora</div>;
