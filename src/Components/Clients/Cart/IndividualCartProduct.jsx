@@ -1,5 +1,6 @@
 import React from "react";
 import { auth, db } from "../../../firebase/firebase-config.jsx";
+import { FaTrash } from "react-icons/fa";
 import { doc, deleteDoc } from "firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth";
 import "./IndividualCartProduct.css";
@@ -10,15 +11,15 @@ export const IndividualCartProduct = ({
 }) => {
   //console.log(cartProduct.Product)
   const handleCartProductIncrease = () => {
-    cartProductIncrease(cartProduct.Product);
+    cartProductIncrease(cartProduct);
   };
   const handleCartProductDecrease = () => {
-    cartProductDecrease(cartProduct.Product);
+    cartProductDecrease(cartProduct);
   };
   const handleCartProductDelete = () => {
     onAuthStateChanged(auth, async (user) => {
       if (user) {
-        const prodRef = doc(db, "Cart" + user.uid, cartProduct.Product.ID);
+        const prodRef = doc(db, "cart" + user.uid, cartProduct.ID);
         await deleteDoc(prodRef);
       }
     });
@@ -27,29 +28,43 @@ export const IndividualCartProduct = ({
     <React.Fragment>
       <div className="cartProduct">
         <div className="cartImgContainer">
-           <img src={cartProduct.Product.Img} className="cartImg" alt='product-img'/> 
+          <img src={cartProduct.Img} className="cartImg" alt="product-img" />
           {/* <img src={dogExam} alt="product-img" className="cartImg" /> */}
         </div>
-        <div>{cartProduct.Product.Nombre}</div>
-        <div>
-          S/.
-          {cartProduct.Product.Precio}
+        <div className="productNamecart">
+          <p> {cartProduct.Nombre}</p>
         </div>
-        <div>
-          <button className="btnCart" onClick={handleCartProductDecrease}>
+        <div className="productPricecart">
+          <p>
+            {" "}
+            S/.
+            {cartProduct.Precio}
+          </p>
+        </div>
+
+        <div className="addDecreaseQuantity">
+          <button
+            className="btnAddDecrease"
+            onClick={handleCartProductDecrease}
+          >
             -
           </button>
-        </div>
-        <div>{cartProduct.Product.quantity}</div>
-        <div>
-          <button className="btnCart" onClick={handleCartProductIncrease}>
+          <div className="productPricecart">
+            <p>{cartProduct.quantity}</p>
+          </div>
+
+          <button
+            className="btnAddDecrease"
+            onClick={handleCartProductIncrease}
+          >
             +
           </button>
         </div>
-
-        <div> S/. {cartProduct.Product.TotalProductPrice}</div>
-        <button className="btnCart" onClick={handleCartProductDelete}>
-          Eliminar
+        <div className="productPricecart">
+          <p> S/. {cartProduct.TotalProductPrice}</p>
+        </div>
+        <button className="btnIconTrash" onClick={handleCartProductDelete}>
+          <FaTrash className="btnCart" />
         </button>
       </div>
     </React.Fragment>

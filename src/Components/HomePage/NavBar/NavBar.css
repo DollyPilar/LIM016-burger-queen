@@ -20,8 +20,14 @@
   gap: 2rem;
   margin-right: 2rem;
 }
-.shoppingCart {
-  width: 2.2rem;
+.logOut {
+  outline: none;
+  border: none;
+  background: none;
+}
+.navBarIcon {
+  font-size: 2.5rem;
+  color: white;
 }
 .lowBarContainer {
   display: flex;
