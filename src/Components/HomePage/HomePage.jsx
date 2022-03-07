@@ -12,7 +12,7 @@ export const HomePage = () => {
         <div className="homeInfoContainer">
           <div>
             <h2>
-              Aquí encontrarás todo lo que <span>tu mascota necesita</span>
+              Aquí encontrarás todo para <span>DIVERTIR A TU MASCOTA</span>
             </h2>
           </div>
           <div className="btnContainer">
@@ -21,13 +21,12 @@ export const HomePage = () => {
             </Link>
           </div>
         </div>
-        <div className="homeBackgroundImgContainer">
-          <img
-            src={dogHome}
-            alt="dogs Background"
-            className="homeBackgroundImg"
-          />
-        </div>
+
+        <img
+          src={dogHome}
+          alt="dogs Background"
+          className="homeBackgroundImg"
+        />
       </div>
     </React.Fragment>
   );

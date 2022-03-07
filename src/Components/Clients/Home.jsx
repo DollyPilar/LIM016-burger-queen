@@ -28,15 +28,16 @@ export function Home() {
   const [products, setProducts] = useState([]);
   // función que trae los productos
   const getProducts = async () => {
-    const collRef = collection(db, "Products");
+    const collRef = collection(db, "products");
     try {
       const allColl = await getDocs(collRef);
       const productsArray = [];
+
       allColl.forEach((doc) => {
         let data = doc.data();
+        // console.log(data);
         data.ID = doc.id;
-        data.TotalQtyNav = 0;
-        productsArray.push({ ...data });
+        productsArray.push(data);
       });
       setProducts(productsArray);
     } catch (e) {
@@ -52,15 +53,16 @@ export function Home() {
 
   // función que añade los productos al carrito
   const addToCart = async (product) => {
-    // console.log(product);
     Product = product;
     Product["quantity"] = 1;
     Product["TotalProductPrice"] = Product.quantity * Product.Precio;
+
     try {
-      await setDoc(doc(db, "Cart" + uid, product.ID), {
+      await setDoc(doc(db, "cart" + uid, product.ID), {
         Product,
       });
       console.log("agregaste un pedido al carrito");
+      console.log(product);
     } catch (e) {
       console.log(e);
     }
@@ -69,8 +71,8 @@ export function Home() {
 
   // se muestran los tipos en la tah span
   const [spans] = useState([
-    { id: "DogProducts", text: "Dog Products" },
-    { id: "CatProducts", text: "Cat Products" },
+    { id: "productoperro", text: "Sección Perros" },
+    { id: "productogato", text: "Sección Gatos" },
   ]);
 
   // el estado de la clase o hover a decidir
@@ -146,8 +148,8 @@ export function Home() {
                 </div>
               )}
               {products.length < 1 && (
-                <div className="my-products please-wait">
-                  Por favor espera...
+                <div className="pleaseWait">
+                  <p>Por favor espera...</p>
                 </div>
               )}
             </>

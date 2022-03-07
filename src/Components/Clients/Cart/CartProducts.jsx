@@ -1,5 +1,5 @@
-import React from 'react';
-import { IndividualCartProduct } from './IndividualCartProduct.jsx';
+import React from "react";
+import { IndividualCartProduct } from "./IndividualCartProduct.jsx";
 
 export const CartProducts = ({
   cartProducts,
@@ -7,6 +7,7 @@ export const CartProducts = ({
   cartProductDecrease,
 }) => {
   return cartProducts.map((cartProduct) => (
+    // console.log(cartProduct)
     <IndividualCartProduct
       key={cartProduct.ID}
       cartProduct={cartProduct}

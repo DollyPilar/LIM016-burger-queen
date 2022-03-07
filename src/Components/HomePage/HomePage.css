@@ -1,38 +1,42 @@
 .homePageContainer {
   display: flex;
   flex-direction: column;
-  margin-top: 6rem;
 }
+
 .homeInfoContainer {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  padding: 0rem 3rem;
+  margin-left: 4rem;
+  margin-top: 4rem;
 }
 .btnContainer {
   display: flex;
   align-items: center;
 }
 .btnBuy {
-  background-color: #ffa46c;
-  font-family: "Quantico", sans-serif;
-  color: white;
-  font-size: 1.4rem;
+  background-color: white;
+  color: #ce73ff;
+  font-size: 1.8rem;
   padding: 1rem;
   border-radius: 0.7rem;
   outline: none;
-  border: none;
+  border: 5px solid white;
+  font-weight: bold;
 }
-h2 {
+
+.homeInfoContainer h2 {
+  padding: 0.5rem;
   font-size: 2.5rem;
-  color: #c2845e;
+  color: white;
 }
 span {
-  color: #ffa46c;
+  color: white;
+  font-weight: bold;
+  font-style: italic;
 }
-.homeBackgroundImgContainer {
-  width: 61rem;
-}
+
 .homeBackgroundImg {
-  width: 100%;
   margin-left: 4rem;
+  position: relative;
+  top: 0.7rem;
 }

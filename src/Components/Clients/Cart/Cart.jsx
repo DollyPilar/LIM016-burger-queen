@@ -3,7 +3,6 @@ import { auth, db } from "../../../firebase/firebase-config.jsx";
 import { onAuthStateChanged } from "firebase/auth";
 import { CartProducts } from "./CartProducts.jsx";
 import { ButtonCancel } from "./Buttons/ButtonCancel.jsx";
-import { ButtonBuy } from "./Buttons/ButtonBuy.jsx";
 import { NavBar } from "../../HomePage/NavBar/NavBar.jsx";
 import "./Cart.css";
 import {
@@ -12,6 +11,7 @@ import {
   collection,
   onSnapshot,
   updateDoc,
+  setDoc,
 } from "firebase/firestore";
 
 export const Cart = () => {
@@ -46,22 +46,21 @@ export const Cart = () => {
     () =>
       onAuthStateChanged(auth, (user) => {
         if (user) {
-          onSnapshot(collection(db, "Cart" + user.uid), (snapshot) => {
-            const newCartProduct = snapshot.docs.map((doc) => ({
-              ID: doc.id,
-              ...doc.data(),
-            }));
+          onSnapshot(collection(db, "cart" + user.uid), (snapshot) => {
+            const newCartProduct = snapshot.docs.map(
+              (doc) => doc.data().Product
+            );
             setCartProducts(newCartProduct);
           });
         }
       }),
     []
   );
-  // console.log(cartProducts)
+  // console.log(cartProducts);
 
   // obteniendo la cantidad de CartProducts en un array separado
   const quantityArr = cartProducts.map((carProduct) => {
-    return carProduct.Product.quantity;
+    return carProduct.quantity;
   });
   // console.log(quantityArr)
 
@@ -71,7 +70,7 @@ export const Cart = () => {
 
   // obteniendo el Precio final de CartProducts en un array separado
   const totalPriceArr = cartProducts.map((carProduct) => {
-    return carProduct.Product.TotalProductPrice;
+    return carProduct.TotalProductPrice;
   });
   // console.log(quantityArr)
 
@@ -86,11 +85,10 @@ export const Cart = () => {
     Product = cartProduct;
     Product.quantity = Product.quantity + 1;
     Product.TotalProductPrice = Product.quantity * Product.Precio;
-    Product.TotalQtyNav = totalQty;
     // actualizando Firebase
     onAuthStateChanged(auth, async (user) => {
       if (user) {
-        const prodRef = doc(db, "Cart" + user.uid, cartProduct.ID);
+        const prodRef = doc(db, "cart" + user.uid, cartProduct.ID);
         try {
           await updateDoc(prodRef, {
             Product,
@@ -110,7 +108,7 @@ export const Cart = () => {
       Product.TotalProductPrice = Product.quantity * Product.Precio;
       onAuthStateChanged(auth, async (user) => {
         if (user) {
-          const prodRef = doc(db, "Cart" + user.uid, cartProduct.ID);
+          const prodRef = doc(db, "cart" + user.uid, cartProduct.ID);
           try {
             await updateDoc(prodRef, {
               Product,
@@ -128,10 +126,29 @@ export const Cart = () => {
   //   //const prodRef = doc(db, "Cart" + user.uid, cartProduct.ID);
   // };
 
+  const createShoppingColl = async () => {
+    const clientId = auth.currentUser.uid;
+    try {
+      await setDoc(doc(db, "compras", clientId), {
+        nombre: user,
+        hora: Date.now(),
+        cantidad: totalQty,
+        productos: cartProducts,
+        estado: "Pedido realizado",
+        compraId: clientId,
+        precioFinal: totalPrice,
+      });
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   return (
     <React.Fragment>
       <NavBar />
-      {!user && <div>No hay productos por mostrar</div>}
+      {!user && (
+        <div className="noProductsToShow">No hay productos por mostrar</div>
+      )}
       {user && (
         <>
           <>
@@ -149,7 +166,7 @@ export const Cart = () => {
             {cartProducts.length < 1 && <div>No hay productos</div>}
             <div className="cartSummary">
               <div className="title">
-                <p>Resumen de compra</p>
+                <h3>Resumen de compra</h3>
               </div>
               <div className="name">
                 <p>Nombre: {user}</p>
@@ -164,7 +181,9 @@ export const Cart = () => {
               </div>
               <div className="buttonsContainer">
                 <ButtonCancel />
-                <ButtonBuy />
+                <button className="btnBuy" onClick={createShoppingColl}>
+                  Comprar
+                </button>
               </div>
             </div>
           </>
