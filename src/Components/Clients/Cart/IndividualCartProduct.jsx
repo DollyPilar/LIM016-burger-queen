@@ -11,15 +11,15 @@ export const IndividualCartProduct = ({
 }) => {
   //console.log(cartProduct.Product)
   const handleCartProductIncrease = () => {
-    cartProductIncrease(cartProduct.Product);
+    cartProductIncrease(cartProduct);
   };
   const handleCartProductDecrease = () => {
-    cartProductDecrease(cartProduct.Product);
+    cartProductDecrease(cartProduct);
   };
   const handleCartProductDelete = () => {
     onAuthStateChanged(auth, async (user) => {
       if (user) {
-        const prodRef = doc(db, "Cart" + user.uid, cartProduct.Product.ID);
+        const prodRef = doc(db, "cart" + user.uid, cartProduct.ID);
         await deleteDoc(prodRef);
       }
     });
@@ -28,41 +28,43 @@ export const IndividualCartProduct = ({
     <React.Fragment>
       <div className="cartProduct">
         <div className="cartImgContainer">
-          <img
-            src={cartProduct.Product.Img}
-            className="cartImg"
-            alt="product-img"
-          />
+          <img src={cartProduct.Img} className="cartImg" alt="product-img" />
           {/* <img src={dogExam} alt="product-img" className="cartImg" /> */}
         </div>
         <div className="productNamecart">
-          <p> {cartProduct.Product.Nombre}</p>
+          <p> {cartProduct.Nombre}</p>
         </div>
         <div className="productPricecart">
           <p>
             {" "}
             S/.
-            {cartProduct.Product.Precio}
+            {cartProduct.Precio}
           </p>
         </div>
 
         <div className="addDecreaseQuantity">
-          <button className="btnCart" onClick={handleCartProductDecrease}>
+          <button
+            className="btnAddDecrease"
+            onClick={handleCartProductDecrease}
+          >
             -
           </button>
           <div className="productPricecart">
-            <p>{cartProduct.Product.quantity}</p>
+            <p>{cartProduct.quantity}</p>
           </div>
 
-          <button className="btnCart" onClick={handleCartProductIncrease}>
+          <button
+            className="btnAddDecrease"
+            onClick={handleCartProductIncrease}
+          >
             +
           </button>
         </div>
         <div className="productPricecart">
-          <p> S/. {cartProduct.Product.TotalProductPrice}</p>
+          <p> S/. {cartProduct.TotalProductPrice}</p>
         </div>
-        <button className="btnCart widerBtn" onClick={handleCartProductDelete}>
-          <FaTrash />
+        <button className="btnIconTrash" onClick={handleCartProductDelete}>
+          <FaTrash className="btnCart" />
         </button>
       </div>
     </React.Fragment>

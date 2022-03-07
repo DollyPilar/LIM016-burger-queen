@@ -32,10 +32,12 @@ export function Home() {
     try {
       const allColl = await getDocs(collRef);
       const productsArray = [];
+
       allColl.forEach((doc) => {
         let data = doc.data();
+        // console.log(data);
         data.ID = doc.id;
-        productsArray.push({ ...data });
+        productsArray.push(data);
       });
       setProducts(productsArray);
     } catch (e) {
@@ -51,15 +53,16 @@ export function Home() {
 
   // función que añade los productos al carrito
   const addToCart = async (product) => {
-    // console.log(product);
     Product = product;
     Product["quantity"] = 1;
     Product["TotalProductPrice"] = Product.quantity * Product.Precio;
+
     try {
-      await setDoc(doc(db, "Cart" + uid, product.ID), {
+      await setDoc(doc(db, "cart" + uid, product.ID), {
         Product,
       });
       console.log("agregaste un pedido al carrito");
+      console.log(product);
     } catch (e) {
       console.log(e);
     }
@@ -145,8 +148,8 @@ export function Home() {
                 </div>
               )}
               {products.length < 1 && (
-                <div className="my-products please-wait">
-                  Por favor espera...
+                <div className="pleaseWait">
+                  <p>Por favor espera...</p>
                 </div>
               )}
             </>

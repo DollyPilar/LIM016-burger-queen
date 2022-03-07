@@ -42,3 +42,8 @@
   border: none;
   outline: none;
 }
+.noProductsToShow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

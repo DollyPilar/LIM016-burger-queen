@@ -46,22 +46,21 @@ export const Cart = () => {
     () =>
       onAuthStateChanged(auth, (user) => {
         if (user) {
-          onSnapshot(collection(db, "Cart" + user.uid), (snapshot) => {
-            const newCartProduct = snapshot.docs.map((doc) => ({
-              ID: doc.id,
-              ...doc.data(),
-            }));
+          onSnapshot(collection(db, "cart" + user.uid), (snapshot) => {
+            const newCartProduct = snapshot.docs.map(
+              (doc) => doc.data().Product
+            );
             setCartProducts(newCartProduct);
           });
         }
       }),
     []
   );
-  // console.log(cartProducts)
+  // console.log(cartProducts);
 
   // obteniendo la cantidad de CartProducts en un array separado
   const quantityArr = cartProducts.map((carProduct) => {
-    return carProduct.Product.quantity;
+    return carProduct.quantity;
   });
   // console.log(quantityArr)
 
@@ -71,7 +70,7 @@ export const Cart = () => {
 
   // obteniendo el Precio final de CartProducts en un array separado
   const totalPriceArr = cartProducts.map((carProduct) => {
-    return carProduct.Product.TotalProductPrice;
+    return carProduct.TotalProductPrice;
   });
   // console.log(quantityArr)
 
@@ -86,11 +85,10 @@ export const Cart = () => {
     Product = cartProduct;
     Product.quantity = Product.quantity + 1;
     Product.TotalProductPrice = Product.quantity * Product.Precio;
-    Product.TotalQtyNav = totalQty;
     // actualizando Firebase
     onAuthStateChanged(auth, async (user) => {
       if (user) {
-        const prodRef = doc(db, "Cart" + user.uid, cartProduct.ID);
+        const prodRef = doc(db, "cart" + user.uid, cartProduct.ID);
         try {
           await updateDoc(prodRef, {
             Product,
@@ -110,7 +108,7 @@ export const Cart = () => {
       Product.TotalProductPrice = Product.quantity * Product.Precio;
       onAuthStateChanged(auth, async (user) => {
         if (user) {
-          const prodRef = doc(db, "Cart" + user.uid, cartProduct.ID);
+          const prodRef = doc(db, "cart" + user.uid, cartProduct.ID);
           try {
             await updateDoc(prodRef, {
               Product,
@@ -148,7 +146,9 @@ export const Cart = () => {
   return (
     <React.Fragment>
       <NavBar />
-      {!user && <div>No hay productos por mostrar</div>}
+      {!user && (
+        <div className="noProductsToShow">No hay productos por mostrar</div>
+      )}
       {user && (
         <>
           <>

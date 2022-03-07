@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { FaUser, FaShoppingCart, FaSignOutAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import PawLogo from "../../../assets/PawLogo.png";
 import { auth } from "../../../firebase/firebase-config";
@@ -15,10 +16,10 @@ export const NavBar = () => {
     });
   }, []);
   // console.log(userState);
-  const logOut=()=>{
-    signOut(auth)
-    alert("Cerraste sesión")
-  }
+  const logOut = () => {
+    signOut(auth);
+    alert("Cerraste sesión");
+  };
 
   return (
     <React.Fragment>
@@ -30,21 +31,18 @@ export const NavBar = () => {
           <div className="iconContainer">
             <Link to="/LogIn">
               {" "}
-              <img
-                src="https://img.icons8.com/fluency-systems-filled/48/000000/user.png"
-                alt="user Icon"
-              />
+              <FaUser className="navBarIcon" />
             </Link>
 
             <Link to="/cart">
-              <img
-                src="https://img.icons8.com/external-those-icons-fill-those-icons/24/000000/external-shopping-cart-shopping-those-icons-fill-those-icons.png"
-                className="shoppingCart"
-                alt="shopping Cart Icon"
-              />
+              <FaShoppingCart className="navBarIcon" />
             </Link>
 
-            {userState && <button onClick={logOut}>salir</button>}
+            {userState && (
+              <button className="logOut" onClick={logOut}>
+                <FaSignOutAlt className="navBarIcon" />
+              </button>
+            )}
           </div>
         </div>
         <div className="lowBarContainer">

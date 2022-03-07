@@ -5,15 +5,15 @@ import "./Button.css";
 
 export const ButtonCancel = () => {
   const handleDelete = async () => {
-    const q = collection(db, "Cart" + auth.currentUser.uid);
+    const q = collection(db, "cart" + auth.currentUser.uid);
 
     const querySnapshot = await getDocs(q);
     // const deleteOps = [];
 
     querySnapshot.forEach((docc) => {
       const docId = docc.id;
-      console.log(docId);
-      const prodRef = doc(db, "Cart" + auth.currentUser.uid, docId);
+      // console.log(docId);
+      const prodRef = doc(db, "cart" + auth.currentUser.uid, docId);
 
       //   // let data = doc.data();
       deleteDoc(prodRef);

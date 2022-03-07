@@ -28,7 +28,7 @@
   font-size: 1.5rem;
 }
 .productPricecart {
-  width: 4.4rem;
+  width: 5.4rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -43,6 +43,16 @@
   align-items: center;
 }
 .btnCart {
+  /* padding: 0.5rem; */
+  color: #819ef5;
+  font-size: 3rem;
+  /* background-color: #819ef5;
+  border-radius: 0.2rem; */
+  /* border: none;
+  outline: none; */
+  width: 3.8rem;
+}
+.btnAddDecrease {
   padding: 0.5rem;
   color: white;
   font-size: 2rem;
@@ -51,6 +61,11 @@
   border: none;
   outline: none;
   width: 3.5rem;
+}
+.btnIconTrash {
+  border: none;
+  outline: none;
+  background: none;
 }
 .widerBtn {
   width: 10rem;
