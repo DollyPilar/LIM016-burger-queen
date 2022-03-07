@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { db } from "../../firebase/firebase-config.jsx";
 import { onSnapshot, collection } from "firebase/firestore";
 import { NavBar } from "../HomePage/NavBar/NavBar.jsx";
+import { StoreProducts } from "./StoreProducts.jsx";
 
 function Store() {
   const [compras, setCompras] = useState("");
@@ -9,27 +10,30 @@ function Store() {
   useEffect(() => {
     onSnapshot(collection(db, "compras"), (snapshot) => {
       snapshot.docs.map((doc) => {
-        const details = doc.data();
+        const details = doc.data().productos;
         return setCompras(details);
       });
     });
   }, []);
-  // console.log(compras);
 
-  const timeOfShopping = compras.hora;
-  const date = new Date(timeOfShopping);
-  const myDate = `
-          ${date.getHours()}:
-          ${date.getMinutes()}`;
+
+
+  // compras.productos.map((producto)=>{
+  //   console.log(producto.Nombre)
+  // })
+
+
+  // const timeOfShopping = compras.hora;
+  // const date = new Date(timeOfShopping);
+  // const myDate = `
+  //         ${date.getHours()}:
+  //         ${date.getMinutes()}`;
 
   return (
     <React.Fragment>
       <NavBar />
+      <StoreProducts compras={compras} />
       <div>Soy la vista del almacén</div>
-      <div>Soy el nombre{compras.nombre}</div>
-      {isNaN(myDate) ? <div>---</div> : myDate}
-      {/* {myDate && } */}
-      <div>Soy el precio final {compras.precioFinal}</div>;
     </React.Fragment>
   );
 }

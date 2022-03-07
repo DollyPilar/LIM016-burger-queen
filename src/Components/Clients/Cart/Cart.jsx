@@ -56,7 +56,11 @@ export const Cart = () => {
       }),
     []
   );
-  // console.log(cartProducts);
+  // const [cartStore, setCartStore] = useState([])
+  // cartProducts.map((cartProduct)=>{
+  //   setCartStore(cartProduct);
+  // })
+  
 
   // obteniendo la cantidad de CartProducts en un array separado
   const quantityArr = cartProducts.map((carProduct) => {
