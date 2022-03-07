@@ -32,7 +32,7 @@ function Store() {
   return (
     <React.Fragment>
       <NavBar />
-      <StoreProducts compras={compras} />
+      <StoreProducts compras={compras>0&&compras} />
       <div>Soy la vista del almacén</div>
     </React.Fragment>
   );
