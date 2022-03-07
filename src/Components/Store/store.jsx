@@ -17,14 +17,19 @@ function Store() {
   // console.log(compras);
 
   const timeOfShopping = compras.hora;
+  const date = new Date(timeOfShopping);
+  const myDate = `
+          ${date.getHours()}:
+          ${date.getMinutes()}`;
 
   return (
     <React.Fragment>
       <NavBar />
       <div>Soy la vista del almacén</div>
       <div>Soy el nombre{compras.nombre}</div>
-      {/* // <div>Soy la hora{timeOfShopping}</div>; */}
-      <div>Soy el precio final {compras.precioFinañ}</div>;
+      {isNaN(myDate) ? <div>---</div> : myDate}
+      {/* {myDate && } */}
+      <div>Soy el precio final {compras.precioFinal}</div>;
     </React.Fragment>
   );
 }

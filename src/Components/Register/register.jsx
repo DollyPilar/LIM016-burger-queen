@@ -11,11 +11,20 @@ import logoRegister from "../../assets/cat.png";
 import { NavBar } from "../HomePage/NavBar/NavBar.jsx";
 
 function Register() {
-  const [registerPaswword, setRegisterPaswword] = useState("");
+  const [errorMsg, setErrorMsg] = useState("");
+  const initialState = {
+    Fullname: "",
+    Email: "",
+    Password: "",
+  };
+  const [state, setState] = useState(initialState);
 
-  const [registerName, setRegisterName] = useState("");
+  const { Fullname, Email, Password } = state;
 
-  const [registerEmail, setRegisterEmail] = useState("");
+  const handleInputRegisterChange = (e) => {
+    const { name, value } = e.target;
+    setState({ ...state, [name]: value });
+  };
 
   let navigate = useNavigate();
   const createUserColl = async (idUser, name, email) => {
@@ -27,20 +36,33 @@ function Register() {
     });
   };
 
-  const register = async () => {
-    try {
-      const client = await createUserWithEmailAndPassword(
-        auth,
-        registerEmail,
-        registerPaswword
-      );
-      await sendEmailVerification(auth.currentUser);
-      alert("se envió el correo de verificación");
-      navigate("/");
-      await createUserColl(client.user.uid, registerName, registerEmail);
-      //console.log(client.user.email)
-    } catch (error) {
-      console.log(error.message);
+  const handleRegisterUser = async (e) => {
+    e.preventDefault();
+    if (
+      Fullname.trim() === "" ||
+      Email.trim() === "" ||
+      Password.trim() === ""
+    ) {
+      setErrorMsg("No puedes dejar campos vacíos");
+    } else {
+      try {
+        const client = await createUserWithEmailAndPassword(
+          auth,
+          Email,
+          Password
+        );
+        await sendEmailVerification(auth.currentUser);
+        alert("se envió el correo de verificación, revisa tu correo");
+        navigate("/");
+        await createUserColl(client.user.uid, Fullname, Email);
+      } catch (error) {
+        console.log(error.code);
+        if (error.code === "auth/email-already-in-use") {
+          setErrorMsg("El correo ya está en uso");
+        } else if (error.code === "auth/weak-password") {
+          setErrorMsg("Tu contraseña de be tener al menos 6 caracteres");
+        }
+      }
     }
   };
 
@@ -49,40 +71,38 @@ function Register() {
       <NavBar />
       <div className="registerContainer">
         <div className="formSection">
-          <form className="registerForm">
+          <form className="registerForm" onSubmit={handleRegisterUser}>
             <h4>Crea tu cuenta para conocernos</h4>
             <input
               className="inputRegister"
               type="text"
               placeholder="Nombre completo"
-              onChange={(e) => {
-                setRegisterName(e.target.value);
-              }}
+              name="Fullname"
+              id="Fullname"
+              onChange={handleInputRegisterChange}
             />
             <input
               className="inputRegister"
               type="text"
               placeholder="Correo"
-              name="name"
-              onChange={(e) => {
-                setRegisterEmail(e.target.value);
-              }}
+              name="Email"
+              id="Email"
+              onChange={handleInputRegisterChange}
             />
             <input
               className="inputRegister"
               type="password"
               placeholder="Contraseña"
-              name="name"
-              onChange={(e) => {
-                setRegisterPaswword(e.target.value);
-              }}
+              name="Password"
+              id="Password"
+              onChange={handleInputRegisterChange}
             />
-            {/* {errorAlert && (
+            {errorMsg && (
               <>
-                <div className="errorAlert">{errorAlert}</div>
+                <div className="errorAlert">{errorMsg}</div>
               </>
-            )} */}
-            <button onClick={register} className="btnRegister" type="submit">
+            )}
+            <button type="submit" className="btnRegister">
               REGISTRAR
             </button>
             <div className="containerGoToLogIN">

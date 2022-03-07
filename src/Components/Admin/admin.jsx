@@ -11,11 +11,21 @@ import { useNavigate } from "react-router-dom";
 import { NavBar } from "../HomePage/NavBar/NavBar.jsx";
 
 function Admin() {
-  const [registerPaswword, setRegisterPaswword] = useState("");
-  const [registerName, setRegisterName] = useState("");
-  const [registerRol, setRegisterRol] = useState("");
-  const [registerEmail, setRegisterEmail] = useState("");
   const [errorMsg, setErrorMsg] = useState("");
+  const initialState = {
+    Fullname: "",
+    Rol: "",
+    Email: "",
+    Password: "",
+  };
+  const [state, setState] = useState(initialState);
+
+  const { Fullname, Rol, Email, Password } = state;
+
+  const handleInput = (e) => {
+    const { name, value } = e.target;
+    setState({ ...state, [name]: value });
+  };
 
   const createUserColl = async (idUser, name, rol, email) => {
     try {
@@ -32,32 +42,25 @@ function Admin() {
 
   const handleRegister = async (e) => {
     e.preventDefault();
-    const data = new FormData(e.target);
-    const fields = Object.fromEntries(data.entries());
     if (
-      fields.name.length === 0 ||
-      fields.email.length === 0 ||
-      fields.password.length === 0 ||
-      fields.rol.length === 0
+      Fullname.trim() === "" ||
+      Email.trim() === "" ||
+      Password.trim() === "" ||
+      !Rol
     ) {
       setErrorMsg("No puedes dejar el formulario vacio");
     }
     try {
       const client = await createUserWithEmailAndPassword(
         auth,
-        registerEmail,
-        registerPaswword
+        Email,
+        Password
       );
       await sendEmailVerification(auth.currentUser);
       alert("se envió el correo de verificación");
       //navigate('/')
       try {
-        await createUserColl(
-          client.user.uid,
-          registerName,
-          registerRol,
-          registerEmail
-        );
+        await createUserColl(client.user.uid, Fullname, Rol, Email);
       } catch (e) {
         console.log(e);
       }
@@ -66,7 +69,7 @@ function Admin() {
       const errMsg = error.code;
       if (errMsg === "auth/email-already-in-use") {
         setErrorMsg("email en uso");
-      } else {
+      } else if (errMsg === "auth/weak-password") {
         setErrorMsg("La contraseña debe tener al menos 6 caracteres");
       }
     }
@@ -85,7 +88,7 @@ function Admin() {
         <div className="adminSection">
           <div className="adminWelcome">
             <h2> ¡BIENVENIDOS A HAPPY PAWS!</h2> <br></br>
-            <button className="btnAddProducts" onClick={goToProducts}>
+            <button className="btnAddProductsAdmin" onClick={goToProducts}>
               Añadir productos
             </button>
             <img src={logoAdmin} alt="logo" className="logoAdmin" />
@@ -98,41 +101,37 @@ function Admin() {
               className="inputAdmin"
               type="text"
               placeholder="Nombre completo"
-              name="name"
-              onChange={(e) => {
-                setRegisterName(e.target.value);
-              }}
+              name="FullName"
+              onChange={handleInput}
             />
-            <input
-              className="inputAdmin"
-              type="text"
-              placeholder="Rol"
-              name="rol"
-              onChange={(e) => {
-                setRegisterRol(e.target.value);
-              }}
-            />
+
+            <select
+              className="inputAdmin adminFontSize"
+              onChange={handleInput}
+              name="Rol"
+            >
+              <option>Escoge el rol</option>
+              <option>store</option>
+              <option>delivery</option>
+            </select>
+
             <input
               className="inputAdmin"
               type="text"
               placeholder="Correo"
-              name="email"
-              onChange={(e) => {
-                setRegisterEmail(e.target.value);
-              }}
+              name="Email"
+              onChange={handleInput}
             />
             <input
               className="inputAdmin"
               type="password"
               placeholder="Contraseña"
-              name="password"
-              onChange={(e) => {
-                setRegisterPaswword(e.target.value);
-              }}
+              name="Password"
+              onChange={handleInput}
             />
             {errorMsg && (
               <>
-                <div className="error-msg">{errorMsg}</div>
+                <div className="errorMsg">{errorMsg}</div>
               </>
             )}
             <button className="btnAdmin" type="submit">
