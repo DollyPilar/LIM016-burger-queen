@@ -12,14 +12,9 @@ export const ButtonCancel = () => {
 
     querySnapshot.forEach((docc) => {
       const docId = docc.id;
-      // console.log(docId);
       const prodRef = doc(db, "cart" + auth.currentUser.uid, docId);
-
-      //   // let data = doc.data();
       deleteDoc(prodRef);
-      //   docId = doc.id;
-      //    deleteDoc(prodRef);
-      // console.log("te debes eliminar");
+      alert("eliminaste tu compra");
     });
   };
   return (

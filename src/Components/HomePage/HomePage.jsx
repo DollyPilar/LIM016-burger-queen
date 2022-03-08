@@ -17,7 +17,7 @@ export const HomePage = () => {
           </div>
           <div className="btnContainer">
             <Link to="/LogIn">
-              <button className="btnBuy">Compra ahora</button>
+              <button className="btnBuyHomePage">Compra ahora</button>
             </Link>
           </div>
         </div>
