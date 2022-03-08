@@ -3,16 +3,17 @@
   padding: 1rem;
 }
 .categoriesContainer {
+  position: fixed;
   display: flex;
-  flex-direction: column;
   gap: 2rem;
-  margin-top: 9rem;
+  top: 12rem;
+  left: 11rem;
 }
 .categoriesContainer button {
   padding: 0.5rem;
   color: #ce73ff;
   font-weight: bolder;
-  font-size: 1.3rem;
+  font-size: 1.8rem;
   background-color: white;
   border-radius: 0.8rem;
   border: none;
@@ -27,12 +28,21 @@
 }
 
 .myProducts {
-  margin-left: 2rem;
+  left: 3rem;
+  position: fixed;
+  top: 18rem;
+  height: 39rem;
+  z-index: 99;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 .productsBox {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   grid-gap: 26px;
+}
+.productsBox:last-child {
+  margin-bottom: 8rem;
 }
 .textCenter {
   margin: 1.5rem 0;
@@ -48,6 +58,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+  top: 23rem;
+  left: 11rem;
 }
 .pleaseWait p {
   font-size: 4rem;

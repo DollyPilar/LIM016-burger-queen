@@ -1,6 +1,8 @@
 .logInContainer {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  position: relative;
+  top: 8rem;
 }
 
 .logoContainer {
@@ -75,7 +77,7 @@
   color: black;
 }
 .form {
-  margin-top: 2.5rem;
+  margin-top: 5.5rem;
   display: flex;
   flex-direction: column;
   justify-content: center;

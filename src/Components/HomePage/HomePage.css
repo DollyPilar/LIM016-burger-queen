@@ -7,21 +7,21 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   margin-left: 4rem;
-  margin-top: 4rem;
+  margin-top: 13.3rem;
 }
 .btnContainer {
   display: flex;
   align-items: center;
 }
-.btnBuy {
-  background-color: white;
-  color: #ce73ff;
+.btnBuyHomePage {
+  background: transparent;
+  color: white;
   font-size: 1.8rem;
   padding: 1rem;
   border-radius: 0.7rem;
   outline: none;
   border: 5px solid white;
-  font-weight: bold;
+  font-weight: bolder;
 }
 
 .homeInfoContainer h2 {

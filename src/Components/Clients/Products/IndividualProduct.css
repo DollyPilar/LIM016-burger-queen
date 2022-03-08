@@ -2,24 +2,22 @@
   background-color: white;
   display: flex;
   flex-direction: column;
-
   justify-content: center;
   align-items: center;
-
   border-radius: 1rem;
   padding: 1rem;
-  height: 25rem;
+  height: 22rem;
   width: 16rem;
 }
 .btnAddProduct {
-  padding: 0.12rem;
+  /* padding: 0.12rem; */
   color: white;
   font-size: 1.5rem;
   background-color: #ce73ff;
   border-radius: 0.8rem;
   border: none;
   outline: none;
-  height: 4rem;
+  height: 3.5rem;
   width: 14rem;
 }
 .productImgContainer {

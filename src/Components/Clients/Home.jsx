@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { auth, db } from "../../firebase/firebase-config";
 import { onAuthStateChanged } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 import { doc, setDoc, collection, getDocs } from "firebase/firestore";
 import { Products } from "./Products/Products.jsx";
 // import { Cart } from "./Cart/Cart.jsx";
@@ -23,6 +24,7 @@ export function Home() {
   };
   //tenemos el uid de manera global
   const uid = GetUserUID();
+  const navigate = useNavigate();
 
   // estado de los productos
   const [products, setProducts] = useState([]);
@@ -56,15 +58,19 @@ export function Home() {
     Product = product;
     Product["quantity"] = 1;
     Product["TotalProductPrice"] = Product.quantity * Product.Precio;
-
-    try {
-      await setDoc(doc(db, "cart" + uid, product.ID), {
-        Product,
-      });
-      console.log("agregaste un pedido al carrito");
-      console.log(product);
-    } catch (e) {
-      console.log(e);
+    if (!uid) {
+      alert("debes estar logueada para hacer una compra");
+      navigate("/LogIn");
+    } else {
+      try {
+        await setDoc(doc(db, "cart" + uid, product.ID), {
+          Product,
+        });
+        alert("agregaste un pedido al carrito");
+        // console.log(product);
+      } catch (e) {
+        console.log(e);
+      }
     }
   };
   // console.log(uid)
@@ -125,7 +131,7 @@ export function Home() {
           {filteredProducts.length > 0 && (
             // <IndividualFilteredProduct/>
             <div className="myProducts">
-              <h1 className="textCenter">{category}</h1>
+              {/* <h1 className="textCenter">{category}</h1> */}
               <div className="productsBox">
                 {filteredProducts.map((individualFilteredProduct) => (
                   <IndividualFilteredProduct
@@ -141,7 +147,7 @@ export function Home() {
             <>
               {products.length > 0 && (
                 <div className="myProducts">
-                  <h1 className="textCenter">Nuestros productos</h1>
+                  {/* <h1 className="textCenter">Nuestros productos</h1> */}
                   <div className="productsBox">
                     <Products products={products} addToCart={addToCart} />
                   </div>
