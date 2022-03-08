@@ -1,25 +1,116 @@
-.letra{
-    font-size: 5rem;
+.registerContainer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  position: relative;
+  top: 10rem;
 }
-.logInContainer{
-    display:flex;
-    flex-direction: row;
-}
-.logoContainer{
-   
-    width:50%;
 
-    /* float: left; */
+.logoSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-.formContainer{
-    /* float: right; */
-    display:flex;
-    flex-direction: column;
-    justify-content: center;
-    background-color: pink;
-    width:50%;
+
+.logoSection h2 {
+  color: white;
+  font-size: 3.5rem;
+  text-align: center;
 }
-.logo{
-    width:100%;
-    height: 100%;
+
+.welcomeSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 4rem;
+}
+
+.logoRegister {
+  width: 85%;
+}
+
+.formSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.inputRegister {
+  width: 100%;
+  height: 3rem;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 5px;
+}
+
+.inputRegister:focus {
+  border: white;
+}
+.inputRegister::placeholder {
+  font-size: 1.3rem;
+  color: #7a7a7a;
+}
+
+.btnRegister {
+  background-color: white;
+  padding: 0.5rem;
+  border: none;
+
+  border-radius: 5px;
+  cursor: pointer;
+  /* color: #ce73ff; */
+  color: #819ef5;
+  font-size: 1.7rem;
+  font-weight: bolder;
+}
+
+.btnRegister:hover {
+  color: black;
+}
+
+.registerForm {
+  margin-top: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  background-color: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  border-radius: 5%;
+  padding: 1.5em;
+  width: 72%;
+  height: 100%;
+  color: white;
+  text-align: center;
+}
+.registerForm h4 {
+  font-size: 1.9rem;
+}
+
+/* .errorAlert{
+    color: #d90606;
+    font-size: 1.6rem;
+} */
+
+.btnRegister:hover {
+  color: black;
+}
+.containerGoToLogIN {
+  display: flex;
+  flex-direction: column;
+  background-color: transparent;
+}
+.infoRegister {
+  background-color: transparent;
+  color: white;
+  font-size: 1.8rem;
+}
+.goToLogIn {
+  text-decoration: underline;
+  color: #7093fc;
+  font-size: 1.8rem;
+  font-weight: bolder;
 }

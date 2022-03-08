@@ -1,4 +1,5 @@
-import React from 'react';
+import React from "react";
+import "./IndividualFilteredProduct.css";
 
 export const IndividualFilteredProduct = ({
   individualFilteredProduct,
@@ -10,14 +11,19 @@ export const IndividualFilteredProduct = ({
 
   return (
     <React.Fragment>
-      <div className='product'>
-        {/* <div className='product-img'>
-                <img src={individualFilteredProduct.Imagen} alt='product-img'/>
-            </div> */}
+      <div className="productContainer">
+        <div className="productImgContainer">
+          <img
+            src={individualFilteredProduct.Img}
+            alt="product-img"
+            className="productImg"
+          />
+        </div>
         <div>{individualFilteredProduct.Nombre}</div>
-        <div>{individualFilteredProduct.Cantidad}</div>
         <div> $ {individualFilteredProduct.Precio}</div>
-        <button onClick={handleAddToCart}>Añadir al carrito</button>
+        <button className="btnAddProduct" onClick={handleAddToCart}>
+          Añadir al carrito
+        </button>
       </div>
     </React.Fragment>
   );

@@ -1,19 +1,19 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
-import { signInWithEmailAndPassword } from 'firebase/auth';
-import { doc, getDoc } from 'firebase/firestore';
-import { auth, db } from '../../firebase/firebase-config.jsx';
-// import { Link } from 'react-router-dom';
-import './login.css';
-import logo from '../../assets/logo.png';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { doc, getDoc } from "firebase/firestore";
+import { auth, db } from "../../firebase/firebase-config.jsx";
+import { NavBar } from "../HomePage/NavBar/NavBar.jsx";
+import "./login.css";
+import logo from "../../assets/dogLogIn.png";
 
 function Log() {
-  const [errorMsg, setErrorMsg] = useState('');
+  const [errorMsg, setErrorMsg] = useState("");
   let navigate = useNavigate();
   const initialState = {
-    email: '',
-    password: '',
+    email: "",
+    password: "",
   };
   const [state, setState] = useState(initialState);
 
@@ -25,85 +25,87 @@ function Log() {
   };
   const handleLogin = async (e) => {
     e.preventDefault();
-    if (email.trim() === '' || password.trim() === '') {
-      setErrorMsg('No puedes dejar campos vacíos');
+    if (email.trim() === "" || password.trim() === "") {
+      setErrorMsg("No puedes dejar campos vacíos");
     } else {
       try {
         const client = await signInWithEmailAndPassword(auth, email, password);
         if (client.user.emailVerified) {
-          const docRef = doc(db, 'users', client.user.uid);
+          const docRef = doc(db, "users", client.user.uid);
           const docSnap = await getDoc(docRef);
           //console.log (docSnap.doc.data())
           const userRol = docSnap.data().rol;
-          if (userRol === 'client') {
-            navigate('/product');
-          } else if (userRol === 'admin') {
-            navigate('/Admin');
-          } else if (userRol === 'store') {
-            navigate('/Store');
-          } else if (userRol === 'delivery') {
-            navigate('/Delivery');
+          if (userRol === "client") {
+            navigate("/product");
+          } else if (userRol === "admin") {
+            navigate("/Admin");
+          } else if (userRol === "store") {
+            navigate("/Store");
+          } else if (userRol === "delivery") {
+            navigate("/Delivery");
           }
         } else {
-          setErrorMsg('Por favor, verifica tu correo');
+          setErrorMsg("Por favor, verifica tu correo");
         }
       } catch (error) {
         const errMsg = error.code;
-        if (errMsg === 'auth/user-not-found') {
-          setErrorMsg('usuario no encontrado');
+        if (errMsg === "auth/user-not-found") {
+          setErrorMsg("usuario no encontrado");
         }
-        if (errMsg === 'auth/wrong-password') {
-          setErrorMsg('contraseña no coincide con el ussuario');
+        if (errMsg === "auth/wrong-password") {
+          setErrorMsg("contraseña no coincide con el ussuario");
         }
       }
     }
   };
+
   return (
     <React.Fragment>
-      <div className='logInContainer'>
-        <div className='logoContainer'>
-          <img src={logo} alt='logo' className='logo' />
+      <NavBar />
+      <div className="logInContainer">
+        <div className="logoContainer">
+          <div className="welcomeContainer">
+            <h2> ¡BIENVENIDOS A HAPPY PAWS!</h2>
+            <img src={logo} alt="logo" className="logo" />
+          </div>
         </div>
-        
-        <div className='formContainer'>
-          <div className= "form">
-          <h2> ¡BIENVENIDOS A HAPPY PAWS!</h2>
-          <form onSubmit={handleLogin}>
-            <div className='input'>
-            <input 
-              className='input'
-              type='text'
-              placeholder='Correo'
-              name='email'
-              id='email'
+
+        <div className="formContainer">
+          <form className="form" onSubmit={handleLogin}>
+            <input
+              className="input"
+              type="text"
+              placeholder="Correo"
+              name="email"
+              id="email"
               onChange={handleInputChange}
               value={email}
-            /> </div>
-            <br />
-            <div className='input'>
+            />
             <input
-              className='input'
-              type='password'
-              placeholder='Contraseña'
-              name='password'
-              id='password'
+              className="input"
+              type="password"
+              placeholder="Contraseña"
+              name="password"
+              id="password"
               onChange={handleInputChange}
               value={password}
-            /> </div>
+            />
             {errorMsg && (
               <>
-                <br></br>
-                <div className='error-msg'>{errorMsg}</div>
+                <div className="errorMsg">{errorMsg}</div>
               </>
             )}
-            <div className='inputDos'>
-            <p>¿Olvidaste tu contraseña?</p>
-            <button className='input' id='btn' type='submit'>INICIAR SESIÓN</button>
-            <p>¿No tienes una cuenta?</p>
-            <Link to='/Register'>Regístrate</Link>
+            <p className="infoLogin infoUnderline">¿Olvidaste tu contraseña?</p>
+            <button className="btnLogin" type="submit">
+              INICIAR SESIÓN
+            </button>
+            <div className="goToRegister">
+              <p className="infoLogin">¿No tienes una cuenta?</p>
+              <Link to="/Register" className="infoUnderline">
+                Regístrate
+              </Link>
             </div>
           </form>
-        </div>
         </div>
       </div>
     </React.Fragment>
