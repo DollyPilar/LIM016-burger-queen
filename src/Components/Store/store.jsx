@@ -10,13 +10,13 @@ function Store() {
   useEffect(() => {
     onSnapshot(collection(db, "compras"), (snapshot) => {
       snapshot.docs.map((doc) => {
-        const details = doc.data().productos;
+        const details = doc.data();
         return setCompras(details);
       });
     });
   }, []);
 
-
+  // console.log(compras)
 
   // compras.productos.map((producto)=>{
   //   console.log(producto.Nombre)
@@ -32,7 +32,9 @@ function Store() {
   return (
     <React.Fragment>
       <NavBar />
-      <StoreProducts compras={compras>0&&compras} />
+      <StoreProducts compras={compras} />
+      
+      
       <div>Soy la vista del almacén</div>
     </React.Fragment>
   );
