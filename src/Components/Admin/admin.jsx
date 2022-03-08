@@ -9,20 +9,21 @@ import logoAdmin from "../../assets/dogLogIn.png";
 import { auth, db } from "../../firebase/firebase-config.jsx";
 import { useNavigate } from "react-router-dom";
 import { NavBar } from "../HomePage/NavBar/NavBar.jsx";
+import { async } from "@firebase/util";
 
 function Admin() {
   const [errorMsg, setErrorMsg] = useState("");
   const initialState = {
-    Fullname: "",
-    Rol: "",
-    Email: "",
+    NameAdmin: "",
+    EmailAdmin: "",
     Password: "",
+    Rol: "",
   };
   const [state, setState] = useState(initialState);
 
-  const { Fullname, Rol, Email, Password } = state;
+  const {NameAdmin, EmailAdmin, Password, Rol } = state;
 
-  const handleInput = (e) => {
+  const handleInputAdmin = (e) => {
     const { name, value } = e.target;
     setState({ ...state, [name]: value });
   };
@@ -40,39 +41,46 @@ function Admin() {
     }
   };
 
-  const handleRegister = async (e) => {
+  const handleRegisterAdmin = async (e) => {
     e.preventDefault();
     if (
-      Fullname.trim() === "" ||
-      Email.trim() === "" ||
+      NameAdmin.trim() === "" ||
+      EmailAdmin.trim() === "" ||
       Password.trim() === "" ||
-      !Rol
+      !Rol 
+      
+      
     ) {
       setErrorMsg("No puedes dejar el formulario vacio");
+      // console.log("rol:", Rol, NameAdmin, EmailAdmin, Password)
     }
-    try {
-      const client = await createUserWithEmailAndPassword(
-        auth,
-        Email,
-        Password
-      );
-      await sendEmailVerification(auth.currentUser);
-      alert("se envió el correo de verificación");
-      //navigate('/')
+    else {
       try {
-        await createUserColl(client.user.uid, Fullname, Rol, Email);
-      } catch (e) {
-        console.log(e);
-      }
-      //console.log(client.user.email)
-    } catch (error) {
-      const errMsg = error.code;
-      if (errMsg === "auth/email-already-in-use") {
-        setErrorMsg("email en uso");
-      } else if (errMsg === "auth/weak-password") {
-        setErrorMsg("La contraseña debe tener al menos 6 caracteres");
-      }
+          const client = await createUserWithEmailAndPassword(
+            auth,
+            EmailAdmin,
+            Password
+          );
+          await sendEmailVerification(auth.currentUser);
+          alert("se envió el correo de verificación");
+          //navigate('/')
+          try {
+            await createUserColl(client.user.uid, NameAdmin, Rol, EmailAdmin);
+          } catch (e) {
+            console.log(e);
+          }
+          //console.log(client.user.email)
+        } catch (error) {
+          const errMsg = error.code;
+          if (errMsg === "auth/email-already-in-use") {
+            setErrorMsg("email en uso");
+          } else if (errMsg === "auth/weak-password") {
+            setErrorMsg("La contraseña debe tener al menos 6 caracteres");
+          }
+        }
+      
     }
+
   };
 
   let navigate = useNavigate();
@@ -96,38 +104,38 @@ function Admin() {
         </div>
 
         <div className="adminFormSection">
-          <form className="adminForm" onSubmit={handleRegister}>
-            <input
-              className="inputAdmin"
-              type="text"
-              placeholder="Nombre completo"
-              name="FullName"
-              onChange={handleInput}
-            />
-
-            <select
+          <form className="adminForm" onSubmit={handleRegisterAdmin}>
+            
+             <select
               className="inputAdmin adminFontSize"
-              onChange={handleInput}
+              onChange={handleInputAdmin}
               name="Rol"
             >
               <option>Escoge el rol</option>
               <option>store</option>
               <option>delivery</option>
-            </select>
+            </select> 
+             <input
+              className="inputAdmin"
+              type="text"
+              placeholder="Nombre completo"
+              name="NameAdmin"
+              onChange={handleInputAdmin}
+            />
 
             <input
               className="inputAdmin"
               type="text"
               placeholder="Correo"
-              name="Email"
-              onChange={handleInput}
+              name="EmailAdmin"
+              onChange={handleInputAdmin}
             />
             <input
               className="inputAdmin"
               type="password"
               placeholder="Contraseña"
               name="Password"
-              onChange={handleInput}
+              onChange={handleInputAdmin}
             />
             {errorMsg && (
               <>

@@ -36,11 +36,34 @@
   overflow-y: scroll;
   overflow-x: hidden;
 }
+
 .productsBox {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 26px;
 }
+
+@media (min-width: 1200px) {
+  .myProducts::-webkit-scrollbar {
+    width: 1rem;
+    background: transparent;
+    margin-left: 2rem;
+  }
+  .myProducts::-webkit-scrollbar-thumb {
+    background: transparent;
+    border-radius: 0.5rem;
+    /* border-right: 0rem solid var(--GreyBorder); */
+    height: 40%;
+  }
+  .myProducts::-webkit-scrollbar-thumb:hover{
+    background: #ce73ff;
+  }
+  .myProducts {
+    width: 78rem;
+    left: 5rem;
+  }
+}
+
 .productsBox:last-child {
   margin-bottom: 8rem;
 }
