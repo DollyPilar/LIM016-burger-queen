@@ -22,6 +22,9 @@
   color: white;
   text-align: center;
 }
+.hidden{
+  display: none;
+}
 
 .inputAddProducts {
   width: 100%;

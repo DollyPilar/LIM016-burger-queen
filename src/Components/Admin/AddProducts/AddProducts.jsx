@@ -4,9 +4,11 @@ import { db, storage } from "../../../firebase/firebase-config";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { NavBar } from "../../HomePage/NavBar/NavBar";
 import "./addProducts.css";
+import { FaPhotoVideo  } from "react-icons/fa";
 
 export const AddProducts = () => {
   const [productPhoto, setProductPhoto] = useState("");
+  const [photoVisibility, setPhotoVisibility] = useState(false)
   const [errMsg, setErrMsg] = useState("");
   const initialState = {
     ProductName: "",
@@ -24,6 +26,7 @@ export const AddProducts = () => {
 
   const subirFile = async (e) => {
     const file = e.files[0];
+    setPhotoVisibility(true)
     const name = file.name;
     const fotoRef = ref(storage, name);
 
@@ -90,8 +93,11 @@ export const AddProducts = () => {
             <option>Sección Perros</option>
             <option>Sección Gatos</option>
           </select>
-          <input
-            className="inputAddProducts"
+          <div>
+          <input 
+            style={{display: "none"}}
+            id= "photo"
+            className="inputAddProducts hidden"
             type="file"
             placeholder="Imagen"
             name="Img"
@@ -99,6 +105,17 @@ export const AddProducts = () => {
               subirFile(e.target);
             }}
           />
+          <label htmlFor="photo">
+            <div className="fileChosen">
+            <FaPhotoVideo/>
+            {
+              photoVisibility?<span>Foto Elegida</span>:null 
+
+            }
+            
+            </div>
+          </label>
+          </div>
           {errMsg && (
             <>
               <div className="errorAlert">{errMsg}</div>
