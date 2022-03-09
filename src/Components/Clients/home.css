@@ -9,6 +9,14 @@
   top: 12rem;
   left: 11rem;
 }
+
+.swal2-container.swal2-center>.swal2-popup{
+  height: 30rem !important;
+  width: 40rem !important;
+  background: #dfd9fb !important;
+  border-radius: 2rem !important;
+}
+
 .categoriesContainer button {
   padding: 0.5rem;
   color: #ce73ff;
