@@ -61,25 +61,32 @@ export function Home() {
     Product["quantity"] = 1;
     Product["TotalProductPrice"] = Product.quantity * Product.Precio;
     if (!uid) {
-      // alert("debes estar logueada para hacer una compra");
       Swal.fire({
         position: 'center',
-        imageUrl: 'https://64.media.tumblr.com/2e24218417ff12ba84798af64a07e1d8/7f8631b4c44a8a26-e0/s500x750/4d3bcbd8a64730fc0db0c57872820507510128f9.png',
-        imageWidth: 250,
-        imageHeight: 282,
-        imageAlt: 'Custom image',
+        icon: "info",
+        // imageUrl: 'https://64.media.tumblr.com/2e24218417ff12ba84798af64a07e1d8/7f8631b4c44a8a26-e0/s500x750/4d3bcbd8a64730fc0db0c57872820507510128f9.png',
+        // imageWidth: 250,
+        // imageHeight: 282,
+        // imageAlt: 'Custom image',
         title: 'Debes iniciar sesión para realizar una compra',
         showConfirmButton: false,
         // timer: 2500
       })
-      // navigate("/LogIn");
+      //navigate("/LogIn");
     } else {
       try {
         await setDoc(doc(db, "cart" + uid, product.ID), {
           Product,
         });
-        alert("agregaste un pedido al carrito");
+        //alert("agregaste un pedido al carrito");
         // console.log(product);
+        Swal.fire({
+          position: 'center',
+          icon: "success",
+          title: 'Agregaste un producto al carrito',
+          showConfirmButton: false,
+          //timer: 2500
+        })
       } catch (e) {
         console.log(e);
       }

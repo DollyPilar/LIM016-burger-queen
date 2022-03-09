@@ -11,10 +11,21 @@
 }
 
 .swal2-container.swal2-center>.swal2-popup{
-  height: 30rem !important;
-  width: 40rem !important;
-  background: #dfd9fb !important;
+  /* height: 30rem !important;
+  width: 40rem !important; 
+  background: #dfd9fb !important;*/
   border-radius: 2rem !important;
+}
+.swal2-icon.swal2-info.swal2-icon-show {
+  color:#ce73ff !important;
+  }
+
+.swal2-icon.swal2-success [-success-liclass^=swal2ne] {
+border-color: #ce73ff !important;
+}
+
+.swal2-icon.swal2-success .swal2-success-ring{
+  border: 0.25em solid #ce73ff !important;
 }
 
 .categoriesContainer button {
