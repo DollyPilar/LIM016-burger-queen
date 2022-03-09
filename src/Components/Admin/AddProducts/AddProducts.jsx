@@ -4,11 +4,12 @@ import { db, storage } from "../../../firebase/firebase-config";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { NavBar } from "../../HomePage/NavBar/NavBar";
 import "./addProducts.css";
-import { FaPhotoVideo  } from "react-icons/fa";
+import { FaPhotoVideo } from "react-icons/fa";
+import Swal from "sweetalert2";
 
 export const AddProducts = () => {
   const [productPhoto, setProductPhoto] = useState("");
-  const [photoVisibility, setPhotoVisibility] = useState(false)
+  const [photoVisibility, setPhotoVisibility] = useState(false);
   const [errMsg, setErrMsg] = useState("");
   const initialState = {
     ProductName: "",
@@ -26,7 +27,7 @@ export const AddProducts = () => {
 
   const subirFile = async (e) => {
     const file = e.files[0];
-    setPhotoVisibility(true)
+    setPhotoVisibility(true);
     const name = file.name;
     const fotoRef = ref(storage, name);
 
@@ -58,7 +59,18 @@ export const AddProducts = () => {
           Tipo: Option,
           Img: productPhoto,
         });
-        alert("Tu producto se subio exitosamente");
+        // alert("Tu producto se subio exitosamente");
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          iconColor: "#ce73ff",
+          position: "top",
+          toast: true,
+          title: "El producto fue subido exitosamente",
+          width: "36rem",
+          showConfirmButton: false,
+          timer: 2900,
+        });
       } catch (e) {
         console.log(e.message);
       }
@@ -94,27 +106,27 @@ export const AddProducts = () => {
             <option>Sección Gatos</option>
           </select>
           <div>
-          <input 
-            style={{display: "none"}}
-            id= "photo"
-            className="inputAddProducts hidden"
-            type="file"
-            placeholder="Imagen"
-            name="Img"
-            onChange={(e) => {
-              subirFile(e.target);
-            }}
-          />
-          <label htmlFor="photo">
-            <div className="fileChosen">
-            <FaPhotoVideo/>
-            {
-              photoVisibility?<span>Foto Elegida</span>:null 
-
-            }
-            
-            </div>
-          </label>
+            <input
+              style={{ display: "none" }}
+              id="photo"
+              className="hidden"
+              type="file"
+              placeholder="Imagen"
+              name="Img"
+              onChange={(e) => {
+                subirFile(e.target);
+              }}
+            />
+            <label htmlFor="photo">
+              <div className="fileChosen">
+                <FaPhotoVideo className="iconPhoto" />
+                {photoVisibility ? (
+                  <p className="textSpan">Foto Elegida</p>
+                ) : (
+                  <p className="textSpan">No hay foto</p>
+                )}
+              </div>
+            </label>
           </div>
           {errMsg && (
             <>

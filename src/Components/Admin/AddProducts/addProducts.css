@@ -6,6 +6,19 @@
   position: relative;
   top: 11rem;
 }
+.iconPhoto {
+  font-size: 3rem;
+  color: #68298b;
+}
+.fileChosen {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+.textSpan {
+  font-size: 1.5rem;
+}
 
 .addProductsForm {
   margin-top: 2.5rem;

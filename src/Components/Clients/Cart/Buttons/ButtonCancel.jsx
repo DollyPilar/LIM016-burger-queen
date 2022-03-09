@@ -2,6 +2,7 @@ import React from "react";
 import { auth, db } from "../../../../firebase/firebase-config";
 import { collection, doc, deleteDoc, getDocs } from "firebase/firestore";
 import "./Button.css";
+import Swal from "sweetalert2";
 
 export const ButtonCancel = () => {
   const handleDelete = async () => {
@@ -13,8 +14,24 @@ export const ButtonCancel = () => {
     querySnapshot.forEach((docc) => {
       const docId = docc.id;
       const prodRef = doc(db, "cart" + auth.currentUser.uid, docId);
-      deleteDoc(prodRef);
-      alert("eliminaste tu compra");
+
+      Swal.fire({
+        title: "¿Está seguro de que desea eliminar tu compra?",
+        showCancelButton: true,
+        confirmButtonColor: "#FFFFFF",
+        cancelButtonColor: "#bb53f3",
+        confirmButtonText: "Ok",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          deleteDoc(prodRef);
+          // Swal.fire({
+          //   title: "Tu compra ha sido eliminada",
+          //   showConfirmButton: false,
+          //   toast: true,
+          //   timer: 2500,
+          // });
+        }
+      });
     });
   };
   return (

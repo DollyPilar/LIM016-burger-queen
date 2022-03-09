@@ -3,6 +3,7 @@ import { auth, db } from "../../../firebase/firebase-config.jsx";
 import { FaTrash } from "react-icons/fa";
 import { doc, deleteDoc } from "firebase/firestore";
 import { onAuthStateChanged } from "firebase/auth";
+
 import "./IndividualCartProduct.css";
 export const IndividualCartProduct = ({
   cartProduct,

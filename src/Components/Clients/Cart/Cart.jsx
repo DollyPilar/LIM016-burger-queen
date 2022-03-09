@@ -7,13 +7,16 @@ import { ButtonCancel } from "./Buttons/ButtonCancel.jsx";
 import { NavBar } from "../../HomePage/NavBar/NavBar.jsx";
 import catCart from "../../../assets/cartCart.png";
 import "./Cart.css";
+import Swal from "sweetalert2";
 import {
   doc,
   getDoc,
+  getDocs,
   collection,
   onSnapshot,
   updateDoc,
   setDoc,
+  deleteDoc,
 } from "firebase/firestore";
 
 export const Cart = () => {
@@ -143,7 +146,25 @@ export const Cart = () => {
         compraId: clientId,
         precioFinal: totalPrice,
       });
-      alert("felicidades, tu compra fue realizada");
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        iconColor: "#ce73ff",
+        position: "top",
+        toast: true,
+        title: "Compra realizada",
+        width: "23rem",
+        showConfirmButton: false,
+        timer: 2500,
+      });
+      const q = collection(db, "cart" + clientId);
+
+      const querySnapshot = await getDocs(q);
+      querySnapshot.forEach((docc) => {
+        const docId = docc.id;
+        const prodRef = doc(db, "cart" + clientId, docId);
+        deleteDoc(prodRef);
+      });
     } catch (e) {
       console.log(e);
     }

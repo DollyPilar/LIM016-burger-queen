@@ -8,7 +8,7 @@ import { Products } from "./Products/Products.jsx";
 import { IndividualFilteredProduct } from "./Products/IndividualFilteredProduct.jsx";
 import { NavBar } from "../HomePage/NavBar/NavBar";
 import "./home.css";
-import Swal from 'sweetalert2';
+import Swal from "sweetalert2";
 import cat from "../../assets/cat.png";
 
 export function Home() {
@@ -62,31 +62,30 @@ export function Home() {
     Product["TotalProductPrice"] = Product.quantity * Product.Precio;
     if (!uid) {
       Swal.fire({
-        position: 'center',
+        position: "center",
         icon: "info",
-        // imageUrl: 'https://64.media.tumblr.com/2e24218417ff12ba84798af64a07e1d8/7f8631b4c44a8a26-e0/s500x750/4d3bcbd8a64730fc0db0c57872820507510128f9.png',
-        // imageWidth: 250,
-        // imageHeight: 282,
-        // imageAlt: 'Custom image',
-        title: 'Debes iniciar sesión para realizar una compra',
+        iconColor: "#ce73ff ",
+        title: "Debes iniciar sesión para realizar una compra",
         showConfirmButton: false,
-        // timer: 2500
-      })
-      //navigate("/LogIn");
+        timer: 2500,
+      });
+      navigate("/LogIn");
     } else {
       try {
         await setDoc(doc(db, "cart" + uid, product.ID), {
           Product,
         });
-        //alert("agregaste un pedido al carrito");
-        // console.log(product);
         Swal.fire({
-          position: 'center',
+          position: "center",
           icon: "success",
-          title: 'Agregaste un producto al carrito',
+          iconColor: "#ce73ff",
+          position: "top",
+          toast: true,
+          title: "Producto agregado",
+          width: "23rem",
           showConfirmButton: false,
-          //timer: 2500
-        })
+          timer: 2500,
+        });
       } catch (e) {
         console.log(e);
       }
