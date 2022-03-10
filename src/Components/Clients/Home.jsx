@@ -9,7 +9,6 @@ import { IndividualFilteredProduct } from "./Products/IndividualFilteredProduct.
 import { NavBar } from "../HomePage/NavBar/NavBar";
 import "./home.css";
 import Swal from "sweetalert2";
-import cat from "../../assets/cat.png";
 
 export function Home() {
   // función que trae el uid del usuario logueado
@@ -76,10 +75,10 @@ export function Home() {
           Product,
         });
         Swal.fire({
-          position: "center",
+          position: "top-center",
           icon: "success",
           iconColor: "#ce73ff",
-          position: "top",
+
           toast: true,
           title: "Producto agregado",
           width: "23rem",
@@ -103,12 +102,12 @@ export function Home() {
   const [active, setActive] = useState("");
 
   // el estado de las categorías
-  const [category, setCategory] = useState("");
+  // const [category, setCategory] = useState("");
 
   // manejando el evento de los cambios
   const handleChange = (indivSpan) => {
     setActive(indivSpan.id);
-    setCategory(indivSpan.text);
+    // setCategory(indivSpan.text);
     filterFunction(indivSpan.text);
   };
 
@@ -122,7 +121,7 @@ export function Home() {
 
   const showAllProducts = () => {
     setActive("");
-    setCategory("");
+    // setCategory("");
     setfilteredProducts([]);
   };
 

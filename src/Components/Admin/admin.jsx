@@ -60,10 +60,9 @@ function Admin() {
         );
         await sendEmailVerification(auth.currentUser);
         Swal.fire({
-          position: "center",
+          position: "top-center",
           icon: "success",
           iconColor: "#ce73ff",
-          position: "top",
           toast: true,
           title: "Verificar el correo antes de entregárselo al empleado",
           width: "47rem",

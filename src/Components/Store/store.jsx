@@ -22,7 +22,6 @@ function Store() {
   //   console.log(producto.Nombre)
   // })
 
-
   // const timeOfShopping = compras.hora;
   // const date = new Date(timeOfShopping);
   // const myDate = `
@@ -33,8 +32,7 @@ function Store() {
     <React.Fragment>
       <NavBar />
       <StoreProducts compras={compras} />
-      
-      
+
       <div>Soy la vista del almacén</div>
     </React.Fragment>
   );

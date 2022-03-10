@@ -13,9 +13,9 @@ import {
   getDoc,
   getDocs,
   collection,
+  addDoc,
   onSnapshot,
   updateDoc,
-  setDoc,
   deleteDoc,
 } from "firebase/firestore";
 
@@ -136,21 +136,29 @@ export const Cart = () => {
 
   const createShoppingColl = async () => {
     const clientId = auth.currentUser.uid;
+    const buyerName = user;
+
+    const dateOfShopping = Date.now();
+    const finalQuantity = totalQty;
+    const cartProductsCol = cartProducts;
+    const productState = "Pedido realizado";
+    const buyerID = clientId;
+    const finalPrice = totalPrice;
+
     try {
-      await setDoc(doc(db, "compras", clientId), {
-        nombre: user,
-        hora: Date.now(),
-        cantidad: totalQty,
-        productos: cartProducts,
-        estado: "Pedido realizado",
-        compraId: clientId,
-        precioFinal: totalPrice,
+      await addDoc(collection(db, "compras"), {
+        buyerName,
+        dateOfShopping,
+        finalQuantity,
+        cartProductsCol,
+        productState,
+        buyerID,
+        finalPrice,
       });
       Swal.fire({
-        position: "center",
+        position: "top-center",
         icon: "success",
         iconColor: "#ce73ff",
-        position: "top",
         toast: true,
         title: "Compra realizada",
         width: "23rem",
