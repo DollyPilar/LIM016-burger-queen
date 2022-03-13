@@ -21,28 +21,28 @@ import {
 
 export const Cart = () => {
   // función que trae el nombre del usuario que está logueado
+  const [user, setUser] = useState(null);
   const GetCurrentUser = () => {
-    const [user, setUser] = useState(null);
-    useEffect(() => {
-      onAuthStateChanged(auth, async (user) => {
-        if (user) {
-          const docRef = doc(db, "users", user.uid);
-          try {
-            const docSnap = await getDoc(docRef);
-            //console.log (docSnap.doc.data())
-            const userInfo = docSnap.data();
-            setUser(userInfo.name);
-          } catch (e) {
-            console.log(e);
-          }
-        } else {
-          setUser(null);
+    onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        const docRef = doc(db, "users", user.uid);
+        try {
+          const docSnap = await getDoc(docRef);
+          //console.log (docSnap.doc.data())
+          const userInfo = docSnap.data();
+          setUser(userInfo.name);
+        } catch (e) {
+          console.log(e);
         }
-      });
-    }, []);
-    return user;
+      } else {
+        setUser(null);
+      }
+    });
+    //return user
   };
-  const user = GetCurrentUser();
+  useEffect(() => {
+    GetCurrentUser();
+  }, []);
 
   // el estado de los carritos
   const [cartProducts, setCartProducts] = useState([]);
@@ -52,9 +52,7 @@ export const Cart = () => {
       onAuthStateChanged(auth, (user) => {
         if (user) {
           onSnapshot(collection(db, "cart" + user.uid), (snapshot) => {
-            const newCartProduct = snapshot.docs.map(
-              (doc) => doc.data().Product
-            );
+            const newCartProduct = snapshot.docs.map((doc) => doc.data());
             setCartProducts(newCartProduct);
           });
         }
@@ -87,19 +85,22 @@ export const Cart = () => {
   //console.log(totalQty)
 
   //variable global
-  let Product;
+  //let Product;
+  //console.log(cartProducts);
 
   const cartProductIncrease = (cartProduct) => {
-    Product = cartProduct;
-    Product.quantity = Product.quantity + 1;
-    Product.TotalProductPrice = Product.quantity * Product.Precio;
+    // console.log(cartProduct, "funciona");
+    // Product = cartProduct;
+    const quantityProduct = cartProduct.quantity + 1;
+    const totalProductPrice = quantityProduct * cartProduct.Precio;
     // actualizando Firebase
     onAuthStateChanged(auth, async (user) => {
       if (user) {
         const prodRef = doc(db, "cart" + user.uid, cartProduct.ID);
         try {
           await updateDoc(prodRef, {
-            Product,
+            quantity: quantityProduct,
+            TotalProductPrice: totalProductPrice,
           });
         } catch (e) {
           console.log(e);
@@ -109,17 +110,18 @@ export const Cart = () => {
   }; // termina product increase
 
   const cartProductDecrease = (cartProduct) => {
-    Product = cartProduct;
-    if (Product.quantity > 1) {
+    // Product = cartProduct;
+    if (cartProduct.quantity > 1) {
       // puedes seguir quitando
-      Product.quantity = Product.quantity - 1;
-      Product.TotalProductPrice = Product.quantity * Product.Precio;
+      const quantityProduct = cartProduct.quantity - 1;
+      const totalProductPrice = quantityProduct * cartProduct.Precio;
       onAuthStateChanged(auth, async (user) => {
         if (user) {
           const prodRef = doc(db, "cart" + user.uid, cartProduct.ID);
           try {
             await updateDoc(prodRef, {
-              Product,
+              quantity: quantityProduct,
+              TotalProductPrice: totalProductPrice,
             });
           } catch (e) {
             console.log(e);
@@ -133,27 +135,40 @@ export const Cart = () => {
   //   console.log("debes eliminarte");
   //   //const prodRef = doc(db, "Cart" + user.uid, cartProduct.ID);
   // };
-
+  // //let arrayProduct = cartProducts;
+  // const productss = cartProducts.map((cartprofuct) => {
+  //   return `${cartprofuct.quantity}    ${cartprofuct.Nombre}   ${cartprofuct.TotalProductPrice}`;
+  // });
+  // console.log(Array.isArray(productss));
   const createShoppingColl = async () => {
     const clientId = auth.currentUser.uid;
     const buyerName = user;
+    // let data = doc.data();
+    // data.ID = doc.id;
+    //cartProducts["finalProducts"] = clientId;
 
-    const dateOfShopping = Date.now();
-    const finalQuantity = totalQty;
-    const cartProductsCol = cartProducts;
-    const productState = "Pedido realizado";
-    const buyerID = clientId;
-    const finalPrice = totalPrice;
+    const finalProducts = {
+      buyerID: clientId,
+      buyerName: buyerName,
+      dateOfShopping: Date.now(),
+      finalQuantity: totalQty,
+      finalPrice: totalPrice,
+      productsInformation: cartProducts.map((cartprofuct) => {
+        return `${cartprofuct.quantity}    ${cartprofuct.Nombre}   ${cartprofuct.TotalProductPrice}`;
+      }),
+
+      // productName: cartProducts.map((cartprofuct) => cartprofuct.Nombre),
+
+      // productQuantity: cartProducts.map(
+      //   (cartprofuct) => cartprofuct.quantity
+      // ),
+      // productPrice: cartProducts.map((cartprofuct) => cartprofuct.Precio),
+    };
 
     try {
       await addDoc(collection(db, "compras"), {
-        buyerName,
-        dateOfShopping,
-        finalQuantity,
-        cartProductsCol,
-        productState,
-        buyerID,
-        finalPrice,
+        // cartProducts,
+        finalProducts,
       });
       Swal.fire({
         position: "top-center",

@@ -1,19 +1,20 @@
 import React from "react";
+import "./IndividualStoreProducts.css";
 
 export const IndividualStoreProducts = ({ compra }) => {
-  console.log("dolly", compra);
+  // console.log("product", compra.Nombre);
   return (
     <React.Fragment>
-      <div>
+      <div className="storeCart">
         <div>
-          <p>Nombre de producto</p>
-          {/* <p>{compra.buyerName}</p>
-          <p>Cantidad de producto</p>
-          <p>{compra.finalQuantity}</p> */}
+          {/* <p>Nombre de producto</p>
+          <p>{compra.Nombre}</p> */}
+          {/* <p>Cantidad de producto</p>
+          <p>{compra.quantity}</p>
         </div>
         <div>
           <p>Precio total del producto</p>
-          {/* <p>{compra.finalQuantity}</p> */}
+          <p>{compra.TotalProductPrice}</p>*/}
         </div>
       </div>
     </React.Fragment>
