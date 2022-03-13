@@ -1,0 +1,8 @@
+.storeCart {
+  background: white;
+  position: relative;
+  top: 10rem;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}

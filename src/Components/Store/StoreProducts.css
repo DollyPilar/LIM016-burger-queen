@@ -1,0 +1,9 @@
+.prueba {
+  position: relative;
+  top: 20rem;
+}
+.productsExample {
+  background: white;
+  display: flex;
+  flex-direction: column;
+}

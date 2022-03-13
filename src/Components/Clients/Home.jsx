@@ -9,7 +9,6 @@ import { IndividualFilteredProduct } from "./Products/IndividualFilteredProduct.
 import { NavBar } from "../HomePage/NavBar/NavBar";
 import "./home.css";
 import Swal from "sweetalert2";
-import cat from "../../assets/cat.png";
 
 export function Home() {
   // función que trae el uid del usuario logueado
@@ -39,7 +38,6 @@ export function Home() {
 
       allColl.forEach((doc) => {
         let data = doc.data();
-        // console.log(data);
         data.ID = doc.id;
         productsArray.push(data);
       });
@@ -48,18 +46,28 @@ export function Home() {
       console.log(e);
     }
   };
+  //console.log(products);
 
   useEffect(() => {
     getProducts();
   }, []);
 
-  let Product;
+  // let Product;
 
   // función que añade los productos al carrito
   const addToCart = async (product) => {
-    Product = product;
-    Product["quantity"] = 1;
-    Product["TotalProductPrice"] = Product.quantity * Product.Precio;
+    //console.log(product);
+    // Product = product;
+    // Product["quantity"] = 1;
+    // Product["TotalProductPrice"] = Product.quantity * Product.Precio;
+    const quantity = 1;
+    const Precio = product.Precio;
+    const TotalProductPrice = quantity * Precio;
+    const ID = product.ID;
+    const Img = product.Img;
+    const Nombre = product.Nombre;
+
+    const Tipo = product.Tipo;
     if (!uid) {
       Swal.fire({
         position: "center",
@@ -72,14 +80,20 @@ export function Home() {
       navigate("/LogIn");
     } else {
       try {
-        await setDoc(doc(db, "cart" + uid, product.ID), {
-          Product,
+        await setDoc(doc(db, "cart" + uid, ID), {
+          quantity,
+          TotalProductPrice,
+          ID,
+          Img,
+          Nombre,
+          Precio,
+          Tipo,
         });
         Swal.fire({
           position: "center",
           icon: "success",
           iconColor: "#ce73ff",
-          position: "top",
+
           toast: true,
           title: "Producto agregado",
           width: "23rem",
@@ -103,12 +117,12 @@ export function Home() {
   const [active, setActive] = useState("");
 
   // el estado de las categorías
-  const [category, setCategory] = useState("");
+  // const [category, setCategory] = useState("");
 
   // manejando el evento de los cambios
   const handleChange = (indivSpan) => {
     setActive(indivSpan.id);
-    setCategory(indivSpan.text);
+    // setCategory(indivSpan.text);
     filterFunction(indivSpan.text);
   };
 
@@ -122,7 +136,7 @@ export function Home() {
 
   const showAllProducts = () => {
     setActive("");
-    setCategory("");
+    // setCategory("");
     setfilteredProducts([]);
   };
 

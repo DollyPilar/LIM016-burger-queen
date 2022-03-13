@@ -61,10 +61,9 @@ export const AddProducts = () => {
         });
         // alert("Tu producto se subio exitosamente");
         Swal.fire({
-          position: "center",
+          position: "top-center",
           icon: "success",
           iconColor: "#ce73ff",
-          position: "top",
           toast: true,
           title: "El producto fue subido exitosamente",
           width: "36rem",
