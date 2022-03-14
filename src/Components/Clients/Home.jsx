@@ -4,7 +4,6 @@ import { onAuthStateChanged } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { doc, setDoc, collection, getDocs } from "firebase/firestore";
 import { Products } from "./Products/Products.jsx";
-// import { Cart } from "./Cart/Cart.jsx";
 import { IndividualFilteredProduct } from "./Products/IndividualFilteredProduct.jsx";
 import { NavBar } from "../HomePage/NavBar/NavBar";
 import "./home.css";
@@ -12,19 +11,20 @@ import Swal from "sweetalert2";
 
 export function Home() {
   // función que trae el uid del usuario logueado
-  const GetUserUID = () => {
-    const [uid, setUid] = useState(null);
-    useEffect(() => {
-      onAuthStateChanged(auth, (user) => {
-        if (user) {
-          setUid(user.uid);
-        }
-      });
-    }, []);
-    return uid;
-  };
+  const [uid, setUid] = useState(null);
+  useEffect(() => {
+    // const GetUserUID = () => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setUid(user.uid);
+      }
+    });
+
+    //   return uid;
+    // };
+  }, []);
   //tenemos el uid de manera global
-  const uid = GetUserUID();
+
   const navigate = useNavigate();
 
   // estado de los productos
@@ -70,7 +70,7 @@ export function Home() {
     const Tipo = product.Tipo;
     if (!uid) {
       Swal.fire({
-        position: "center",
+        position: "top",
         icon: "info",
         iconColor: "#ce73ff ",
         title: "Debes iniciar sesión para realizar una compra",
@@ -90,10 +90,9 @@ export function Home() {
           Tipo,
         });
         Swal.fire({
-          position: "center",
+          position: "top",
           icon: "success",
           iconColor: "#ce73ff",
-
           toast: true,
           title: "Producto agregado",
           width: "23rem",

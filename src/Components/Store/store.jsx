@@ -16,6 +16,7 @@ function Store() {
 
       allColl.forEach((doc) => {
         let data = doc.data();
+        data.ID = doc.id;
 
         shoppArray.push(data);
       });

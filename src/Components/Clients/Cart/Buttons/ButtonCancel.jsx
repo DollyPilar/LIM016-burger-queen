@@ -1,7 +1,7 @@
 import React from "react";
 import { auth, db } from "../../../../firebase/firebase-config";
 import { collection, doc, deleteDoc, getDocs } from "firebase/firestore";
-import "./Button.css";
+import "./ButtonCancel.css";
 import Swal from "sweetalert2";
 
 export const ButtonCancel = () => {
@@ -9,8 +9,6 @@ export const ButtonCancel = () => {
     const q = collection(db, "cart" + auth.currentUser.uid);
 
     const querySnapshot = await getDocs(q);
-    // const deleteOps = [];
-
     querySnapshot.forEach((docc) => {
       const docId = docc.id;
       const prodRef = doc(db, "cart" + auth.currentUser.uid, docId);
@@ -24,12 +22,6 @@ export const ButtonCancel = () => {
       }).then((result) => {
         if (result.isConfirmed) {
           deleteDoc(prodRef);
-          // Swal.fire({
-          //   title: "Tu compra ha sido eliminada",
-          //   showConfirmButton: false,
-          //   toast: true,
-          //   timer: 2500,
-          // });
         }
       });
     });

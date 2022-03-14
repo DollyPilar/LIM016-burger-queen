@@ -59,9 +59,8 @@ export const AddProducts = () => {
           Tipo: Option,
           Img: productPhoto,
         });
-        // alert("Tu producto se subio exitosamente");
         Swal.fire({
-          position: "top-center",
+          position: "top",
           icon: "success",
           iconColor: "#ce73ff",
           toast: true,
@@ -70,6 +69,7 @@ export const AddProducts = () => {
           showConfirmButton: false,
           timer: 2900,
         });
+        setErrMsg("");
       } catch (e) {
         console.log(e.message);
       }

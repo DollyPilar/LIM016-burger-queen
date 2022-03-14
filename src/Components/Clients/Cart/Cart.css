@@ -40,15 +40,7 @@
   justify-content: center;
   margin-top: 1rem;
 }
-.btnBuy {
-  padding: 0.5rem;
-  color: white;
-  font-size: 1.5rem;
-  background-color: #819ef5;
-  border-radius: 0.2rem;
-  border: none;
-  outline: none;
-}
+
 .noProductsToShow {
   display: flex;
   justify-content: center;

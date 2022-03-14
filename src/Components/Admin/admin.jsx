@@ -60,7 +60,7 @@ function Admin() {
         );
         await sendEmailVerification(auth.currentUser);
         Swal.fire({
-          position: "top-center",
+          position: "top",
           icon: "success",
           iconColor: "#ce73ff",
           toast: true,
@@ -74,7 +74,7 @@ function Admin() {
         } catch (e) {
           console.log(e);
         }
-        //console.log(client.user.email)
+        setErrorMsg("");
       } catch (error) {
         const errMsg = error.code;
         if (errMsg === "auth/email-already-in-use") {

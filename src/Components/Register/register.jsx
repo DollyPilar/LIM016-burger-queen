@@ -9,7 +9,7 @@ import "./register.css";
 import { auth, db } from "../../firebase/firebase-config.jsx";
 import logoRegister from "../../assets/cat.png";
 import { NavBar } from "../HomePage/NavBar/NavBar.jsx";
-import Swal from 'sweetalert2';
+import Swal from "sweetalert2";
 
 function Register() {
   const [errorMsg, setErrorMsg] = useState("");
@@ -55,14 +55,16 @@ function Register() {
         await sendEmailVerification(auth.currentUser);
         // alert("se envió el correo de verificación, revisa tu correo");
         Swal.fire({
-          position: 'center',
-          icon: 'success',
-          title: 'Se envió el correo de verificación, por favor, revisa tu correo',
+          position: "top",
+          icon: "success",
+          title:
+            "Se envió el correo de verificación, por favor, revisa tu correo",
           showConfirmButton: false,
-          timer: 2500
-        })
+          timer: 2500,
+        });
         navigate("/LogIn");
         await createUserColl(client.user.uid, Fullname, Email);
+        setErrorMsg("");
       } catch (error) {
         console.log(error.code);
         if (error.code === "auth/email-already-in-use") {

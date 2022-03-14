@@ -1,5 +1,5 @@
-import React from 'react';
-import { IndividualProduct } from './IndividualProduct.jsx';
+import React from "react";
+import { IndividualProduct } from "./IndividualProduct.jsx";
 
 export const Products = ({ products, addToCart }) => {
   // console.log(products);
@@ -11,7 +11,4 @@ export const Products = ({ products, addToCart }) => {
       addToCart={addToCart}
     />
   ));
-  // return (
-  //     <div>un producto</div>
-  // )
 };
