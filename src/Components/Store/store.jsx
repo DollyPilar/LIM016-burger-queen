@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { db } from "../../firebase/firebase-config.jsx";
-import { getDocs, collection } from "firebase/firestore";
+import { getDocs, where, query, orderBy,  collection } from "firebase/firestore";
 import { NavBar } from "../HomePage/NavBar/NavBar.jsx";
 import { StoreProducts } from "./StoreProducts.jsx";
 
@@ -10,8 +10,9 @@ function Store() {
 
   const getShoppingProducts = async () => {
     const collRef = collection(db, "compras");
+    const order = query(collRef, where("finalProducts.shoppingState", "==", "Pedido realizado"), orderBy("finalProducts.dateOfShopping", "desc"))
     try {
-      const allColl = await getDocs(collRef);
+      const allColl = await getDocs(order);
       const shoppArray = [];
 
       allColl.forEach((doc) => {

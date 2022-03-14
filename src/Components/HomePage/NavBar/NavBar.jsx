@@ -38,9 +38,15 @@ export const NavBar = () => {
     <React.Fragment>
       <div className="navBarContainer">
         <div className="logoIconsContainer">
+        <div className="lowBarContainer">
           <div className="logoNavContainer">
             <img src={PawLogo} alt="Happy Paws" className="logoNav" />
           </div>
+          <Link to="/">INICIO</Link>
+          <Link to="/product">TIENDA</Link>
+          <Link to="/">SOBRE NOSOTROS</Link>
+        </div>
+          
           <div className="iconContainer">
             <Link to="/LogIn">
               {" "}
@@ -58,11 +64,7 @@ export const NavBar = () => {
             )}
           </div>
         </div>
-        <div className="lowBarContainer">
-          <Link to="/">INICIO</Link>
-          <Link to="/product">TIENDA</Link>
-          <Link to="/">SOBRE NOSOTROS</Link>
-        </div>
+        
       </div>
     </React.Fragment>
   );

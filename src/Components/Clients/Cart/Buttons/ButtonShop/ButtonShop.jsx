@@ -16,6 +16,7 @@ export const ButtonShop = ({ cartProducts, user, totalQty, totalPrice }) => {
   const createShoppingColl = async () => {
     const finalProducts = {
       buyerID: auth.currentUser.uid,
+      shoppingState: "Pedido realizado",
       buyerName: user,
       dateOfShopping: Date.now(),
       finalQuantity: totalQty,
