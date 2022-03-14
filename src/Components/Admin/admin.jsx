@@ -9,7 +9,7 @@ import logoAdmin from "../../assets/dogLogIn.png";
 import { auth, db } from "../../firebase/firebase-config.jsx";
 import { useNavigate } from "react-router-dom";
 import { NavBar } from "../HomePage/NavBar/NavBar.jsx";
-import { async } from "@firebase/util";
+import Swal from "sweetalert2";
 
 function Admin() {
   const [errorMsg, setErrorMsg] = useState("");
@@ -21,7 +21,7 @@ function Admin() {
   };
   const [state, setState] = useState(initialState);
 
-  const {NameAdmin, EmailAdmin, Password, Rol } = state;
+  const { NameAdmin, EmailAdmin, Password, Rol } = state;
 
   const handleInputAdmin = (e) => {
     const { name, value } = e.target;
@@ -47,40 +47,43 @@ function Admin() {
       NameAdmin.trim() === "" ||
       EmailAdmin.trim() === "" ||
       Password.trim() === "" ||
-      !Rol 
-      
-      
+      !Rol
     ) {
       setErrorMsg("No puedes dejar el formulario vacio");
       // console.log("rol:", Rol, NameAdmin, EmailAdmin, Password)
-    }
-    else {
+    } else {
       try {
-          const client = await createUserWithEmailAndPassword(
-            auth,
-            EmailAdmin,
-            Password
-          );
-          await sendEmailVerification(auth.currentUser);
-          alert("se envió el correo de verificación");
-          //navigate('/')
-          try {
-            await createUserColl(client.user.uid, NameAdmin, Rol, EmailAdmin);
-          } catch (e) {
-            console.log(e);
-          }
-          //console.log(client.user.email)
-        } catch (error) {
-          const errMsg = error.code;
-          if (errMsg === "auth/email-already-in-use") {
-            setErrorMsg("email en uso");
-          } else if (errMsg === "auth/weak-password") {
-            setErrorMsg("La contraseña debe tener al menos 6 caracteres");
-          }
+        const client = await createUserWithEmailAndPassword(
+          auth,
+          EmailAdmin,
+          Password
+        );
+        await sendEmailVerification(auth.currentUser);
+        Swal.fire({
+          position: "top",
+          icon: "success",
+          iconColor: "#ce73ff",
+          toast: true,
+          title: "Verificar el correo antes de entregárselo al empleado",
+          width: "47rem",
+          showConfirmButton: false,
+          timer: 3700,
+        });
+        try {
+          await createUserColl(client.user.uid, NameAdmin, Rol, EmailAdmin);
+        } catch (e) {
+          console.log(e);
         }
-      
+        setErrorMsg("");
+      } catch (error) {
+        const errMsg = error.code;
+        if (errMsg === "auth/email-already-in-use") {
+          setErrorMsg("email en uso");
+        } else if (errMsg === "auth/weak-password") {
+          setErrorMsg("La contraseña debe tener al menos 6 caracteres");
+        }
+      }
     }
-
   };
 
   let navigate = useNavigate();
@@ -105,8 +108,7 @@ function Admin() {
 
         <div className="adminFormSection">
           <form className="adminForm" onSubmit={handleRegisterAdmin}>
-            
-             <select
+            <select
               className="inputAdmin adminFontSize"
               onChange={handleInputAdmin}
               name="Rol"
@@ -114,8 +116,8 @@ function Admin() {
               <option>Escoge el rol</option>
               <option>store</option>
               <option>delivery</option>
-            </select> 
-             <input
+            </select>
+            <input
               className="inputAdmin"
               type="text"
               placeholder="Nombre completo"

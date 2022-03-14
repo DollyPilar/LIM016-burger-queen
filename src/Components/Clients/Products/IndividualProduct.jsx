@@ -15,7 +15,6 @@ export const IndividualProduct = ({ individualProduct, addToCart }) => {
             className="productImg"
             alt="product-img"
           />
-          {/* <img src={dogExam} alt="product-img" className="productImg" /> */}
         </div>
         <div className="productInfo">{individualProduct.Nombre}</div>
         <div className="productInfo">S/.{individualProduct.Precio}</div>

@@ -1,22 +1,34 @@
 import React from "react";
+import "./IndividualStoreProducts.css";
 
+export const IndividualStoreProducts = ({ compra, comprap }) => {
+  //console.log("product", compra);
+  // console.log(comprap.map((ee) => ee));
 
-export const IndividualStoreProducts = ({compras})=>{
-    console.log("dolly", compras)
-    return(
-        <React.Fragment>
-            <div> .
-                {/* <div>
-                <p>Nombre de producto</p>
-                <p>{compra.productos.Nombre}</p>
-                <p>Cantidad de producto</p>
-                <p>{compra.productos.quantity}</p>
-                </div>
-                <div>
-                <p>Precio total del producto</p>
-                <p>{compra.productos.TotalProductPrice}</p>
-                </div> */}
-            </div>
-        </React.Fragment>
-    )
-}
+  return (
+    <React.Fragment>
+      <div className="prueba">
+        {compra.buyerName}
+
+        <table>
+          <thead>
+            <tr>
+              <th>Cantidad</th>
+              <th>Nombre</th>
+              <th>Precio</th>
+            </tr>
+          </thead>
+          {comprap.map((ee) => (
+            <tbody>
+              <tr>
+                <td>{ee.quantity}</td>
+                <td>{ee.Nombre}</td>
+                <td>{ee.TotalProductPrice}</td>
+              </tr>
+            </tbody>
+          ))}
+        </table>
+      </div>
+    </React.Fragment>
+  );
+};

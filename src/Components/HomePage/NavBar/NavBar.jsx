@@ -5,6 +5,8 @@ import PawLogo from "../../../assets/PawLogo.png";
 import { auth } from "../../../firebase/firebase-config";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import "./NavBar.css";
+import Swal from 'sweetalert2';
+import { useNavigate} from "react-router-dom";
 
 export const NavBar = () => {
   const [userState, setUserState] = useState(null);
@@ -16,9 +18,20 @@ export const NavBar = () => {
     });
   }, []);
   // console.log(userState);
+  const navigate = useNavigate()
   const logOut = () => {
-    signOut(auth);
-    alert("Cerraste sesión");
+    Swal.fire({
+      title: '¿Está seguro de que desea cerrar sesión?',
+      showCancelButton: true,
+      confirmButtonColor: '#FFFFFF',
+      cancelButtonColor: '#bb53f3',
+      confirmButtonText: 'Ok',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        signOut(auth); 
+        navigate("/");
+      }
+    })
   };
 
   return (

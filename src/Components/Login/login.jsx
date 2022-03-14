@@ -23,6 +23,7 @@ function Log() {
     const { name, value } = e.target;
     setState({ ...state, [name]: value });
   };
+
   const handleLogin = async (e) => {
     e.preventDefault();
     if (email.trim() === "" || password.trim() === "") {
@@ -47,10 +48,10 @@ function Log() {
         } else {
           setErrorMsg("Por favor, verifica tu correo");
         }
+        setErrorMsg("");
       } catch (error) {
         const errMsg = error.code;
         if (errMsg === "auth/user-not-found") {
-          setErrorMsg("usuario no encontrado");
         }
         if (errMsg === "auth/wrong-password") {
           setErrorMsg("contraseña no coincide con el ussuario");
