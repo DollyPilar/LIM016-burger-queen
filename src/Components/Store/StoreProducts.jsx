@@ -11,6 +11,10 @@ export const StoreProducts = ({ compras }) => {
   //   );
   // }
   //console.log(compras);
+  // if (compras.length > 0) {
+  //   compras.map((compra) =>
+  //   console.log(compra.ID) )
+  // }
   return (
     <React.Fragment>
       {/* {compras.length > 0 &&
@@ -18,11 +22,10 @@ export const StoreProducts = ({ compras }) => {
           <IndividualStoreProducts key={compra.ID} compra={compra} />
         ))} */}
       {compras.length > 0 &&
-        compras.map((compra) => (
+        compras.map((compra, index) => (
           <IndividualStoreProducts
             key={compra.ID}
-            compra={compra.finalProducts}
-            comprap={compra.finalProducts.productsInformation.map((ee) => ee)}
+            compra={compra}
           />
         ))}
     </React.Fragment>

@@ -12,7 +12,7 @@ export const HomePage = () => {
         <div className="homeInfoContainer">
           <div>
             <h2>
-              Aquí encontrarás todo para <span>DIVERTIR A TU MASCOTA</span>
+              ¡BIENVENIDX A <span>HAPPY PAWS</span>!
             </h2>
           </div>
           <div className="btnContainer">

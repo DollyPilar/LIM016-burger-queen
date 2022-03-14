@@ -1,15 +1,36 @@
-import React from "react";
+import React, {useState} from "react";
 import "./IndividualStoreProducts.css";
 
-export const IndividualStoreProducts = ({ compra, comprap }) => {
-  //console.log("product", compra);
+export const IndividualStoreProducts = ({ compra }) => {
+  //console.log(compra);
+
+  // const [infoCompra, setInfoCompra] = useState("")
+  // setInfoCompra(compra.finalProducts.buyerName)
+  // console.log(infoCompra)
+
   // console.log(comprap.map((ee) => ee));
 
+  // const timeOfShopping = compra.dateOfShopping;
+  // const date = new Date(timeOfShopping);
+  // const myDate = date.getDate()+
+  // "/"+(date.getMonth()+1)+
+  // "/"+date.getFullYear()+
+  // " "+date.getHours()+
+  // ":"+date.getMinutes()+
+  // ":"+date.getSeconds();
+          
   return (
     <React.Fragment>
       <div className="prueba">
-        {compra.buyerName}
-
+        holaaaa
+        <div className="coll">
+        <p>{compra.finalProducts.buyerName}</p>
+        </div>
+        {/*<p>{myDate}</p>
+        <p>{compra.finalPrice}</p>
+        <p>{compra.finalQuantity}</p>
+        </div>
+        
         <table>
           <thead>
             <tr>
@@ -27,7 +48,7 @@ export const IndividualStoreProducts = ({ compra, comprap }) => {
               </tr>
             </tbody>
           ))}
-        </table>
+        </table> */}
       </div>
     </React.Fragment>
   );

@@ -31,9 +31,9 @@
   align-items: center;
 }
 .infoUnderline {
-  text-decoration: underline;
   color: #bb53f3;
-  font-size: 1.8rem;
+  font-size: 1.5rem;
+  text-decoration: none;
 }
 .goToRegister {
   display: flex;
@@ -42,10 +42,10 @@
 }
 
 .input {
-  width: 100%;
+  width: 80%;
   height: 3rem;
   padding: 0.5rem;
-  border: none;
+  border: 1px solid #7d7171;
   border-radius: 5px;
 }
 .input:focus {
@@ -57,20 +57,24 @@
 }
 
 .btnLogin {
-  background-color: white;
-  padding: 0.5rem;
+  background-color: #ce73ff;
   border: none;
-
   border-radius: 5px;
   cursor: pointer;
-  color: #ce73ff;
+  color: white;
   font-size: 1.7rem;
   font-weight: bolder;
+  width: 80%;
+  height: 3rem;
 }
 
 .errorMsg {
-  color: #d90606;
-  font-size: 1.6rem;
+  color: #F25C5C;
+  background: #FCD2D2;
+  font-size: 1.3rem;
+  height: 3rem;
+  padding: 0.5rem;
+  border-radius: 5px;
 }
 
 .btnLogin:hover {
@@ -83,11 +87,10 @@
   justify-content: center;
   align-items: center;
   gap: 1.5rem;
-  background-color: rgba(255, 255, 255, 0.25);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  box-shadow: 5px 6px 36px 3px rgb(0 0 0 / 20%);
   border-radius: 5%;
-  padding: 1.5em;
-  width: 72%;
+  padding: 0.5em;
+  width: 68%;
   height: 100%;
   color: white;
   text-align: center;
@@ -95,12 +98,17 @@
 
 .infoLogin {
   background-color: transparent;
-  color: white;
-  font-size: 1.8rem;
+  color: black;
+  font-size: 1.3rem;
 }
 
 .logoContainer h2 {
-  color: white;
+  color: #ce73ff;
   font-size: 3.5rem;
   text-align: center;
+}
+
+.form h2{
+  color: #ce73ff;
+  font-size: 2.3rem;
 }

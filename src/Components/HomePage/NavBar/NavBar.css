@@ -1,8 +1,9 @@
 .navBarContainer {
   display: flex;
-  flex-direction: column;
   position: fixed;
   width: 100%;
+  height: 6rem;
+  background:#bb53f3;
 }
 
 .swal2-styled.swal2-confirm{
@@ -16,6 +17,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 24rem;
 }
 .logoNavContainer {
   width: 6.5rem;
@@ -41,13 +43,12 @@
 }
 .lowBarContainer {
   display: flex;
-  background-color: rgba(255, 255, 255, 0.3);
   align-items: center;
 }
 .lowBarContainer a {
   text-decoration: none;
   color: white;
-  font-size: 2rem;
+  font-size: 1.5rem;
   padding: 14px 16px;
   font-weight: bolder;
 }

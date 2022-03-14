@@ -66,13 +66,14 @@ function Log() {
       <div className="logInContainer">
         <div className="logoContainer">
           <div className="welcomeContainer">
-            <h2> ¡BIENVENIDOS A HAPPY PAWS!</h2>
+            <h2> ¡BIENVENIDX DE NUEVO!</h2>
             <img src={logo} alt="logo" className="logo" />
           </div>
         </div>
 
         <div className="formContainer">
           <form className="form" onSubmit={handleLogin}>
+            <h2>Inicia sesión</h2>
             <input
               className="input"
               type="text"
