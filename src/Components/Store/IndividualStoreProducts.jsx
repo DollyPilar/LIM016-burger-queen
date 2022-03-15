@@ -1,36 +1,38 @@
-import React, {useState} from "react";
+import React from "react";
 import "./IndividualStoreProducts.css";
 
-export const IndividualStoreProducts = ({ compra }) => {
+export const IndividualStoreProducts = ({ compra, updateState }) => {
   //console.log(compra);
-
+   const handleUpdateState = () =>{
+     updateState(compra)
+   }
   // const [infoCompra, setInfoCompra] = useState("")
   // setInfoCompra(compra.finalProducts.buyerName)
   // console.log(infoCompra)
 
-  // console.log(comprap.map((ee) => ee));
+  //console.log(compra.finalProducts.productsInformation.map((e)=> e.Nombre));
 
-  // const timeOfShopping = compra.dateOfShopping;
-  // const date = new Date(timeOfShopping);
-  // const myDate = date.getDate()+
-  // "/"+(date.getMonth()+1)+
-  // "/"+date.getFullYear()+
-  // " "+date.getHours()+
-  // ":"+date.getMinutes()+
-  // ":"+date.getSeconds();
+  const timeOfShopping = compra.finalProducts.dateOfShopping;
+  const date = new Date(timeOfShopping);
+  const myDate = date.getDate()+
+  "/"+(date.getMonth()+1)+
+  "/"+date.getFullYear()+
+  " "+date.getHours()+
+  ":"+date.getMinutes()+
+  ":"+date.getSeconds();
           
   return (
     <React.Fragment>
       <div className="prueba">
-        holaaaa
         <div className="coll">
+        <p>Cliente:</p>
         <p>{compra.finalProducts.buyerName}</p>
         </div>
-        {/*<p>{myDate}</p>
-        <p>{compra.finalPrice}</p>
-        <p>{compra.finalQuantity}</p>
+        <div className="coll">
+        <p>Hora de entrada:</p>
+        <p>{myDate}</p>
         </div>
-        
+       
         <table>
           <thead>
             <tr>
@@ -39,16 +41,24 @@ export const IndividualStoreProducts = ({ compra }) => {
               <th>Precio</th>
             </tr>
           </thead>
-          {comprap.map((ee) => (
-            <tbody>
+          {compra.finalProducts.productsInformation.map((ee, index) => (
+            <tbody key={index}>
               <tr>
                 <td>{ee.quantity}</td>
                 <td>{ee.Nombre}</td>
-                <td>{ee.TotalProductPrice}</td>
+                <td>S/.{ee.TotalProductPrice}</td>
               </tr>
             </tbody>
           ))}
-        </table> */}
+        </table> 
+        <div className="coll2">
+        <p>Total:</p>
+        <p>S/.{compra.finalProducts.finalPrice}</p>
+        </div>
+        <div className="btnStore">
+         <button>Cancelar</button> 
+         <button onClick={handleUpdateState}>Listo</button> 
+        </div>
       </div>
     </React.Fragment>
   );

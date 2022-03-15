@@ -3,10 +3,12 @@ import { db } from "../../firebase/firebase-config.jsx";
 import { getDocs, where, query, orderBy,  collection } from "firebase/firestore";
 import { NavBar } from "../HomePage/NavBar/NavBar.jsx";
 import { StoreProducts } from "./StoreProducts.jsx";
+import "./store.css"
 
 function Store() {
   const [compras, setCompras] = useState("");
   // const [general, setGeneral] = useState("");
+  
 
   const getShoppingProducts = async () => {
     const collRef = collection(db, "compras");
@@ -29,6 +31,9 @@ function Store() {
   useEffect(() => {
     getShoppingProducts();
   }, []);
+  const updateState=()=>{
+  console.log("ya funciona")
+  }
 
   // console.log(Array.isArray(compras));
 
@@ -45,9 +50,11 @@ function Store() {
   return (
     <React.Fragment>
       <NavBar />
-      <StoreProducts compras={compras} />
-
-      <div>Soy la vista del almacén</div>
+      <div className="boxContainer">
+      <div className="storeBox">
+      <StoreProducts compras={compras} updateState={updateState}/>
+      </div>
+      </div>
     </React.Fragment>
   );
 }

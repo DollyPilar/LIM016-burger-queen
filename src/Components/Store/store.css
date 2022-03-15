@@ -1,0 +1,14 @@
+.storeBox{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap:26px;
+    margin-left: 1.6rem;
+}
+
+.boxContainer{
+    position: fixed;
+    height: 39rem;
+    top: 18rem;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
