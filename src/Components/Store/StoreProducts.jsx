@@ -1,7 +1,7 @@
 import React from "react";
 import { IndividualStoreProducts } from "./IndividualStoreProducts.jsx";
 
-export const StoreProducts = ({ compras, updateState }) => {
+export const StoreProducts = ({ compras, updateState, cancelShop }) => {
   
   return (
     <React.Fragment>
@@ -11,6 +11,7 @@ export const StoreProducts = ({ compras, updateState }) => {
             key={compra.ID}
             compra={compra}
             updateState={updateState}
+            cancelShop={cancelShop}
           />
         ))}
     </React.Fragment>
