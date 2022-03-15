@@ -1,16 +1,11 @@
-.storeCart {
-  background: white;
-  position: relative;
-  top: 10rem;
-  display: flex;
-  flex-direction: column;
-  gap: 4rem;
-}
 .prueba {
-  position: relative;
-  top: 10rem;
-  background: pink;
   margin-bottom: 2rem;
+  box-shadow: 5px 6px 36px 3px rgb(0 0 0 / 20%);
+  display: flex;
+  width: 22rem;
+  flex-direction: column;
+  padding: 0.5rem;
+  gap: 1.1rem;
 }
 .productsExample {
   display: flex;
@@ -21,12 +16,21 @@ table {
 }
 table td,
 table th {
-  border: 1px solid rgb(20, 20, 20);
+  border: 1px solid transparent;
   padding: 8px;
 }
 
-.coll{
+.coll {
   display: flex;
-  flex-direction: column;
   gap: 2rem;
+}
+
+.coll2 {
+  display: flex;
+  gap: 2rem;
+}
+.btnStore {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
 }
