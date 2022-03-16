@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { db } from "../../firebase/firebase-config.jsx";
-import Swal from "sweetalert2";
-import "./delivery.css"
+//import Swal from "sweetalert2";
+import "./delivery.css";
 import {
   onSnapshot,
   where,
@@ -10,11 +10,10 @@ import {
   collection,
   updateDoc,
   doc,
-  deleteDoc,
+  // deleteDoc,
 } from "firebase/firestore";
 import { NavBar } from "../HomePage/NavBar/NavBar.jsx";
 import { DeliveryProducts } from "./DeliveryProducts.jsx";
-
 
 function Delivery() {
   const [deliveries, setDeliveries] = useState("");
@@ -39,25 +38,29 @@ function Delivery() {
     getDeliveryColl();
   }, []);
 
-  const productDelivery= async (delivery)=>{
+  const productDelivery = async (delivery) => {
     const prodRef = doc(db, "compras", delivery.ID);
     try {
       await updateDoc(prodRef, {
-        
         "finalProducts.shoppingState": "Pedido Enviado",
-        
       });
     } catch (e) {
       console.log(e);
     }
-  }
+  };
 
   return (
     <React.Fragment>
-      <NavBar/>
-      <div className="deliveryBox"><DeliveryProducts deliveries={deliveries} productDelivery={productDelivery} /></div>;
+      <NavBar />
+      <div className="deliveryBox">
+        <DeliveryProducts
+          deliveries={deliveries}
+          productDelivery={productDelivery}
+        />
+      </div>
+      ;
     </React.Fragment>
-  )
+  );
 }
 
 export default Delivery;

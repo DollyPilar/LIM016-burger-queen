@@ -1,61 +1,64 @@
-<<<<<<< HEAD
-=======
-
->>>>>>> 6e23155e5c5787327bdcfaf0d0aa308640015844
-.prueba {
-  margin-bottom: 2rem;
-  box-shadow: 5px 6px 36px 3px rgb(0 0 0 / 20%);
+.purcharseOrderStore {
+  /* border: 1px solid #7d7171; */
+  box-shadow: 7px 2px 23px 2px rgb(0 0 0 / 22%);
+  margin-bottom: 1rem;
   display: flex;
-  width: 22rem;
+  width: 33rem;
   flex-direction: column;
-  padding: 0.5rem;
+  padding: 0.7rem;
+  grid-gap: 1.1rem;
   gap: 1.1rem;
-<<<<<<< HEAD
-=======
-
->>>>>>> 6e23155e5c5787327bdcfaf0d0aa308640015844
+  border-radius: 0.5rem;
+  margin-top: 1.5rem;
 }
-.productsExample {
+.purcharseOrderStore p {
+  font-size: 1.4rem;
+}
+.rowStoreTable {
   display: flex;
-  flex-direction: column;
+  gap: 0.5rem;
 }
-table {
+.rowStoreTablePrice {
+  display: flex;
+  gap: 0.5rem;
+}
+.btnStoreContainer {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+}
+.purchaseOrdeTable {
   border-collapse: collapse;
+  table-layout: fixed;
+  width: 100%;
+  font-size: 1.2rem;
 }
-table td,
-table th {
-<<<<<<< HEAD
-  border: 1px solid transparent;
-=======
-  border: none;
->>>>>>> 6e23155e5c5787327bdcfaf0d0aa308640015844
+.purchaseOrdeTable td,
+.purchaseOrdeTable th {
+  /* border: 1px solid black; */
   padding: 8px;
 }
 
-.coll {
-  display: flex;
-  gap: 2rem;
+.purchaseOrdeTable tbody tr td {
+  text-align: center;
 }
-
-.coll2 {
-  display: flex;
-  gap: 2rem;
+.btnCancelStore {
+  border: 3px solid #ce73ff;
+  color: #ce73ff;
+  background: white;
+  font-size: 1.7rem;
+  border-radius: 0.5rem;
+  padding: 0.4rem;
+  font-weight: bolder;
+  width: 8rem;
 }
-<<<<<<< HEAD
-.btnStore {
-  display: flex;
-  gap: 2rem;
-  justify-content: center;
+.btnDoneStore {
+  border: none;
+  background: #ce73ff;
+  color: white;
+  font-size: 1.7rem;
+  border-radius: 0.5rem;
+  padding: 0.4rem;
+  font-weight: bolder;
+  width: 8rem;
 }
-=======
-
-.coll2{
-  display: flex;
-  gap: 2rem;
-}
-.btnStore{
-  display: flex;
-  gap: 2rem;
-  justify-content: center;
-}
->>>>>>> 6e23155e5c5787327bdcfaf0d0aa308640015844

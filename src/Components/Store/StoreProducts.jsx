@@ -1,14 +1,14 @@
 import React from "react";
 import { IndividualStoreProducts } from "./IndividualStoreProducts.jsx";
 
-export const StoreProducts = ({ compras, updateState, cancelShop }) => {
+export const StoreProducts = ({ orders, updateState, cancelShop }) => {
   return (
     <React.Fragment>
-      {compras.length > 0 &&
-        compras.map((compra) => (
+      {orders.length > 0 &&
+        orders.map((order) => (
           <IndividualStoreProducts
-            key={compra.ID}
-            compra={compra}
+            key={order.ID}
+            order={order}
             updateState={updateState}
             cancelShop={cancelShop}
           />

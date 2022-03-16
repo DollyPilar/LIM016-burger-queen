@@ -1,20 +1,16 @@
 import React from "react";
 import "./IndividualStoreProducts.css";
 
-export const IndividualStoreProducts = ({
-  compra,
-  updateState,
-  cancelShop,
-}) => {
-  //console.log(compra);
+export const IndividualStoreProducts = ({ order, updateState, cancelShop }) => {
+  //console.log(order);
   const handleUpdateState = () => {
-    updateState(compra);
+    updateState(order);
   };
   const handleCancel = () => {
-    cancelShop(compra);
+    cancelShop(order);
   };
 
-  const timeOfShopping = compra.finalProducts.dateOfShopping;
+  const timeOfShopping = order.finalProducts.dateOfShopping;
   const date = new Date(timeOfShopping);
   const myDate =
     date.getDate() +
@@ -31,17 +27,17 @@ export const IndividualStoreProducts = ({
 
   return (
     <React.Fragment>
-      <div className="prueba">
-        <div className="coll">
+      <div className="purcharseOrderStore">
+        <div className="rowStoreTable">
           <p>Cliente:</p>
-          <p>{compra.finalProducts.buyerName}</p>
+          <p>{order.finalProducts.buyerName}</p>
         </div>
-        <div className="coll">
+        <div className="rowStoreTable">
           <p>Hora de entrada:</p>
           <p>{myDate}</p>
         </div>
 
-        <table>
+        <table className="purchaseOrdeTable">
           <thead>
             <tr>
               <th>Cantidad</th>
@@ -49,23 +45,27 @@ export const IndividualStoreProducts = ({
               <th>Precio</th>
             </tr>
           </thead>
-          {compra.finalProducts.productsInformation.map((ee, index) => (
+          {order.finalProducts.productsInformation.map((product, index) => (
             <tbody key={index}>
               <tr>
-                <td>{ee.quantity}</td>
-                <td>{ee.Nombre}</td>
-                <td>S/.{ee.TotalProductPrice}</td>
+                <td>{product.quantity}</td>
+                <td>{product.Nombre}</td>
+                <td>S/.{product.TotalProductPrice}</td>
               </tr>
             </tbody>
           ))}
         </table>
-        <div className="coll2">
+        <div className="rowStoreTablePrice">
           <p>Total:</p>
-          <p>S/.{compra.finalProducts.finalPrice}</p>
+          <p>S/.{order.finalProducts.finalPrice}</p>
         </div>
-        <div className="btnStore">
-          <button onClick={handleCancel}>Cancelar</button>
-          <button onClick={handleUpdateState}>Listo</button>
+        <div className="btnStoreContainer">
+          <button className="btnCancelStore" onClick={handleCancel}>
+            Cancelar
+          </button>
+          <button className="btnDoneStore" onClick={handleUpdateState}>
+            Listo
+          </button>
         </div>
       </div>
     </React.Fragment>
