@@ -13,7 +13,7 @@
   margin-left: 2.2rem;
   width: 100%;
 }
-.btnStateContainer {
+.btnStateContainerStore {
   display: flex;
   position: fixed;
   justify-content: center;
@@ -21,7 +21,7 @@
   left: 25rem;
   top: 10rem;
 }
-.btnShowPendingPO {
+.btnShowPendingPOStore {
   border: 3px solid #ce73ff;
   color: #ce73ff;
   background: white;
@@ -31,7 +31,7 @@
   font-weight: bolder;
   width: 13rem;
 }
-.btnShowDonePO {
+.btnShowDonePOStore {
   border: 3px solid #ce73ff;
   color: #ce73ff;
   background: white;

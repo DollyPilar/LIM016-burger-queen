@@ -14,7 +14,7 @@ import {
 import { NavBar } from "../HomePage/NavBar/NavBar.jsx";
 import { StoreProducts } from "./StoreProducts.jsx";
 //import { OrdersReady } from "./OrdersReady/OrdersReady.jsx";
-import "./store.css";
+import "./Store.css";
 
 function Store() {
   const [orders, setOrders] = useState("");
@@ -73,7 +73,7 @@ function Store() {
     const collRef = collection(db, "compras");
     const order = query(
       collRef,
-      where("finalProducts.shoppingState", "==", "Pedido Enviado"),
+      where("finalProducts.shoppingState", "==", "Pedido Listo"),
       orderBy("finalProducts.dateOfShopping", "desc")
     );
     onSnapshot(order, (querySnapshot) => {
@@ -102,11 +102,11 @@ function Store() {
   return (
     <React.Fragment>
       <NavBar />
-      <div className="btnStateContainer">
-        <button className="btnShowPendingPO" onClick={showOrdersOending}>
+      <div className="btnStateContainerStore">
+        <button className="btnShowPendingPOStore" onClick={showOrdersOending}>
           Pendientes
         </button>
-        <button className="btnShowDonePO" onClick={showOrdersReady}>
+        <button className="btnShowDonePOStore" onClick={showOrdersReady}>
           Listos
         </button>
       </div>

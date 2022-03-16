@@ -1,0 +1,54 @@
+.purcharseOrderDelivery {
+  /* border: 1px solid #7d7171; */
+  box-shadow: 7px 2px 23px 2px rgb(0 0 0 / 22%);
+  margin-bottom: 1rem;
+  display: flex;
+  width: 33rem;
+  flex-direction: column;
+  padding: 0.7rem;
+  grid-gap: 1.1rem;
+  gap: 1.1rem;
+  border-radius: 0.5rem;
+  margin-top: 1.5rem;
+}
+.purcharseOrderDelivery p {
+  font-size: 1.4rem;
+}
+.rowDeliveryTable {
+  display: flex;
+  gap: 0.5rem;
+}
+.rowDeliveryTablePrice {
+  display: flex;
+  gap: 0.5rem;
+}
+.btnDeliveryContainer {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+}
+.purchaseOrdeTableDelivery {
+  border-collapse: collapse;
+  table-layout: fixed;
+  width: 100%;
+  font-size: 1.2rem;
+}
+.purchaseOrdeTableDelivery td,
+.purchaseOrdeTableDelivery th {
+  /* border: 1px solid black; */
+  padding: 8px;
+}
+
+.purchaseOrdeTableDelivery tbody tr td {
+  text-align: center;
+}
+.btnSentDelivery {
+  border: none;
+  background: #ce73ff;
+  color: white;
+  font-size: 1.9rem;
+  border-radius: 0.5rem;
+  padding: 0.4rem;
+  font-weight: bolder;
+  width: 11rem;
+}
