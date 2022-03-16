@@ -1,4 +1,4 @@
-.purcharseOrderStore {
+.purcharseOrderDelivery {
   /* border: 1px solid #7d7171; */
   box-shadow: 7px 2px 23px 2px rgb(0 0 0 / 22%);
   margin-bottom: 1rem;
@@ -11,54 +11,44 @@
   border-radius: 0.5rem;
   margin-top: 1.5rem;
 }
-.purcharseOrderStore p {
+.purcharseOrderDelivery p {
   font-size: 1.4rem;
 }
-.rowStoreTable {
+.rowDeliveryTable {
   display: flex;
   gap: 0.5rem;
 }
-.rowStoreTablePrice {
+.rowDeliveryTablePrice {
   display: flex;
   gap: 0.5rem;
 }
-.btnStoreContainer {
+.btnDeliveryContainer {
   display: flex;
   gap: 2rem;
   justify-content: center;
 }
-.purchaseOrdeTable {
+.purchaseOrdeTableDelivery {
   border-collapse: collapse;
   table-layout: fixed;
   width: 100%;
   font-size: 1.2rem;
 }
-.purchaseOrdeTable td,
-.purchaseOrdeTable th {
+.purchaseOrdeTableDelivery td,
+.purchaseOrdeTableDelivery th {
   /* border: 1px solid black; */
   padding: 8px;
 }
 
-.purchaseOrdeTable tbody tr td {
+.purchaseOrdeTableDelivery tbody tr td {
   text-align: center;
 }
-.btnCancelStore {
-  border: 3px solid #ce73ff;
-  color: #ce73ff;
-  background: white;
-  font-size: 1.7rem;
-  border-radius: 0.5rem;
-  padding: 0.4rem;
-  font-weight: bolder;
-  width: 8rem;
-}
-.btnDoneStore {
+.btnSentDelivery {
   border: none;
   background: #ce73ff;
   color: white;
-  font-size: 1.7rem;
+  font-size: 1.9rem;
   border-radius: 0.5rem;
   padding: 0.4rem;
   font-weight: bolder;
-  width: 8rem;
+  width: 11rem;
 }

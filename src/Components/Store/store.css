@@ -1,14 +1,97 @@
-.storeBox{
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap:26px;
-    margin-left: 1.6rem;
+.storeBoxContainer {
+  position: fixed;
+  height: 33rem;
+  width: 100%;
+  top: 15rem;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.storeBox {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  /* grid-gap: 26px; */
+  margin-left: 2.2rem;
+  width: 100%;
+}
+.btnStateContainerStore {
+  display: flex;
+  position: fixed;
+  justify-content: center;
+  gap: 3rem;
+  left: 25rem;
+  top: 10rem;
+}
+.btnShowPendingPOStore {
+  border: 3px solid #ce73ff;
+  color: #ce73ff;
+  background: white;
+  font-size: 2rem;
+  border-radius: 0.5rem;
+  padding: 0.4rem;
+  font-weight: bolder;
+  width: 13rem;
+}
+.btnShowDonePOStore {
+  border: 3px solid #ce73ff;
+  color: #ce73ff;
+  background: white;
+  font-size: 2rem;
+  border-radius: 0.5rem;
+  padding: 0.4rem;
+  font-weight: bolder;
+  width: 13rem;
+}
+.pedidorealizado:hover {
+  background: #ce73ff;
+  border: none;
+  color: white;
+}
+.pedidoenviado:hover {
+  background: #ce73ff;
+  border: none;
+  color: white;
+}
+.purcharseOrderStoreSent {
+  /* border: 1px solid #7d7171; */
+  box-shadow: 7px 2px 23px 2px rgb(0 0 0 / 22%);
+  margin-bottom: 1rem;
+  display: flex;
+  width: 33rem;
+  flex-direction: column;
+  padding: 0.7rem;
+  grid-gap: 1.1rem;
+  gap: 1.1rem;
+  border-radius: 0.5rem;
+  margin-top: 1.5rem;
+}
+.purcharseOrderStoreSent p {
+  font-size: 1.4rem;
+}
+.rowStoreTableSent {
+  display: flex;
+  gap: 0.5rem;
+}
+.rowStoreTablePriceSent {
+  display: flex;
+  gap: 0.5rem;
+}
+.btnStoreContainerSent {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+}
+.purchaseOrdeTableSent {
+  border-collapse: collapse;
+  table-layout: fixed;
+  width: 100%;
+  font-size: 1.2rem;
+}
+.purchaseOrdeTableSent td,
+.purchaseOrdeTableSent th {
+  /* border: 1px solid black; */
+  padding: 8px;
 }
 
-.boxContainer{
-    position: fixed;
-    height: 39rem;
-    top: 18rem;
-    overflow-y: scroll;
-    overflow-x: hidden;
+.purchaseOrdeTableSent tbody tr td {
+  text-align: center;
 }

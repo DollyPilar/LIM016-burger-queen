@@ -1,4 +1,43 @@
-.deliveryBox{
-    position: relative;
-    top: 10rem;
+.deliveryBoxContainer {
+  position: fixed;
+  height: 33rem;
+  width: 100%;
+  top: 15rem;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.deliveryBox {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  /* grid-gap: 26px; */
+  margin-left: 2.2rem;
+  width: 100%;
+}
+.btnStateContainerStoreDelivery {
+  display: flex;
+  position: fixed;
+  justify-content: center;
+  gap: 3rem;
+  left: 25rem;
+  top: 10rem;
+}
+.btnShowPendingPOStoreDelivery {
+  border: 3px solid #ce73ff;
+  color: #ce73ff;
+  background: white;
+  font-size: 2rem;
+  border-radius: 0.5rem;
+  padding: 0.4rem;
+  font-weight: bolder;
+  width: 13rem;
+}
+.btnShowDonePOStoreDelivery {
+  border: 3px solid #ce73ff;
+  color: #ce73ff;
+  background: white;
+  font-size: 2rem;
+  border-radius: 0.5rem;
+  padding: 0.4rem;
+  font-weight: bolder;
+  width: 13rem;
 }
