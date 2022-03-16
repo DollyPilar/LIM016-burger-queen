@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> 6e23155e5c5787327bdcfaf0d0aa308640015844
 .prueba {
   margin-bottom: 2rem;
   box-shadow: 5px 6px 36px 3px rgb(0 0 0 / 20%);
@@ -6,6 +10,10 @@
   flex-direction: column;
   padding: 0.5rem;
   gap: 1.1rem;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 6e23155e5c5787327bdcfaf0d0aa308640015844
 }
 .productsExample {
   display: flex;
@@ -16,7 +24,11 @@ table {
 }
 table td,
 table th {
+<<<<<<< HEAD
   border: 1px solid transparent;
+=======
+  border: none;
+>>>>>>> 6e23155e5c5787327bdcfaf0d0aa308640015844
   padding: 8px;
 }
 
@@ -29,8 +41,21 @@ table th {
   display: flex;
   gap: 2rem;
 }
+<<<<<<< HEAD
 .btnStore {
   display: flex;
   gap: 2rem;
   justify-content: center;
 }
+=======
+
+.coll2{
+  display: flex;
+  gap: 2rem;
+}
+.btnStore{
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+}
+>>>>>>> 6e23155e5c5787327bdcfaf0d0aa308640015844

@@ -1,16 +1,18 @@
 import React from "react";
 import "./IndividualStoreProducts.css";
 
-export const IndividualStoreProducts = ({ compra, updateState }) => {
+export const IndividualStoreProducts = ({
+  compra,
+  updateState,
+  cancelShop,
+}) => {
   //console.log(compra);
   const handleUpdateState = () => {
     updateState(compra);
   };
-  // const [infoCompra, setInfoCompra] = useState("")
-  // setInfoCompra(compra.finalProducts.buyerName)
-  // console.log(infoCompra)
-
-  //console.log(compra.finalProducts.productsInformation.map((e)=> e.Nombre));
+  const handleCancel = () => {
+    cancelShop(compra);
+  };
 
   const timeOfShopping = compra.finalProducts.dateOfShopping;
   const date = new Date(timeOfShopping);
@@ -62,7 +64,7 @@ export const IndividualStoreProducts = ({ compra, updateState }) => {
           <p>S/.{compra.finalProducts.finalPrice}</p>
         </div>
         <div className="btnStore">
-          <button>Cancelar</button>
+          <button onClick={handleCancel}>Cancelar</button>
           <button onClick={handleUpdateState}>Listo</button>
         </div>
       </div>

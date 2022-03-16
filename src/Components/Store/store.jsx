@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { db } from "../../firebase/firebase-config.jsx";
+import Swal from "sweetalert2";
 import {
   onSnapshot,
   where,
@@ -8,6 +9,7 @@ import {
   collection,
   updateDoc,
   doc,
+  deleteDoc,
 } from "firebase/firestore";
 import { NavBar } from "../HomePage/NavBar/NavBar.jsx";
 import { StoreProducts } from "./StoreProducts.jsx";
@@ -42,16 +44,26 @@ function Store() {
     const prodRef = doc(db, "compras", compra.ID);
     try {
       await updateDoc(prodRef, {
-        // finalProducts: {
-        //   shoppingState:
-        //   dateOfShopping: ,
-        // },
         "finalProducts.shoppingState": "Pedido Listo",
-        "finalProducts.dateOfShopping": Date.now(),
+        dateToDelivery: Date.now(),
       });
     } catch (e) {
       console.log(e);
     }
+  };
+
+  const cancelShop = (compra) => {
+    Swal.fire({
+      title: "¿Está seguro de cancelar el pedido?",
+      showCancelButton: true,
+      confirmButtonColor: "#FFFFFF",
+      cancelButtonColor: "#bb53f3",
+      confirmButtonText: "Ok",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        deleteDoc(doc(db, "compras", compra.ID));
+      }
+    });
   };
 
   return (
@@ -59,7 +71,11 @@ function Store() {
       <NavBar />
       <div className="boxContainer">
         <div className="storeBox">
-          <StoreProducts compras={compras} updateState={updateState} />
+          <StoreProducts
+            compras={compras}
+            updateState={updateState}
+            cancelShop={cancelShop}
+          />
         </div>
       </div>
     </React.Fragment>

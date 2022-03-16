@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .storeBox {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -12,3 +13,19 @@
   overflow-y: scroll;
   overflow-x: hidden;
 }
+=======
+.storeBox{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap:26px;
+    margin-left: 1.6rem;
+}
+
+.boxContainer{
+    position: fixed;
+    height: 39rem;
+    top: 18rem;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+>>>>>>> 6e23155e5c5787327bdcfaf0d0aa308640015844
