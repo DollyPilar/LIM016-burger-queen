@@ -1,5 +1,6 @@
 import React from "react";
 import "./IndividualStoreProducts.css";
+import { hourAndDate } from "../../functions/projectFunctions";
 
 export const IndividualStoreProducts = ({ order, updateState, cancelShop }) => {
   //console.log(order);
@@ -10,20 +11,7 @@ export const IndividualStoreProducts = ({ order, updateState, cancelShop }) => {
     cancelShop(order);
   };
 
-  const timeOfShopping = order.finalProducts.dateOfShopping;
-  const date = new Date(timeOfShopping);
-  const myDate =
-    date.getDate() +
-    "/" +
-    (date.getMonth() + 1) +
-    "/" +
-    date.getFullYear() +
-    " " +
-    date.getHours() +
-    ":" +
-    date.getMinutes() +
-    ":" +
-    date.getSeconds();
+  const timeOfShopping = hourAndDate(order.finalProducts.dateOfShopping);
 
   return (
     <React.Fragment>
@@ -34,7 +22,7 @@ export const IndividualStoreProducts = ({ order, updateState, cancelShop }) => {
         </div>
         <div className="rowStoreTable">
           <p>Hora de entrada:</p>
-          <p>{myDate}</p>
+          <p>{timeOfShopping}</p>
         </div>
 
         <table className="purchaseOrdeTable">

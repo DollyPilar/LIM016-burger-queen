@@ -23,8 +23,7 @@ export const IndividualProduct = ({ individualProduct, addToCart }) => {
         <div className="productInfo">S/.{individualProduct.Precio}</div>
         </div>
         <div className="btnAddContainer">
-        <button className="btnAddProduct" onClick={handleAddToCart}></button>
-        <FaPlusCircle className="addIcon" />
+        <FaPlusCircle className="addIcon" onClick={handleAddToCart} /> 
         </div>
         </div>
       </div>

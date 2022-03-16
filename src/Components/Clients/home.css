@@ -6,7 +6,7 @@
   position: fixed;
   display: flex;
   gap: 2rem;
-  top: 12rem;
+  top: 10rem;
   left: 11rem;
 }
 
@@ -50,7 +50,7 @@
 .myProducts {
   left: 3rem;
   position: fixed;
-  top: 18rem;
+  top: 14rem;
   height: 39rem;
   z-index: 99;
   overflow-y: scroll;

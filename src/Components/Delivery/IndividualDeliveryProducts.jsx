@@ -1,37 +1,9 @@
 import React from "react";
+import { hourAndDate } from "../../functions/projectFunctions";
 import "./IndividualDeliveryProducts.css";
 
 export const IndividualDeliveryProducts = ({ delivery, deliverProduct }) => {
-  const timeOfShopping = delivery.finalProducts.dateOfShopping;
-  const date = new Date(timeOfShopping);
-  const myDate =
-    date.getDate() +
-    "/" +
-    (date.getMonth() + 1) +
-    "/" +
-    date.getFullYear() +
-    " " +
-    date.getHours() +
-    ":" +
-    date.getMinutes() +
-    ":" +
-    date.getSeconds();
-
-  const timeOfDelivery = delivery.dateToDelivery;
-  const dateDelivery = new Date(timeOfDelivery);
-  const myDateDelivery =
-    dateDelivery.getDate() +
-    "/" +
-    (dateDelivery.getMonth() + 1) +
-    "/" +
-    dateDelivery.getFullYear() +
-    " " +
-    dateDelivery.getHours() +
-    ":" +
-    dateDelivery.getMinutes() +
-    ":" +
-    dateDelivery.getSeconds();
-
+  
   const handleDelivery = () => {
     deliverProduct(delivery);
   };
@@ -45,11 +17,11 @@ export const IndividualDeliveryProducts = ({ delivery, deliverProduct }) => {
         </div>
         <div className="rowDeliveryTable">
           <p>Hora de entrada:</p>
-          <p>{myDate}</p>
+          <p>{hourAndDate(delivery.finalProducts.dateOfShopping)}</p>
         </div>
         <div className="rowDeliveryTable">
           <p>Hora de salida:</p>
-          <p>{myDateDelivery}</p>
+          <p>{hourAndDate(delivery.dateToDelivery)}</p>
         </div>
 
         <table className="purchaseOrdeTableDelivery">

@@ -56,10 +56,7 @@ export function Home() {
 
   // función que añade los productos al carrito
   const addToCart = async (product) => {
-    //console.log(product);
-    // Product = product;
-    // Product["quantity"] = 1;
-    // Product["TotalProductPrice"] = Product.quantity * Product.Precio;
+    console.log("diste click")
     const quantity = 1;
     const Precio = product.Precio;
     const TotalProductPrice = quantity * Precio;
@@ -68,17 +65,6 @@ export function Home() {
     const Nombre = product.Nombre;
 
     const Tipo = product.Tipo;
-    if (!uid) {
-      Swal.fire({
-        position: "top",
-        icon: "info",
-        iconColor: "#ce73ff ",
-        title: "Debes iniciar sesión para realizar una compra",
-        showConfirmButton: false,
-        timer: 2500,
-      });
-      navigate("/LogIn");
-    } else {
       try {
         await setDoc(doc(db, "cart" + uid, ID), {
           quantity,
@@ -102,7 +88,7 @@ export function Home() {
       } catch (e) {
         console.log(e);
       }
-    }
+    
   };
   // console.log(uid)
 

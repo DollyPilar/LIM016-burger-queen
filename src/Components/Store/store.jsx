@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { hourAndDate } from "../../functions/projectFunctions";
 import { db } from "../../firebase/firebase-config.jsx";
 import Swal from "sweetalert2";
 import {
@@ -74,7 +75,7 @@ function Store() {
     const order = query(
       collRef,
       where("finalProducts.shoppingState", "==", "Pedido Listo"),
-      orderBy("finalProducts.dateOfShopping", "desc")
+      orderBy("dateToDelivery", "desc")
     );
     onSnapshot(order, (querySnapshot) => {
       const shoppArray = [];
@@ -88,6 +89,8 @@ function Store() {
     });
   };
   //console.log(ordersSent);
+  
+
 
   useEffect(() => {
     getOrdersSentCol();
@@ -125,11 +128,11 @@ function Store() {
                       </div>
                       <div className="rowStoreTableSent">
                         <p>Hora de entrada:</p>
-                        <p>{orderSent.finalProducts.dateOfShopping}</p>
+                        <p>{hourAndDate(orderSent.finalProducts.dateOfShopping)}</p>
                       </div>
                       <div className="rowStoreTableSent">
                         <p>Hora de Salida:</p>
-                        <p>{orderSent.dateToDelivery}</p>
+                        <p>{hourAndDate(orderSent.dateToDelivery)}</p>
                       </div>
 
                       <table className="purchaseOrdeTableSent">

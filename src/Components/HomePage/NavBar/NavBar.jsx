@@ -1,22 +1,16 @@
-import React, { useState, useEffect } from "react";
-import { FaUser, FaShoppingCart, FaPlusCircle, FaSignOutAlt } from "react-icons/fa";
+import React from "react";
+import { FaUser, FaShoppingCart, FaSignOutAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import PawLogo from "../../../assets/PawLogo.png";
 import { auth } from "../../../firebase/firebase-config";
-import { onAuthStateChanged, signOut } from "firebase/auth";
+import { signOut } from "firebase/auth";
 import "./NavBar.css";
 import Swal from 'sweetalert2';
 import { useNavigate} from "react-router-dom";
 
 export const NavBar = () => {
-  const [userState, setUserState] = useState(null);
-  useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        setUserState(user);
-      }
-    });
-  }, []);
+  
+
   // console.log(userState);
   const navigate = useNavigate()
   const logOut = () => {
@@ -57,11 +51,11 @@ export const NavBar = () => {
               <FaShoppingCart className="navBarIcon" />
             </Link>
 
-            {userState && (
+            
               <button className="logOut" onClick={logOut}>
                 <FaSignOutAlt className="navBarIcon" />
               </button>
-            )}
+          
           </div>
         </div>
         

@@ -17,26 +17,24 @@ import {
 export const Cart = () => {
   // función que trae el nombre del usuario que está logueado
   const [user, setUser] = useState(null);
-  const GetCurrentUser = () => {
-    onAuthStateChanged(auth, async (user) => {
-      if (user) {
-        const docRef = doc(db, "users", user.uid);
-        try {
-          const docSnap = await getDoc(docRef);
-          //console.log (docSnap.doc.data())
-          const userInfo = docSnap.data();
-          setUser(userInfo.name);
-        } catch (e) {
-          console.log(e);
-        }
-      } else {
-        setUser(null);
-      }
-    });
-    //return user
-  };
+    
   useEffect(() => {
-    GetCurrentUser();
+    let userName = false;
+    const getUserName =async()=>{
+    const docRef = doc(db, "users", auth.currentUser.uid);
+    try {
+      const docSnap = await getDoc(docRef);
+      const userInfo = docSnap.data();
+      if (!userName) {
+        setUser(userInfo.name);
+      }
+    } catch (e) {
+      console.log(e);
+    }}
+    getUserName()
+    return () => {
+      userName = true;
+    };
   }, []);
 
   // el estado de los carritos
