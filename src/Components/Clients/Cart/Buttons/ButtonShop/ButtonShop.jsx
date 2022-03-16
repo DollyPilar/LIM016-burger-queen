@@ -54,7 +54,7 @@ export const ButtonShop = ({ cartProducts, user, totalQty, totalPrice }) => {
     <React.Fragment>
       <button className="btnBuy" onClick={createShoppingColl}>
         {" "}
-        ComprarBtn2
+        Comprar
       </button>
     </React.Fragment>
   );

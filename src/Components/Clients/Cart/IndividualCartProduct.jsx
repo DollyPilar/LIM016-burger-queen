@@ -28,10 +28,11 @@ export const IndividualCartProduct = ({
   return (
     <React.Fragment>
       <div className="cartProduct">
-        <div className="cartImgContainer">
+        {/* <div className="cartImgContainer">
           <img src={cartProduct.Img} className="cartImg" alt="product-img" />
+          </div> */}
           {/* <img src={dogExam} alt="product-img" className="cartImg" /> */}
-        </div>
+        
         <div className="productNamecart">
           <p> {cartProduct.Nombre}</p>
         </div>

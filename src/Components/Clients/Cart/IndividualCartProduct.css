@@ -1,14 +1,17 @@
 .cartProduct {
   background-color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 2.5rem;
-  margin: auto;
-  margin-bottom: 2rem;
-  border-radius: 0.5rem;
-  width: 67rem;
-  padding: 0.5rem;
+    box-shadow: 5px 6px 36px 3px rgb(0 0 0 / 20%);
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    grid-gap: 2.5rem;
+    gap: 1rem;
+    margin: auto;
+    margin-bottom: 2rem;
+    border-radius: 0.5rem;
+    width: 39rem;
+    padding: 0.5rem;
+    align-content: stretch;
 }
 .cartImgContainer {
   width: 10rem;
@@ -17,14 +20,14 @@
   width: 100%;
 }
 .productNamecart {
-  width: 8rem;
+  width: 16rem;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
 .productNamecart p {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
 }
 .productPricecart {
   width: 5.4rem;
@@ -34,7 +37,7 @@
   flex-direction: column;
 }
 .productPricecart p {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
 }
 .addDecreaseQuantity {
   display: flex;
@@ -43,8 +46,8 @@
 }
 .btnCart {
   /* padding: 0.5rem; */
-  color: #819ef5;
-  font-size: 3rem;
+  color: #7D7171;
+  font-size: 2.5rem;
   /* background-color: #819ef5;
   border-radius: 0.2rem; */
   /* border: none;
@@ -54,12 +57,12 @@
 .btnAddDecrease {
   padding: 0.5rem;
   color: white;
-  font-size: 2rem;
-  background-color: #819ef5;
+  font-size: 1.1rem;
+  background-color: #7D7171;
   border-radius: 0.2rem;
   border: none;
   outline: none;
-  width: 3.5rem;
+  width: 3rem;
 }
 .btnIconTrash {
   border: none;

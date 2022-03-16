@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { FaUser, FaShoppingCart, FaSignOutAlt } from "react-icons/fa";
+import { FaUser, FaShoppingCart, FaPlusCircle, FaSignOutAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import PawLogo from "../../../assets/PawLogo.png";
 import { auth } from "../../../firebase/firebase-config";

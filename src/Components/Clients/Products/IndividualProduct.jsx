@@ -1,4 +1,5 @@
 import React from "react";
+import { FaPlusCircle } from "react-icons/fa";
 import "./IndividualProduct.css";
 
 export const IndividualProduct = ({ individualProduct, addToCart }) => {
@@ -16,11 +17,16 @@ export const IndividualProduct = ({ individualProduct, addToCart }) => {
             alt="product-img"
           />
         </div>
+        <div className="boxContainerInfo">
+        <div className="infoBoxContainer">
         <div className="productInfo">{individualProduct.Nombre}</div>
         <div className="productInfo">S/.{individualProduct.Precio}</div>
-        <button className="btnAddProduct" onClick={handleAddToCart}>
-          Añade a tu carrito
-        </button>
+        </div>
+        <div className="btnAddContainer">
+        <button className="btnAddProduct" onClick={handleAddToCart}></button>
+        <FaPlusCircle className="addIcon" />
+        </div>
+        </div>
       </div>
     </React.Fragment>
   );

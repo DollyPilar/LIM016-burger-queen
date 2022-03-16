@@ -82,7 +82,7 @@ function Register() {
       <div className="registerContainer">
         <div className="formSection">
           <form className="registerForm" onSubmit={handleRegisterUser}>
-            <h4>Crea tu cuenta para conocernos</h4>
+            <h4>Crea una cuenta para conocernos</h4>
             <input
               className="inputRegister"
               type="text"
@@ -109,7 +109,7 @@ function Register() {
             />
             {errorMsg && (
               <>
-                <div className="errorAlert">{errorMsg}</div>
+                <div className="errorAlrt">{errorMsg}</div>
               </>
             )}
             <button type="submit" className="btnRegister">

@@ -54,7 +54,7 @@ function Log() {
         if (errMsg === "auth/user-not-found") {
         }
         if (errMsg === "auth/wrong-password") {
-          setErrorMsg("contraseña no coincide con el ussuario");
+          setErrorMsg("contraseña o usuario incorrectos");
         }
       }
     }

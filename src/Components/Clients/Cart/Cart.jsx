@@ -132,6 +132,7 @@ export const Cart = () => {
                     cartProductIncrease={cartProductIncrease}
                     cartProductDecrease={cartProductDecrease}
                   />
+                  </div>
 
                   <div className="cartSummary">
                     <div className="title">
@@ -158,7 +159,7 @@ export const Cart = () => {
                       />
                     </div>
                   </div>
-                </div>
+                
               </div>
             )}
             {cartProducts.length < 1 && (
