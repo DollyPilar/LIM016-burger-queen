@@ -3,11 +3,13 @@ import {
   FaUserFriends,
   FaDollarSign,
   FaDollyFlatbed,
-  FaRegIdCard,
-  FaRegChartBar,
-  FaStore,
-  FaPaw,
+  // FaRegIdCard,
+  // FaRegChartBar,
+  // FaStore,
+  // FaPaw,
 } from "react-icons/fa";
+import { LowNavBar } from "../HomePage/NavBar/NavBarEmployees/LowNavBar.jsx";
+
 import {
   // doc, setDoc, getDoc,
   getDocs,
@@ -167,6 +169,7 @@ function Admin() {
   return (
     <React.Fragment>
       <NavBarEmployee text="Administrador" name={user} />
+      <LowNavBar/>
       <div className="statisticsContainer">
         <div className="statisticCard">
           <p className="statisticInfo">Total de clientes</p>
