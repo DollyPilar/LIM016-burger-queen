@@ -1,0 +1,18 @@
+.lowBarAdmin{
+    border-bottom: 1px solid  #bb53f3;
+    position:fixed;
+    width:100%;
+    display:flex;
+    gap:1rem;
+    top:4.5rem;
+}
+.lowBarInfo{
+    color:  #bb53f3;
+    padding:0.5rem;
+    font-size:2rem;
+
+}
+.lowBarInfo:hover{
+    background: #bb53f3;
+    color:white;
+}
