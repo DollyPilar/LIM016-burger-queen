@@ -1,16 +1,15 @@
 .storeBoxContainer {
   position: fixed;
-  height: 33rem;
+  height: 38rem;
   width: 100%;
-  top: 15rem;
+  top: 13rem;
   overflow-y: scroll;
   overflow-x: hidden;
 }
 .storeBox {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  /* grid-gap: 26px; */
-  margin-left: 2.2rem;
+  justify-items: center;
   width: 100%;
 }
 .btnStateContainerStore {
@@ -18,8 +17,8 @@
   position: fixed;
   justify-content: center;
   gap: 3rem;
-  left: 25rem;
-  top: 10rem;
+  left: 22rem;
+  top: 8rem;
 }
 .btnShowPendingPOStore {
   border: 3px solid #ce73ff;
@@ -94,4 +93,14 @@
 
 .purchaseOrdeTableSent tbody tr td {
   text-align: center;
+}
+.pleaseWaitStore {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 12rem;
+}
+.waitStore {
+  font-size: 4rem;
+  color: #7d7171;
 }

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { hourAndDate } from "../../functions/projectFunctions";
-import { db } from "../../firebase/firebase-config.jsx";
+import { db, auth } from "../../firebase/firebase-config.jsx";
 import Swal from "sweetalert2";
 import {
   onSnapshot,
@@ -11,13 +11,31 @@ import {
   updateDoc,
   doc,
   deleteDoc,
+  getDoc,
 } from "firebase/firestore";
-import { NavBar } from "../HomePage/NavBar/NavBar.jsx";
 import { StoreProducts } from "./StoreProducts.jsx";
-//import { OrdersReady } from "./OrdersReady/OrdersReady.jsx";
+import { NavBarEmployee } from "../HomePage/NavBar/NavBarEmployees/NavBarEmployee.jsx";
 import "./Store.css";
+import { onAuthStateChanged } from "firebase/auth";
 
 function Store() {
+  const [user, setUser] = useState(null);
+
+  useEffect(
+    () =>
+      onAuthStateChanged(auth, (user) => {
+        if (user) {
+          //console.log(user.uid);
+          const docRef = doc(db, "users", user.uid);
+          const docSnap = getDoc(docRef);
+          docSnap.then((doc) => setUser(doc.data().name));
+        } else {
+          setUser("Empleado");
+          console.log("no estás logueada");
+        }
+      }),
+    []
+  );
   const [orders, setOrders] = useState("");
   const getShoppingColle = () => {
     const collRef = collection(db, "compras");
@@ -89,8 +107,6 @@ function Store() {
     });
   };
   //console.log(ordersSent);
-  
-
 
   useEffect(() => {
     getOrdersSentCol();
@@ -104,7 +120,7 @@ function Store() {
   };
   return (
     <React.Fragment>
-      <NavBar />
+      <NavBarEmployee text="Almacén" name={user} />
       <div className="btnStateContainerStore">
         <button className="btnShowPendingPOStore" onClick={showOrdersOending}>
           Pendientes
@@ -128,7 +144,9 @@ function Store() {
                       </div>
                       <div className="rowStoreTableSent">
                         <p>Hora de entrada:</p>
-                        <p>{hourAndDate(orderSent.finalProducts.dateOfShopping)}</p>
+                        <p>
+                          {hourAndDate(orderSent.finalProducts.dateOfShopping)}
+                        </p>
                       </div>
                       <div className="rowStoreTableSent">
                         <p>Hora de Salida:</p>
@@ -165,7 +183,7 @@ function Store() {
             )}
             {ordersSent.length < 1 && (
               <div className="pleaseWaitStore">
-                <p>Por favor espera...</p>
+                <p className="waitStore">No hay pedidos</p>
               </div>
             )}
           </>
@@ -182,7 +200,7 @@ function Store() {
             )}
             {orders.length < 1 && (
               <div className="pleaseWaitStore">
-                <p>Por favor espera...</p>
+                <p className="waitStore">No hay pedidos</p>
               </div>
             )}
             )
