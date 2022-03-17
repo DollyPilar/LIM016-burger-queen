@@ -1,101 +1,196 @@
-import React, { useState } from "react";
-import { doc, setDoc } from "firebase/firestore";
+import React, { useState, useEffect } from "react";
 import {
-  createUserWithEmailAndPassword,
-  sendEmailVerification,
-} from "firebase/auth";
+  FaUserFriends,
+  FaDollarSign,
+  FaDollyFlatbed,
+  FaRegIdCard,
+  FaRegChartBar,
+  FaStore,
+  FaPaw,
+} from "react-icons/fa";
+import {
+  // doc, setDoc, getDoc,
+  getDocs,
+  collection,
+} from "firebase/firestore";
+// import {
+//   createUserWithEmailAndPassword,
+//   sendEmailVerification,
+//   onAuthStateChanged,
+// } from "firebase/auth";
 import "./admin.css";
-import logoAdmin from "../../assets/dogLogIn.png";
-import { auth, db } from "../../firebase/firebase-config.jsx";
-import { useNavigate } from "react-router-dom";
-import { NavBar } from "../HomePage/NavBar/NavBar.jsx";
-import Swal from "sweetalert2";
+//import logoAdmin from "../../assets/dogLogIn.png";
+import { db } from "../../firebase/firebase-config.jsx";
+//import { useNavigate } from "react-router-dom";
+import { NavBarEmployee } from "../HomePage/NavBar/NavBarEmployees/NavBarEmployee.jsx";
+//import Swal from "sweetalert2";
 
 function Admin() {
-  const [errorMsg, setErrorMsg] = useState("");
-  const initialState = {
-    NameAdmin: "",
-    EmailAdmin: "",
-    Password: "",
-    Rol: "",
-  };
-  const [state, setState] = useState(initialState);
+  const [user, setUser] = useState(null);
 
-  const { NameAdmin, EmailAdmin, Password, Rol } = state;
-
-  const handleInputAdmin = (e) => {
-    const { name, value } = e.target;
-    setState({ ...state, [name]: value });
-  };
-
-  const createUserColl = async (idUser, name, rol, email) => {
+  useEffect(() => {
+    setUser("natAdmin");
+  }, []);
+  // estado de los productos
+  const [products, setProducts] = useState([]);
+  // función que trae los productos
+  const getProducts = async () => {
+    const collRef = collection(db, "compras");
     try {
-      await setDoc(doc(db, "users", idUser), {
-        name,
-        rol,
-        email,
-        idUser,
+      const allColl = await getDocs(collRef);
+      const productsArray = [];
+
+      allColl.forEach((doc) => {
+        let data = doc.data();
+        data.ID = doc.id;
+        productsArray.push(data);
       });
+      setProducts(productsArray);
     } catch (e) {
       console.log(e);
     }
   };
+  useEffect(() => {
+    getProducts();
+  }, []);
+  //const [finalPrice, setFinalPrice] = useState("");
+  let totalPrice;
+  let totalClients;
+  let orders;
+  if (products.length > 0) {
+    orders = products.length;
+    // console.log("número total de compras",products.length);
+    // finalProducts.buyerName // eliminar los repetidos // total de clientes
+    //finalProducts.finalPrice // ventas tottales
+    const prices = products.map((pro) => pro.finalProducts.finalPrice);
+    totalPrice = prices.reduce((acc, cur) => acc + cur, 0);
+    const clients = products.map((pro) => pro.finalProducts.buyerName);
+    totalClients = [...new Set(clients)].length;
+    //console.log(uniqueArr, uniqueArr.length);
+  }
+  // console.log(products);
+  // useEffect(
+  //   () =>
+  //     onAuthStateChanged(auth, (user) => {
+  //       if (user) {
+  //         //console.log(user.uid);
+  //         const docRef = doc(db, "users", user.uid);
+  //         const docSnap = getDoc(docRef);
+  //         docSnap.then((doc) => setUser(doc.data().name));
+  //       } else {
+  //         setUser("Empleado");
+  //         console.log("no estás logueada");
+  //       }
+  //     }),
+  //   []
+  // );
+  // const [errorMsg, setErrorMsg] = useState("");
+  // const initialState = {
+  //   NameAdmin: "",
+  //   EmailAdmin: "",
+  //   Password: "",
+  //   Rol: "",
+  // };
+  // const [state, setState] = useState(initialState);
 
-  const handleRegisterAdmin = async (e) => {
-    e.preventDefault();
-    if (
-      NameAdmin.trim() === "" ||
-      EmailAdmin.trim() === "" ||
-      Password.trim() === "" ||
-      !Rol
-    ) {
-      setErrorMsg("No puedes dejar el formulario vacio");
-      // console.log("rol:", Rol, NameAdmin, EmailAdmin, Password)
-    } else {
-      try {
-        const client = await createUserWithEmailAndPassword(
-          auth,
-          EmailAdmin,
-          Password
-        );
-        await sendEmailVerification(auth.currentUser);
-        Swal.fire({
-          position: "top",
-          icon: "success",
-          iconColor: "#ce73ff",
-          toast: true,
-          title: "Verificar el correo antes de entregárselo al empleado",
-          width: "47rem",
-          showConfirmButton: false,
-          timer: 3700,
-        });
-        try {
-          await createUserColl(client.user.uid, NameAdmin, Rol, EmailAdmin);
-        } catch (e) {
-          console.log(e);
-        }
-        setErrorMsg("");
-      } catch (error) {
-        const errMsg = error.code;
-        if (errMsg === "auth/email-already-in-use") {
-          setErrorMsg("email en uso");
-        } else if (errMsg === "auth/weak-password") {
-          setErrorMsg("La contraseña debe tener al menos 6 caracteres");
-        }
-      }
-    }
-  };
+  // const { NameAdmin, EmailAdmin, Password, Rol } = state;
 
-  let navigate = useNavigate();
+  // const handleInputAdmin = (e) => {
+  //   const { name, value } = e.target;
+  //   setState({ ...state, [name]: value });
+  // };
 
-  const goToProducts = () => {
-    navigate("/AddProducts");
-  };
+  // const createUserColl = async (idUser, name, rol, email) => {
+  //   try {
+  //     await setDoc(doc(db, "users", idUser), {
+  //       name,
+  //       rol,
+  //       email,
+  //       idUser,
+  //     });
+  //   } catch (e) {
+  //     console.log(e);
+  //   }
+  // };
+
+  // const handleRegisterAdmin = async (e) => {
+  //   e.preventDefault();
+  //   if (
+  //     NameAdmin.trim() === "" ||
+  //     EmailAdmin.trim() === "" ||
+  //     Password.trim() === "" ||
+  //     !Rol
+  //   ) {
+  //     setErrorMsg("No puedes dejar el formulario vacio");
+  //     // console.log("rol:", Rol, NameAdmin, EmailAdmin, Password)
+  //   } else {
+  //     try {
+  //       const client = await createUserWithEmailAndPassword(
+  //         auth,
+  //         EmailAdmin,
+  //         Password
+  //       );
+  //       await sendEmailVerification(auth.currentUser);
+  //       Swal.fire({
+  //         position: "top",
+  //         icon: "success",
+  //         iconColor: "#ce73ff",
+  //         toast: true,
+  //         title: "Verificar el correo antes de entregárselo al empleado",
+  //         width: "47rem",
+  //         showConfirmButton: false,
+  //         timer: 3700,
+  //       });
+  //       try {
+  //         await createUserColl(client.user.uid, NameAdmin, Rol, EmailAdmin);
+  //       } catch (e) {
+  //         console.log(e);
+  //       }
+  //       setErrorMsg("");
+  //     } catch (error) {
+  //       const errMsg = error.code;
+  //       if (errMsg === "auth/email-already-in-use") {
+  //         setErrorMsg("email en uso");
+  //       } else if (errMsg === "auth/weak-password") {
+  //         setErrorMsg("La contraseña debe tener al menos 6 caracteres");
+  //       }
+  //     }
+  //   }
+  // };
+
+  // let navigate = useNavigate();
+
+  // const goToProducts = () => {
+  //   navigate("/AddProducts");
+  // };
 
   return (
     <React.Fragment>
-      <NavBar />
-      <div className="adminContainer">
+      <NavBarEmployee text="Administrador" name={user} />
+      <div className="statisticsContainer">
+        <div className="statisticCard">
+          <p className="statisticInfo">Total de clientes</p>
+          <div className="secondRow">
+            <FaUserFriends className="adminIcon" />
+            <p className="statisticInfo">{totalClients}</p>
+          </div>
+        </div>
+        <div className="statisticCard">
+          <p className="statisticInfo">Ventas totales</p>
+          <div className="secondRow">
+            <FaDollarSign className="adminIcon" />
+            <p className="statisticInfo">{totalPrice}</p>
+          </div>
+        </div>
+        <div className="statisticCard">
+          <p className="statisticInfo">Pedidos totales</p>
+          <div className="secondRow">
+            <FaDollyFlatbed className="adminIcon" />
+            <p className="statisticInfo">{orders}</p>
+          </div>
+        </div>
+      </div>
+      {/* <div className="adminContainer">
         <div className="adminSection">
           <div className="adminWelcome">
             <h2> ¡BIENVENIDOS A HAPPY PAWS!</h2> <br></br>
@@ -149,7 +244,7 @@ function Admin() {
             </button>
           </form>
         </div>
-      </div>
+      </div> */}
     </React.Fragment>
   );
 }

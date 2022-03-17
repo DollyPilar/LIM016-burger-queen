@@ -8,7 +8,6 @@ import Delivery from "./Components/Delivery/Delivery.jsx";
 import Dolly from "./Components/Store/Store.jsx";
 import Home from "./Components/Clients/Home.jsx";
 import { HomePage } from "./Components/HomePage/HomePage.jsx";
-// import { HomePage } from "./Components/HomePage/HomePage.jsx";
 import { Cart } from "./Components/Clients/Cart/Cart.jsx";
 import { AddProducts } from "./Components/Admin/AddProducts/AddProducts.jsx";
 
