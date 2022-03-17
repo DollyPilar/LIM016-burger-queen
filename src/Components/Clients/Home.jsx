@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { auth, db } from "../../firebase/firebase-config";
 import { onAuthStateChanged } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
 import { doc, setDoc, collection, getDocs } from "firebase/firestore";
 import { Products } from "./Products/Products.jsx";
 import { IndividualFilteredProduct } from "./Products/IndividualFilteredProduct.jsx";
@@ -10,7 +9,6 @@ import "./home.css";
 import Swal from "sweetalert2";
 
 export function Home() {
-  // función que trae el uid del usuario logueado
   const [uid, setUid] = useState(null);
   useEffect(() => {
     // const GetUserUID = () => {
@@ -23,9 +21,6 @@ export function Home() {
     //   return uid;
     // };
   }, []);
-  //tenemos el uid de manera global
-
-  const navigate = useNavigate();
 
   // estado de los productos
   const [products, setProducts] = useState([]);
@@ -56,7 +51,7 @@ export function Home() {
 
   // función que añade los productos al carrito
   const addToCart = async (product) => {
-    console.log("diste click")
+    console.log("diste click");
     const quantity = 1;
     const Precio = product.Precio;
     const TotalProductPrice = quantity * Precio;
@@ -65,30 +60,29 @@ export function Home() {
     const Nombre = product.Nombre;
 
     const Tipo = product.Tipo;
-      try {
-        await setDoc(doc(db, "cart" + uid, ID), {
-          quantity,
-          TotalProductPrice,
-          ID,
-          Img,
-          Nombre,
-          Precio,
-          Tipo,
-        });
-        Swal.fire({
-          position: "top",
-          icon: "success",
-          iconColor: "#ce73ff",
-          toast: true,
-          title: "Producto agregado",
-          width: "23rem",
-          showConfirmButton: false,
-          timer: 2500,
-        });
-      } catch (e) {
-        console.log(e);
-      }
-    
+    try {
+      await setDoc(doc(db, "cart" + uid, ID), {
+        quantity,
+        TotalProductPrice,
+        ID,
+        Img,
+        Nombre,
+        Precio,
+        Tipo,
+      });
+      Swal.fire({
+        position: "top",
+        icon: "success",
+        iconColor: "#ce73ff",
+        toast: true,
+        title: "Producto agregado",
+        width: "23rem",
+        showConfirmButton: false,
+        timer: 2500,
+      });
+    } catch (e) {
+      console.log(e);
+    }
   };
   // console.log(uid)
 
