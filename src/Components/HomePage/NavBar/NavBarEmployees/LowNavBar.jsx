@@ -11,12 +11,15 @@ const addProducts = ()=>{
 const goAdminHome = () =>{
     navigate("/Admin")
 }
+const addStaff = () =>{
+    navigate("/AddStaff")
+}
 
     return (
         <Fragment>
             <div className="lowBarAdmin">
                 <h3 className="lowBarInfo" onClick={goAdminHome}>Home</h3>
-                <h3 className="lowBarInfo">Empleados</h3>
+                <h3 className="lowBarInfo" onClick={addStaff}>Empleados</h3>
                 <h3 className="lowBarInfo" onClick={addProducts}>Productos</h3>
                 <h3 className="lowBarInfo">Pedidos</h3>
             </div>

@@ -1,0 +1,41 @@
+.IndividualStaffCard{
+    border-bottom:1px solid #7a7a7a;
+    display:flex;
+    align-items:center;
+    gap:8rem;
+    height: 5rem;
+    width: 39rem;
+    margin-left: 1rem
+}
+.staffName{
+    font-size:1.4rem;
+    color:#7a7a7a;
+    width: 0rem;
+    text-align:center
+}
+.staffEmail{
+    font-size:1.4rem;
+    color:#7a7a7a;
+    width:15rem;
+    text-align:center;
+}
+.staffRol{
+    font-size:1.4rem;
+    color:#7a7a7a;
+    width:5rem;
+    text-align:center 
+}
+
+/* .firstRowStaff{
+    display:flex;
+    align-items:center;
+    border-bottom:1px solid #7a7a7a;
+    gap:2rem;
+   margin-bottom:1rem;
+}
+.cardStaffName{
+    font-size: 1.5rem;
+    color:#7a7a7a;
+    padding:0.5rem;
+    margin-left:6rem;
+} */

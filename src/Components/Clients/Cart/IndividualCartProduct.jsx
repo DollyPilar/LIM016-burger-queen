@@ -66,7 +66,7 @@ export const IndividualCartProduct = ({
           <p> S/. {cartProduct.TotalProductPrice}</p>
         </div>
         <button className="btnIconTrash" onClick={handleCartProductDelete}>
-          <FaTrash className="btnCart" />
+          <FaTrash className="btnCart"/>
         </button>
       </div>
     </React.Fragment>

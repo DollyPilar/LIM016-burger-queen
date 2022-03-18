@@ -3,6 +3,7 @@ import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import LogIn from "./Components/Login/login.jsx";
 import Register from "./Components/Register/register.jsx";
+import { AddStaff } from "./Components/Admin/AddStaff/AddStaff.jsx";
 import Admin from "./Components/Admin/admin.jsx";
 import Delivery from "./Components/Delivery/Delivery.jsx";
 import Dolly from "./Components/Store/Store.jsx";
@@ -22,6 +23,7 @@ function App() {
         <Route path="/cart" element={<Cart />} />
         <Route path="/Admin" element={<Admin />} />
         <Route path="/Delivery" element={<Delivery />} />
+        <Route path="/AddStaff" element={<AddStaff />} />
         <Route path="/Store" element={<Dolly />} />
         <Route path="/AddProducts" element={<AddProducts />} />
       </Routes>
