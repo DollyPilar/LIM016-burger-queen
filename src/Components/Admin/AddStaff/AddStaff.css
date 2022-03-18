@@ -3,6 +3,7 @@
     overflow: scroll;
     border: none;
     top: 10rem;
+    margin-left: 2rem;
     
 }
 .firstRowStaff{
@@ -18,7 +19,7 @@
     font-size: 1.5rem;
     color:#7a7a7a;
     padding:0.5rem;
-    margin-left:0.5rem;
+    margin-left:0rem;
 }
 .cardStaffEmail{
     font-size: 1.5rem;
