@@ -1,17 +1,17 @@
 .cartProduct {
   background-color: white;
-  box-shadow: 7px 2px 23px 2px rgb(0 0 0 / 22%);
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    grid-gap: 2.5rem;
-    gap: 1rem;
-    margin: auto;
-    margin-bottom: 2rem;
-    border-radius: 0.5rem;
-    width: 39rem;
-    padding: 0.5rem;
-    align-content: stretch;
+  box-shadow: 1px 3px 17px 6px rgb(0 0 0 / 14%);
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  grid-gap: 2.5rem;
+  gap: 1rem;
+  margin: auto;
+  margin-bottom: 2rem;
+  border-radius: 0.5rem;
+  width: 39rem;
+  padding: 0.5rem;
+  margin-top: 1rem;
 }
 .cartImgContainer {
   width: 10rem;
@@ -20,7 +20,7 @@
   width: 100%;
 }
 .productNamecart {
-  width: 16rem;
+  width: 7rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -41,34 +41,17 @@
 }
 .addDecreaseQuantity {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 .btnCart {
-  /* padding: 0.5rem; */
-  color: #7D7171;
-  font-size: 2.5rem;
-  /* background-color: #819ef5;
-  border-radius: 0.2rem; */
-  /* border: none;
-  outline: none; */
-  width: 3.8rem;
+  color: #8f8b8b;
+  font-size: 2rem;
 }
 .btnAddDecrease {
-  padding: 0.5rem;
-  color: white;
-  font-size: 1.1rem;
-  background-color: #7D7171;
+  font-weight: bolder;
+  color: #8f8b8b;
   border-radius: 0.2rem;
-  border: none;
-  outline: none;
-  width: 3rem;
-}
-.btnIconTrash {
-  border: none;
-  outline: none;
-  background: none;
-}
-.widerBtn {
-  width: 10rem;
+  font-size: 3.5rem;
 }

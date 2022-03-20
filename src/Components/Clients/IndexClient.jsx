@@ -5,10 +5,10 @@ import { doc, setDoc, collection, getDocs } from "firebase/firestore";
 import { Products } from "./Products/Products.jsx";
 import { IndividualFilteredProduct } from "./Products/IndividualFilteredProduct.jsx";
 import { NavBar } from "../HomePage/NavBar/NavBar";
-import "./home.css";
+import "./IndexClient.css";
 import Swal from "sweetalert2";
 
-export function Home() {
+export const IndexClient = () => {
   const [uid, setUid] = useState(null);
   useEffect(() => {
     // const GetUserUID = () => {
@@ -92,25 +92,21 @@ export function Home() {
     { id: "productogato", text: "Sección Gatos" },
   ]);
 
-  // el estado de la clase o hover a decidir
-  const [active, setActive] = useState("");
-
-  // el estado de las categorías
-  // const [category, setCategory] = useState("");
-
-  // manejando el evento de los cambios
-  const handleChange = (indivSpan) => {
-    setActive(indivSpan.id);
-    // setCategory(indivSpan.text);
-    filterFunction(indivSpan.text);
-  };
-
   //el estado de los productos filtrados
   const [filteredProducts, setfilteredProducts] = useState([]);
 
   const filterFunction = (text) => {
     const filter = products.filter((product) => product.Tipo === text);
     setfilteredProducts(filter);
+  };
+  // el estado de la clase o hover a decidir
+  const [active, setActive] = useState("");
+
+  // manejando el evento de los cambios
+  const handleChange = (indivSpan) => {
+    setActive(indivSpan.id);
+    // setCategory(indivSpan.text);
+    filterFunction(indivSpan.text);
   };
 
   const showAllProducts = () => {
@@ -125,7 +121,7 @@ export function Home() {
       <div className="storeContainer">
         <div className="categoriesContainer">
           <button className="btnProduct" onClick={showAllProducts}>
-            Mira todos los productos
+            Todos
           </button>
           {spans.map((individualSpan, index) => (
             <button
@@ -138,45 +134,40 @@ export function Home() {
             </button>
           ))}
         </div>
-        <div className="allMyProducts">
-          {filteredProducts.length > 0 && (
-            // <IndividualFilteredProduct/>
-            <div className="myProducts">
-              {/* <h1 className="textCenter">{category}</h1> */}
-              <div className="productsBox">
-                {filteredProducts.map((individualFilteredProduct) => (
-                  <IndividualFilteredProduct
-                    key={individualFilteredProduct.ID}
-                    individualFilteredProduct={individualFilteredProduct}
-                    addToCart={addToCart}
-                  />
-                ))}
-              </div>
+
+        {filteredProducts.length > 0 && (
+          // <IndividualFilteredProduct/>
+          <div className="myProducts">
+            {/* <h1 className="textCenter">{category}</h1> */}
+            <div className="productsBox">
+              {filteredProducts.map((individualFilteredProduct) => (
+                <IndividualFilteredProduct
+                  key={individualFilteredProduct.ID}
+                  individualFilteredProduct={individualFilteredProduct}
+                  addToCart={addToCart}
+                />
+              ))}
             </div>
-          )}
-          {filteredProducts.length < 1 && (
-            <>
-              {products.length > 0 && (
-                <div className="myProducts">
-                  {/* <h1 className="textCenter">Nuestros productos</h1> */}
-                  <div className="productsBox">
-                    <Products products={products} addToCart={addToCart} />
-                  </div>
+          </div>
+        )}
+        {filteredProducts.length < 1 && (
+          <>
+            {products.length > 0 && (
+              <div className="myProducts">
+                {/* <h1 className="textCenter">Nuestros productos</h1> */}
+                <div className="productsBox">
+                  <Products products={products} addToCart={addToCart} />
                 </div>
-              )}
-              {products.length < 1 && (
-                <div className="pleaseWait">
-                  <p>Por favor espera...</p>
-                </div>
-              )}
-            </>
-          )}
-        </div>
+              </div>
+            )}
+            {products.length < 1 && (
+              <div className="pleaseWait">
+                <p>Por favor espera...</p>
+              </div>
+            )}
+          </>
+        )}
       </div>
-      {/* <div>
-        <Cart />
-      </div> */}
     </React.Fragment>
   );
-}
-export default Home;
+};

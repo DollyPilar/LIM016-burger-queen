@@ -1,5 +1,5 @@
 import React from "react";
-import { auth, db } from "../../../../../firebase/firebase-config.jsx";
+import { auth, db } from "../../../../firebase/firebase-config.jsx";
 import {
   addDoc,
   collection,
@@ -7,8 +7,8 @@ import {
   deleteDoc,
   getDocs,
 } from "firebase/firestore";
-import "./ButtonShop.css";
 import Swal from "sweetalert2";
+import { ButtonAccept } from "../../../../Globals/Buttons/ButtonAccept/ButtonAccept.jsx";
 export const ButtonShop = ({ cartProducts, user, totalQty, totalPrice }) => {
   //   const handleShop = async () => {
   //     console.log(totalQty, totalPrice, user, cartProducts);
@@ -52,10 +52,7 @@ export const ButtonShop = ({ cartProducts, user, totalQty, totalPrice }) => {
   };
   return (
     <React.Fragment>
-      <button className="btnBuy" onClick={createShoppingColl}>
-        {" "}
-        Comprar
-      </button>
+      <ButtonAccept onClick={createShoppingColl} name="Comprar" />
     </React.Fragment>
   );
 };

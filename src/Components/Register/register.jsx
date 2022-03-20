@@ -7,9 +7,11 @@ import {
 } from "firebase/auth";
 import "./register.css";
 import { auth, db } from "../../firebase/firebase-config.jsx";
-import logoRegister from "../../assets/cat.png";
+import logoRegister from "../../assets/peoplewithdogjpg.jpg";
 import { NavBar } from "../HomePage/NavBar/NavBar.jsx";
 import Swal from "sweetalert2";
+import { Input } from "../../Globals/Input/Input.jsx";
+import { ButtonAccept } from "../../Globals/Buttons/ButtonAccept/ButtonAccept.jsx";
 
 function Register() {
   const [errorMsg, setErrorMsg] = useState("");
@@ -80,54 +82,48 @@ function Register() {
     <React.Fragment>
       <NavBar />
       <div className="registerContainer">
-        <div className="formSection">
-          <form className="registerForm" onSubmit={handleRegisterUser}>
-            <h4>Crea una cuenta para conocernos</h4>
-            <input
-              className="inputRegister"
-              type="text"
-              placeholder="Nombre completo"
-              name="Fullname"
-              id="Fullname"
-              onChange={handleInputRegisterChange}
-            />
-            <input
-              className="inputRegister"
-              type="text"
-              placeholder="Correo"
-              name="Email"
-              id="Email"
-              onChange={handleInputRegisterChange}
-            />
-            <input
-              className="inputRegister"
-              type="password"
-              placeholder="Contraseña"
-              name="Password"
-              id="Password"
-              onChange={handleInputRegisterChange}
-            />
-            {errorMsg && (
-              <>
-                <div className="errorAlrt">{errorMsg}</div>
-              </>
-            )}
-            <button type="submit" className="btnRegister">
-              REGISTRAR
-            </button>
-            <div className="containerGoToLogIN">
-              <p className="infoRegister">¿Ya tienes una cuenta?</p>
-              <Link to="/LogIn" className="goToLogIn">
-                Inicia Sesión
-              </Link>
-            </div>
-          </form>
-        </div>
-        <div className="logoSection">
-          <div className="welcomeSection">
-            <h2> Right Meow</h2>
-            <img src={logoRegister} alt="logo" className="logoRegister" />
+        <form className="registerForm" onSubmit={handleRegisterUser}>
+          <h4>Crea una cuenta para conocernos</h4>
+          <Input
+            className="inputRegister"
+            type="text"
+            placeholder="Nombre completo"
+            name="Fullname"
+            id="Fullname"
+            onChange={handleInputRegisterChange}
+          />
+          <Input
+            className="inputRegister"
+            type="text"
+            placeholder="Correo"
+            name="Email"
+            id="Email"
+            onChange={handleInputRegisterChange}
+          />
+          <Input
+            className="inputRegister"
+            type="password"
+            placeholder="Contraseña"
+            name="Password"
+            id="Password"
+            onChange={handleInputRegisterChange}
+          />
+          {errorMsg && (
+            <>
+              <div className="errorRegister">{errorMsg}</div>
+            </>
+          )}
+          <ButtonAccept type="submit" name="REGISTRAR" />
+          <div className="goToLogIN">
+            <p className="infoRegister">¿Ya tienes una cuenta?</p>
+            <Link to="/LogIn" className="goToLogIn">
+              Inicia Sesión
+            </Link>
           </div>
+        </form>
+
+        <div className="welcomeSection">
+          <img src={logoRegister} alt="logo" className="logoRegister" />
         </div>
       </div>
     </React.Fragment>

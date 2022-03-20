@@ -6,7 +6,9 @@ import { doc, getDoc } from "firebase/firestore";
 import { auth, db } from "../../firebase/firebase-config.jsx";
 import { NavBar } from "../HomePage/NavBar/NavBar.jsx";
 import "./login.css";
-import logo from "../../assets/dogLogIn.png";
+import { Input } from "../../Globals/Input/Input.jsx";
+import { ButtonAccept } from "../../Globals/Buttons/ButtonAccept/ButtonAccept.jsx";
+import logo from "../../assets/peoplewithdogjpg.jpg";
 
 function Log() {
   const [errorMsg, setErrorMsg] = useState("");
@@ -64,51 +66,42 @@ function Log() {
     <React.Fragment>
       <NavBar />
       <div className="logInContainer">
-        <div className="logoContainer">
-          <div className="welcomeContainer">
-            <h2> ¡BIENVENIDX DE NUEVO!</h2>
-            <img src={logo} alt="logo" className="logo" />
-          </div>
+        <div className="welcomeContainer">
+          <img src={logo} alt="logo" className="logoLogIn" />
         </div>
 
-        <div className="formContainer">
-          <form className="form" onSubmit={handleLogin}>
-            <h2>Inicia sesión</h2>
-            <input
-              className="input"
-              type="text"
-              placeholder="Correo"
-              name="email"
-              id="email"
-              onChange={handleInputChange}
-              value={email}
-            />
-            <input
-              className="input"
-              type="password"
-              placeholder="Contraseña"
-              name="password"
-              id="password"
-              onChange={handleInputChange}
-              value={password}
-            />
-            {errorMsg && (
-              <>
-                <div className="errorMsg">{errorMsg}</div>
-              </>
-            )}
-            <p className="infoLogin infoUnderline">¿Olvidaste tu contraseña?</p>
-            <button className="btnLogin" type="submit">
-              INICIAR SESIÓN
-            </button>
-            <div className="goToRegister">
-              <p className="infoLogin">¿No tienes una cuenta?</p>
-              <Link to="/Register" className="infoUnderline">
-                Regístrate
-              </Link>
-            </div>
-          </form>
-        </div>
+        <form className="form" onSubmit={handleLogin}>
+          <h2>Inicia sesión</h2>
+          <Input
+            type="text"
+            placeholder="Correo"
+            name="email"
+            id="email"
+            onChange={handleInputChange}
+            value={email}
+          />
+          <Input
+            type="password"
+            placeholder="Contraseña"
+            name="password"
+            id="password"
+            onChange={handleInputChange}
+            value={password}
+          />
+          {errorMsg && (
+            <>
+              <div className="errLogIn">{errorMsg}</div>
+            </>
+          )}
+
+          <ButtonAccept type="submit" name="INICIAR SESIÓN" />
+          <div className="goToRegister">
+            <p className="infoLogin">¿No tienes una cuenta?</p>
+            <Link to="/Register" className="infoUnderline">
+              Regístrate
+            </Link>
+          </div>
+        </form>
       </div>
     </React.Fragment>
   );

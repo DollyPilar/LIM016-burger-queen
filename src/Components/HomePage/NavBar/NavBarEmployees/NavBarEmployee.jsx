@@ -35,12 +35,6 @@ export const NavBarEmployee = ({ text, name }) => {
             </button>
           </div>
         </div>
-        {/* 
-        <div className="lowBarContainerEmployee">
-          <h2 className="linklowBarEmployee" onClick={goTOrders}>
-            Pedidos
-          </h2>
-        </div> */}
       </div>
     </React.Fragment>
   );

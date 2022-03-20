@@ -7,7 +7,7 @@ import { AddStaff } from "./Components/Admin/AddStaff/AddStaff.jsx";
 import Admin from "./Components/Admin/admin.jsx";
 import Delivery from "./Components/Delivery/Delivery.jsx";
 import Dolly from "./Components/Store/Store.jsx";
-import Home from "./Components/Clients/Home.jsx";
+import { IndexClient } from "./Components/Clients/IndexClient.jsx";
 import { HomePage } from "./Components/HomePage/HomePage.jsx";
 import { Cart } from "./Components/Clients/Cart/Cart.jsx";
 import { AddProducts } from "./Components/Admin/AddProducts/AddProducts.jsx";
@@ -19,7 +19,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/LogIn" element={<LogIn />} />
         <Route path="/Register" element={<Register />} />
-        <Route path="/product" element={<Home />} />
+        <Route path="/product" element={<IndexClient />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/Admin" element={<Admin />} />
         <Route path="/Delivery" element={<Delivery />} />

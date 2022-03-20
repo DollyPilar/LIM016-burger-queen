@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import { auth, db } from "../../../firebase/firebase-config.jsx";
 import { onAuthStateChanged } from "firebase/auth";
 import { CartProducts } from "./CartProducts.jsx";
-import { ButtonCancel } from "./Buttons/ButtonCancel.jsx";
-import { ButtonShop } from "./Buttons/ButtonShop/ButtonShop.jsx";
+import { ButtonCancelShop } from "./Buttons/ButtonCancel.jsx";
+import { ButtonShop } from "./Buttons/ButtonShop.jsx";
 import { NavBar } from "../../HomePage/NavBar/NavBar.jsx";
 import "./Cart.css";
 import {
@@ -17,26 +17,36 @@ import {
 export const Cart = () => {
   // función que trae el nombre del usuario que está logueado
   const [user, setUser] = useState(null);
-    
-  useEffect(() => {
-    let userName = false;
-    const getUserName =async()=>{
-    const docRef = doc(db, "users", auth.currentUser.uid);
-    try {
-      const docSnap = await getDoc(docRef);
-      const userInfo = docSnap.data();
-      if (!userName) {
-        setUser(userInfo.name);
-      }
-    } catch (e) {
-      console.log(e);
-    }}
-    getUserName()
-    return () => {
-      userName = true;
-    };
-  }, []);
 
+  const getUserName = () => {
+    let userName = [];
+    onAuthStateChanged(auth, async (userr) => {
+      if (userr) {
+        const docRef = doc(db, "users", userr.uid);
+        try {
+          const docSnap = await getDoc(docRef);
+          const snap = docSnap.data();
+          //userName = snap.name;
+          userName.push(snap.name);
+        } catch (e) {
+          console.log(e);
+        }
+      } else {
+        console.log("no hay usuario");
+      }
+    });
+    return userName;
+  };
+  useEffect(() => {
+    const ee = getUserName();
+    if (!ee) {
+      console.log("no hay usuario");
+    } else {
+      setUser(ee);
+    }
+    //console.log(ee[0]);
+  }, []);
+  // console.log(user);
   // el estado de los carritos
   const [cartProducts, setCartProducts] = useState([]);
 
@@ -123,41 +133,41 @@ export const Cart = () => {
         <>
           <>
             {cartProducts.length > 0 && (
-              <div className="classProductsContainer">
-                <div className="positionFixedCart">
+              <div className="cartContainer">
+                <div className="cartProducts">
                   <CartProducts
                     cartProducts={cartProducts}
                     cartProductIncrease={cartProductIncrease}
                     cartProductDecrease={cartProductDecrease}
                   />
-                  </div>
+                </div>
 
-                  <div className="cartSummary">
-                    <div className="title">
-                      <h3>Resumen de compra</h3>
-                    </div>
-                    <div className="name">
-                      <p>Nombre: {user}</p>
-                    </div>
-                    <div className="cartInfo">
-                      <p>Número total de productos:</p>
-                      <p>{totalQty}</p>
-                    </div>
-                    <div className="cartInfo">
-                      <p> Precio a pagar:</p>
-                      <p>S/.{totalPrice}</p>
-                    </div>
-                    <div className="buttonsContainer">
-                      <ButtonCancel />
-                      <ButtonShop
-                        cartProducts={cartProducts}
-                        user={user}
-                        totalQty={totalQty}
-                        totalPrice={totalPrice}
-                      />
-                    </div>
+                <div className="cartSummaryContainer">
+                  <div className="cartInfo">
+                    <h3>Resumen de compra</h3>
                   </div>
-                
+                  <div className="cartInfo">
+                    {/* <p>Nombre: pru</p> */}
+                    <p>Nombre: {user}</p>
+                  </div>
+                  <div className="cartInfo">
+                    <p>Total de productos:</p>
+                    <p>{totalQty}</p>
+                  </div>
+                  <div className="cartInfo">
+                    <p> Precio a pagar:</p>
+                    <p>S/.{totalPrice}</p>
+                  </div>
+                  <div className="buttonsContainer">
+                    <ButtonCancelShop />
+                    <ButtonShop
+                      cartProducts={cartProducts}
+                      user={user}
+                      totalQty={totalQty}
+                      totalPrice={totalPrice}
+                    />
+                  </div>
+                </div>
               </div>
             )}
             {cartProducts.length < 1 && (

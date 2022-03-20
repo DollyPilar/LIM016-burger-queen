@@ -12,26 +12,27 @@ export const IndividualFilteredProduct = ({
 
   return (
     <React.Fragment>
-      <div className="productContainer">
-        <div className="productImgContainer">
+      <div className="productContainerFiltered">
+        <div className="productImgContainerFiltered">
           <img
             src={individualFilteredProduct.Img}
             alt="product-img"
-            className="productImg"
+            className="productImgFiltered"
           />
         </div>
-        <div className="boxContainerInfo">
-          <div className="infoBoxContainer">
-            <div className="productInfo">
-              {individualFilteredProduct.Nombre}
-            </div>
-            <div className="productInfo">
-              {" "}
+        <div className="boxContainerInfoFiltered">
+          <p className="productTitleFiltered">
+            {individualFilteredProduct.Nombre}
+          </p>
+
+          <div className="addPriceContainerFiltered">
+            <p className="productInfoFiltered">
               S/. {individualFilteredProduct.Precio}
-            </div>
-          </div>
-          <div className="btnAddContainer">
-            <FaPlusCircle className="addIcon" onClick={handleAddToCart} />
+            </p>
+            <FaPlusCircle
+              className="addIconFiltered"
+              onClick={handleAddToCart}
+            />
           </div>
         </div>
       </div>
