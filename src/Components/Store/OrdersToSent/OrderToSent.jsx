@@ -16,7 +16,10 @@ import "./OrderToSent.css";
 
 function Store() {
   const [orders, setOrders] = useState("");
-  const getShoppingColle = () => {
+
+  useEffect(() => {
+    let isMounted = true;
+    const shoppArray = [];
     const collRef = collection(db, "compras");
     const order = query(
       collRef,
@@ -24,18 +27,19 @@ function Store() {
       orderBy("finalProducts.dateOfShopping", "desc")
     );
     onSnapshot(order, (querySnapshot) => {
-      const shoppArray = [];
       querySnapshot.forEach((doc) => {
         let data = doc.data();
         data.ID = doc.id;
         shoppArray.push(data);
       });
-      setOrders(shoppArray);
     });
-  };
-
-  useEffect(() => {
-    getShoppingColle();
+    if (isMounted) {
+      setOrders(shoppArray);
+    }
+    // };
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
   const updateState = async (compra) => {

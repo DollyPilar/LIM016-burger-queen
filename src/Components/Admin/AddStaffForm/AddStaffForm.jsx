@@ -38,6 +38,7 @@ export const AddStaffForm = () => {
 
   const handleInputAdmin = (e) => {
     const { name, value } = e.target;
+    console.log(e.target.value);
     setState({ ...state, [name]: value });
   };
 
@@ -111,7 +112,7 @@ export const AddStaffForm = () => {
             Cellphone
           );
         } catch (e) {
-          console.log(e);
+          console.log(e.message);
         }
 
         setErrorMsg("");

@@ -1,26 +1,26 @@
 import React, { useState, useEffect } from "react";
-import { auth, db } from "../../firebase/firebase-config";
+import { auth, db } from "../../../firebase/firebase-config";
 import { onAuthStateChanged } from "firebase/auth";
 import { doc, setDoc, collection, getDocs } from "firebase/firestore";
-//import { Products } from "./Products/Products.jsx";
-import { IndividualProduct } from "./Products/IndividualProduct.jsx";
-import { IndividualFilteredProduct } from "./Products/IndividualFilteredProduct.jsx";
-// import { NavBar } from "../HomePage/NavBar/NavBar";
-import "./IndexClient.css";
+import { IndividualProduct } from "../Products/IndividualProduct.jsx";
+import { IndividualFilteredProduct } from "../Products/IndividualFilteredProduct.jsx";
+import "./Shop.css";
 import Swal from "sweetalert2";
 
-export const IndexClient = () => {
+export const Shop = () => {
   const [uid, setUid] = useState(null);
   useEffect(() => {
-    // const GetUserUID = () => {
+    let isMounted = true;
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        setUid(user.uid);
+        if (isMounted) {
+          setUid(user.uid);
+        }
       }
     });
-
-    //   return uid;
-    // };
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
   // estado de los productos
@@ -118,7 +118,6 @@ export const IndexClient = () => {
 
   return (
     <React.Fragment>
-      {/* <NavBar /> */}
       <div className="storeContainer">
         <div className="categoriesContainer">
           <button className="btnProduct" onClick={showAllProducts}>
@@ -137,9 +136,7 @@ export const IndexClient = () => {
         </div>
 
         {filteredProducts.length > 0 && (
-          // <IndividualFilteredProduct/>
           <div className="myProducts">
-            {/* <h1 className="textCenter">{category}</h1> */}
             <div className="productsBox">
               {filteredProducts.map((individualFilteredProduct) => (
                 <IndividualFilteredProduct

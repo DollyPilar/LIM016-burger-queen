@@ -4,7 +4,6 @@ import { onAuthStateChanged } from "firebase/auth";
 import { IndividualCartProduct } from "./IndividualCartProduct.jsx";
 import { ButtonCancelShop } from "./Buttons/ButtonCancel.jsx";
 import { ButtonShop } from "./Buttons/ButtonShop.jsx";
-// import { NavBar } from "../";
 import "./Cart.css";
 import {
   doc,
@@ -18,16 +17,18 @@ export const Cart = () => {
   // función que trae el nombre del usuario que está logueado
   const [user, setUser] = useState(null);
 
-  const getUserName = () => {
-    let userName = [];
+  useEffect(() => {
+    // let userName = [];
+    let isMounted = true;
     onAuthStateChanged(auth, async (userr) => {
       if (userr) {
         const docRef = doc(db, "users", userr.uid);
         try {
           const docSnap = await getDoc(docRef);
           const snap = docSnap.data();
-          //userName = snap.name;
-          userName.push(snap.name);
+          if (isMounted) {
+            setUser(snap.name);
+          }
         } catch (e) {
           console.log(e);
         }
@@ -35,33 +36,30 @@ export const Cart = () => {
         console.log("no hay usuario");
       }
     });
-    return userName;
-  };
-  useEffect(() => {
-    const ee = getUserName();
-    if (!ee) {
-      console.log("no hay usuario");
-    } else {
-      setUser(ee);
-    }
-    //console.log(ee[0]);
+
+    return () => {
+      isMounted = false;
+    };
   }, []);
-  // console.log(user);
-  // el estado de los carritos
+
   const [cartProducts, setCartProducts] = useState([]);
 
-  useEffect(
-    () =>
-      onAuthStateChanged(auth, (user) => {
-        if (user) {
-          onSnapshot(collection(db, "cart" + user.uid), (snapshot) => {
-            const newCartProduct = snapshot.docs.map((doc) => doc.data());
+  useEffect(() => {
+    let isMounted = true;
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        onSnapshot(collection(db, "cart" + user.uid), (snapshot) => {
+          const newCartProduct = snapshot.docs.map((doc) => doc.data());
+          if (isMounted) {
             setCartProducts(newCartProduct);
-          });
-        }
-      }),
-    []
-  );
+          }
+        });
+      }
+    });
+    return () => {
+      isMounted = false;
+    };
+  }, []);
 
   // obteniendo la cantidad de CartProducts en un array separado
   const quantityArr = cartProducts.map((carProduct) => {
@@ -127,7 +125,6 @@ export const Cart = () => {
 
   return (
     <React.Fragment>
-      {/* <NavBar /> */}
       {!user && <div className="emptyCart">No hay productos</div>}
       {user && (
         <>

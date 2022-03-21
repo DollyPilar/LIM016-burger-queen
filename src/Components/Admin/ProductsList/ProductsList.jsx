@@ -36,15 +36,17 @@ export const ProductList = () => {
   useEffect(() => {
     getProducts();
   }, []);
-  const handleDeleteProduct = async (product) => {
-    console.log("funciona", product.ID);
-    // const prodRef = doc(db, "products", product.ID);
-    // try {
-    //   await deleteDoc(prodRef);
-    // } catch (e) {
-    //   console.log(e);
-    // }
+  const handleDeleteProduct = async (e) => {
+    // console.log(e);
+
+    const prodRef = doc(db, "products", e);
+    try {
+      await deleteDoc(prodRef);
+    } catch (e) {
+      console.log(e);
+    }
   };
+  //console.log(products);
   return (
     <React.Fragment>
       <div className="productsCardContainerAdmin">
@@ -63,10 +65,13 @@ export const ProductList = () => {
                 />
               </div>
               <h3 className="productInfoCardName">{product.Nombre}</h3>
+              {/* <h3 className="productInfoCardName">{product.ID}</h3> */}
               <h3 className="productInfoCard">S./{product.Precio}</h3>
               <FaTrash
                 className="productInfoCard"
-                onClick={handleDeleteProduct}
+                onClick={() => handleDeleteProduct(product.ID)}
+                // data-id={product.ID}
+                // id={product.ID}
               />
             </div>
           ))}
