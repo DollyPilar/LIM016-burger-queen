@@ -1,0 +1,31 @@
+.adminContainer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  position: relative;
+  top: 8rem;
+}
+
+.adminSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.adminSection h2 {
+  color: white;
+  font-size: 3.5rem;
+  text-align: center;
+}
+
+.adminWelcome {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 4rem;
+}
+
+.logoAdmin {
+  width: 60%;
+}

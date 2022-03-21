@@ -5,7 +5,7 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
 import { auth, db } from "../../firebase/firebase-config.jsx";
 import { NavBar } from "../HomePage/NavBar/NavBar.jsx";
-import "./login.css";
+import "./Login.css";
 import { Input } from "../../Globals/Input/Input.jsx";
 import { ButtonAccept } from "../../Globals/Buttons/ButtonAccept/ButtonAccept.jsx";
 import logo from "../../assets/peoplewithdogjpg.jpg";
@@ -41,16 +41,18 @@ function Log() {
           if (userRol === "client") {
             navigate("/product");
           } else if (userRol === "admin") {
-            navigate("/Admin");
+            navigate("/admin");
           } else if (userRol === "store") {
-            navigate("/Store");
+            navigate("/store");
           } else if (userRol === "delivery") {
-            navigate("/Delivery");
+            navigate("/delivery");
           }
         } else {
           setErrorMsg("Por favor, verifica tu correo");
         }
         setErrorMsg("");
+        setState("");
+        e.target.reset();
       } catch (error) {
         const errMsg = error.code;
         if (errMsg === "auth/user-not-found") {

@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import { auth, db } from "../../firebase/firebase-config";
 import { onAuthStateChanged } from "firebase/auth";
 import { doc, setDoc, collection, getDocs } from "firebase/firestore";
-import { Products } from "./Products/Products.jsx";
+//import { Products } from "./Products/Products.jsx";
+import { IndividualProduct } from "./Products/IndividualProduct.jsx";
 import { IndividualFilteredProduct } from "./Products/IndividualFilteredProduct.jsx";
 import { NavBar } from "../HomePage/NavBar/NavBar";
 import "./IndexClient.css";
@@ -156,7 +157,13 @@ export const IndexClient = () => {
               <div className="myProducts">
                 {/* <h1 className="textCenter">Nuestros productos</h1> */}
                 <div className="productsBox">
-                  <Products products={products} addToCart={addToCart} />
+                  {products.map((individualProduct) => (
+                    <IndividualProduct
+                      key={individualProduct.ID}
+                      individualProduct={individualProduct}
+                      addToCart={addToCart}
+                    />
+                  ))}
                 </div>
               </div>
             )}

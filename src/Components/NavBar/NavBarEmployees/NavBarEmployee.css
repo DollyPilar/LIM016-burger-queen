@@ -1,0 +1,21 @@
+.navBarContainerEmployee {
+  position: fixed;
+  width: 100%;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: space-between;
+}
+.highBarEmployee {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+.infoEmployee {
+  font-size: 2rem;
+  color: #7d7171;
+}
+.navBarIconEmployee {
+  color: #7d7171;
+  font-size: 2.4rem;
+}

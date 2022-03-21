@@ -5,7 +5,7 @@ import {
   createUserWithEmailAndPassword,
   sendEmailVerification,
 } from "firebase/auth";
-import "./register.css";
+import "./Register.css";
 import { auth, db } from "../../firebase/firebase-config.jsx";
 import logoRegister from "../../assets/peoplewithdogjpg.jpg";
 import { NavBar } from "../HomePage/NavBar/NavBar.jsx";
@@ -67,6 +67,8 @@ function Register() {
         navigate("/LogIn");
         await createUserColl(client.user.uid, Fullname, Email);
         setErrorMsg("");
+        setState("");
+        e.target.reset();
       } catch (error) {
         console.log(error.code);
         if (error.code === "auth/email-already-in-use") {

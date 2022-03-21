@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { auth, db } from "../../../firebase/firebase-config.jsx";
 import { onAuthStateChanged } from "firebase/auth";
-import { CartProducts } from "./CartProducts.jsx";
+import { IndividualCartProduct } from "./IndividualCartProduct.jsx";
 import { ButtonCancelShop } from "./Buttons/ButtonCancel.jsx";
 import { ButtonShop } from "./Buttons/ButtonShop.jsx";
 import { NavBar } from "../../HomePage/NavBar/NavBar.jsx";
@@ -135,11 +135,15 @@ export const Cart = () => {
             {cartProducts.length > 0 && (
               <div className="cartContainer">
                 <div className="cartProducts">
-                  <CartProducts
-                    cartProducts={cartProducts}
-                    cartProductIncrease={cartProductIncrease}
-                    cartProductDecrease={cartProductDecrease}
-                  />
+                  {cartProducts.map((cartProduct) => (
+                    // console.log(cartProduct)
+                    <IndividualCartProduct
+                      key={cartProduct.ID}
+                      cartProduct={cartProduct}
+                      cartProductIncrease={cartProductIncrease}
+                      cartProductDecrease={cartProductDecrease}
+                    />
+                  ))}
                 </div>
 
                 <div className="cartSummaryContainer">

@@ -1,0 +1,61 @@
+.adminFormSection {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  position: fixed;
+  top: 7rem;
+  width: 100%;
+  gap: 2rem;
+  left: 3rem;
+}
+.adminForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  background-color: white;
+  box-shadow: 7px 2px 23px 2px rgb(0 0 0 / 22%);
+  border-radius: 0.5rem;
+  padding: 1.5em;
+  width: 44rem;
+  height: 100%;
+  color: white;
+  text-align: center;
+}
+.inputAdmin {
+  width: 100%;
+  height: 3rem;
+  padding: 0.5rem;
+  border: 1px solid #7d7171;
+  border-radius: 5px;
+  font-size: 1.3rem;
+  color: #7a7a7a;
+}
+.FirstColumForm {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4rem;
+}
+.columnForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 18rem;
+}
+.rowForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.errorMsg {
+  color: #d90606;
+  font-size: 1.6rem;
+}

@@ -1,33 +1,15 @@
-import React, { useState, useEffect } from "react";
-import { addDoc, collection, query, where, onSnapshot, doc, getDoc, deleteDoc } from "firebase/firestore";
-import { db, storage, auth } from "../../../firebase/firebase-config";
+import React, { useState } from "react";
+import { addDoc, collection } from "firebase/firestore";
+import { db, storage } from "../../../firebase/firebase-config.jsx";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import {onAuthStateChanged} from "firebase/auth"
-import "./addProducts.css";
+
+import { Input } from "../../../Globals/Input/Input.jsx";
+import { ButtonAccept } from "../../../Globals/Buttons/ButtonAccept/ButtonAccept.jsx";
+import "./AddProducts.css";
 import { FaPhotoVideo } from "react-icons/fa";
 import Swal from "sweetalert2";
-import
-{ LowNavBar } from "../../HomePage/NavBar/NavBarEmployees/LowNavBar.jsx";
-import { NavBarEmployee } from "../../HomePage/NavBar/NavBarEmployees/NavBarEmployee.jsx";
-import {ProductsCard} from "./ProductsCard.jsx"
 
 export const AddProducts = () => {
-  const [user, setUser] = useState(null);
-    useEffect(
-    () =>
-      onAuthStateChanged(auth, (user) => {
-        if (user) {
-          //console.log(user.uid);
-          const docRef = doc(db, "users", user.uid);
-          const docSnap = getDoc(docRef);
-          docSnap.then((doc) => setUser(doc.data().name));
-        } else {
-          setUser("Empleado");
-          console.log("no estás logueada");
-        }
-      }),
-    []
-  );
   const [productPhoto, setProductPhoto] = useState("");
   const [photoVisibility, setPhotoVisibility] = useState(false);
   const [errMsg, setErrMsg] = useState("");
@@ -78,7 +60,7 @@ export const AddProducts = () => {
           Precio: Price,
           Tipo: Option,
           Img: productPhoto,
-          Tienda: "Happy Paws"
+          Tienda: "Happy Paws",
         });
         Swal.fire({
           position: "top",
@@ -91,112 +73,68 @@ export const AddProducts = () => {
           timer: 2900,
         });
         setErrMsg("");
+        setState("");
+        e.target.reset();
       } catch (e) {
         console.log(e.message);
       }
     }
   };
-  const [products, setProducts] = useState([]);
-  // función que trae los productos
-  const getProducts = async () => {
-    const collRef = collection(db, "products");
-    try {
-      const order = query(collRef, where("Tienda", "==", "Happy Paws"));
-      // const productsArray = [];
 
-      onSnapshot(order, (querySnapshot) => {
-        const delivArray = [];
-        querySnapshot.forEach((doc) => {
-          let data = doc.data();
-          data.ID = doc.id;
-          delivArray.push(data);
-        });
-        setProducts(delivArray);
-      });
-   
-  } catch(e){
-    console.log(e)
-  }
-}
-  useEffect(() => {
-    getProducts();
-  }, []);
-  const deleteProduct = async(product)=>{
-    //console.log("funciona", product.ID)
-    const prodRef = doc(db, "products", product.ID);
-    try{
-      await deleteDoc(prodRef);
-    }catch(e){console.log(e)}
-    
-  }
   return (
     <React.Fragment>
-       <NavBarEmployee text="Administrador" name={user} />
-      <LowNavBar/>
-    <div className="productsCardContainerAdmin">
-      <div className="firstRowCard">
-        <h3 className="cardName">Productos</h3>
-        <h3 className="cardName">Precio</h3>
-      </div>
-     <ProductsCard products={products} deleteProduct={deleteProduct}/> </div>
-      <div className="addProductsSection">
-        <form className="addProductsForm" onSubmit={addProducts}>
+      <form className="addProductsForm" onSubmit={addProducts}>
+        <Input
+          type="text"
+          placeholder="Nombre del Producto"
+          name="ProductName"
+          onChange={handleInputAddProductsChange}
+        />
+        <Input
+          type="number"
+          placeholder="Precio"
+          name="Price"
+          onChange={handleInputAddProductsChange}
+        />
+        <select
+          className="inputAddProducts"
+          name="Option"
+          onChange={handleInputAddProductsChange}
+        >
+          <option style={{ fontSize: "0.7rem" }}>Escoge una opción</option>
+          <option style={{ fontSize: "0.7rem" }}>Sección Perros</option>
+          <option style={{ fontSize: "0.7rem" }}>Sección Gatos</option>
+        </select>
+        <div>
           <input
-            className="inputAddProducts"
-            type="text"
-            placeholder="Nombre del Producto"
-            name="ProductName"
-            onChange={handleInputAddProductsChange}
+            style={{ display: "none" }}
+            id="photo"
+            className="hidden"
+            type="file"
+            placeholder="Imagen"
+            name="Img"
+            onChange={(e) => {
+              subirFile(e.target);
+            }}
           />
-          <input
-            className="inputAddProducts"
-            type="number"
-            placeholder="Precio"
-            name="Price"
-            onChange={handleInputAddProductsChange}
-          />
-          <select
-            className="inputAddProducts"
-            name="Option"
-            onChange={handleInputAddProductsChange}
-          >
-            <option className="inputAddProducts">Escoge una opción</option>
-            <option className="inputAddProducts">Sección Perros</option>
-            <option className="inputAddProducts">Sección Gatos</option>
-          </select>
-          <div>
-            <input
-              style={{ display: "none" }}
-              id="photo"
-              className="hidden"
-              type="file"
-              placeholder="Imagen"
-              name="Img"
-              onChange={(e) => {
-                subirFile(e.target);
-              }}
-            />
-            <label htmlFor="photo">
-              <div className="fileChosen">
-                <FaPhotoVideo className="iconPhoto" />
-                {photoVisibility ? (
-                  <p className="textSpan">Foto Elegida</p>
-                ) : (
-                  <p className="textSpan">No hay foto</p>
-                )}
-              </div>
-            </label>
-          </div>
-          {errMsg && (
-            <>
-              <div className="errorAlert">{errMsg}</div>
-            </>
-          )}
-          <button className="btnAddProducts" type="submit">
-            SUBIR PRODUCTOS
-          </button>
-        </form>
-      </div>
+          <label htmlFor="photo">
+            <div className="fileChosen">
+              <FaPhotoVideo className="iconPhoto" />
+              {photoVisibility ? (
+                <p className="textSpan">Foto Elegida</p>
+              ) : (
+                <p className="textSpan">No hay foto</p>
+              )}
+            </div>
+          </label>
+        </div>
+        {errMsg && (
+          <>
+            <div className="errorAlert">{errMsg}</div>
+          </>
+        )}
+        <ButtonAccept name="SUBIR PRODUCTOS" type="submit" />
+      </form>
     </React.Fragment>
   );
 };
