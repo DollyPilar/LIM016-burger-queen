@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import dogHome from "../../assets/dogHome.png";
-import { NavBar } from "./NavBar/NavBar.jsx";
+import { NavBar } from "../NavBar/NavBar.jsx";
 import "./HomePage.css";
 
 export const HomePage = () => {

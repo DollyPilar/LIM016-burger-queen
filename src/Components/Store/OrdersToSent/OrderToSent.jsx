@@ -11,7 +11,7 @@ import {
   doc,
   deleteDoc,
 } from "firebase/firestore";
-import { IndividualOrderToSent } from "./IndividualOrderSent.jsx";
+import { IndividualOrderToSent } from "./IndividualOrderToSent.jsx";
 import "./OrderToSent.css";
 
 function Store() {

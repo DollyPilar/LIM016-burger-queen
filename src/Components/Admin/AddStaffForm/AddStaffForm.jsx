@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { ButtonAccept } from "../../../Globals/Buttons/ButtonAccept/ButtonAccept.jsx";
-import { doc, getDoc, setDoc } from "firebase/firestore";
+import { doc, setDoc } from "firebase/firestore";
 import { Input } from "../../../Globals/Input/Input.jsx";
 import { db, auth } from "../../../firebase/firebase-config.jsx";
-import { FaArrowCircleLeft } from "react-icons/fa";
+// import { FaArrowCircleLeft } from "react-icons/fa";
 import {
-  onAuthStateChanged,
   createUserWithEmailAndPassword,
   sendEmailVerification,
 } from "firebase/auth";
@@ -13,25 +12,6 @@ import Swal from "sweetalert2";
 import "./AddStaffForm.css";
 
 export const AddStaffForm = () => {
-  const [user, setUser] = useState(null);
-  useEffect(
-    () =>
-      onAuthStateChanged(auth, async (user) => {
-        if (user) {
-          const docRef = doc(db, "users", user.uid);
-          try {
-            const docSnap = await getDoc(docRef);
-            setUser(docSnap.data().name);
-          } catch (e) {
-            console.log(e);
-          }
-        } else {
-          setUser("Empleado");
-          console.log("no estás logueada");
-        }
-      }),
-    []
-  );
   const [errorMsg, setErrorMsg] = useState("");
   const initialState = {
     NameAdmin: "",
@@ -148,9 +128,6 @@ export const AddStaffForm = () => {
     }
   };
 
-  const hideForm = () => {
-    console.log("click, hide form");
-  };
   return (
     <React.Fragment>
       <div className="adminFormSection">

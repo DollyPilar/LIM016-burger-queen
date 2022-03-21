@@ -8,7 +8,7 @@ import {
 import "./Register.css";
 import { auth, db } from "../../firebase/firebase-config.jsx";
 import logoRegister from "../../assets/peoplewithdogjpg.jpg";
-import { NavBar } from "../HomePage/NavBar/NavBar.jsx";
+// import { NavBar } from "../HomePage/NavBar/NavBar.jsx";
 import Swal from "sweetalert2";
 import { Input } from "../../Globals/Input/Input.jsx";
 import { ButtonAccept } from "../../Globals/Buttons/ButtonAccept/ButtonAccept.jsx";
@@ -82,7 +82,7 @@ function Register() {
 
   return (
     <React.Fragment>
-      <NavBar />
+      {/* <NavBar /> */}
       <div className="registerContainer">
         <form className="registerForm" onSubmit={handleRegisterUser}>
           <h4>Crea una cuenta para conocernos</h4>

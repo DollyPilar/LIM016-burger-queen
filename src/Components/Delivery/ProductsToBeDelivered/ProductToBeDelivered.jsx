@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { db } from "../../../firebase/firebase-config.jsx";
 
-import "./Delivery.css";
+import "./ProductToBeDelivered.css";
 import {
   onSnapshot,
   where,

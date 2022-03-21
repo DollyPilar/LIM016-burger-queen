@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
 import { auth, db } from "../../firebase/firebase-config.jsx";
-import { NavBar } from "../HomePage/NavBar/NavBar.jsx";
+// import { NavBar } from "../HomePage/NavBar/NavBar.jsx";
 import "./Login.css";
 import { Input } from "../../Globals/Input/Input.jsx";
 import { ButtonAccept } from "../../Globals/Buttons/ButtonAccept/ButtonAccept.jsx";
@@ -66,7 +66,7 @@ function Log() {
 
   return (
     <React.Fragment>
-      <NavBar />
+      {/* <NavBar /> */}
       <div className="logInContainer">
         <div className="welcomeContainer">
           <img src={logo} alt="logo" className="logoLogIn" />

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { db } from "../../firebase/firebase-config.jsx";
+import { db } from "../../../firebase/firebase-config.jsx";
 //import Swal from "sweetalert2";
-import "./Delivery.css";
+import "./DeliveredProducts.css";
 import {
   onSnapshot,
   where,
@@ -37,7 +37,7 @@ function Delivery() {
   useEffect(() => {
     getOrdersDeliveryCol();
   }, []);
-
+  //console.log(ordersDelivered);
   return (
     <React.Fragment>
       <div className="deliveryBoxContainer">
@@ -47,7 +47,6 @@ function Delivery() {
               <IndividualDeliveredProduct
                 key={delivery.ID}
                 delivery={delivery}
-                deliverProduct={deliverProduct}
               />
             ))}
           </div>

@@ -4,7 +4,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import { IndividualCartProduct } from "./IndividualCartProduct.jsx";
 import { ButtonCancelShop } from "./Buttons/ButtonCancel.jsx";
 import { ButtonShop } from "./Buttons/ButtonShop.jsx";
-import { NavBar } from "../../HomePage/NavBar/NavBar.jsx";
+// import { NavBar } from "../";
 import "./Cart.css";
 import {
   doc,
@@ -127,7 +127,7 @@ export const Cart = () => {
 
   return (
     <React.Fragment>
-      <NavBar />
+      {/* <NavBar /> */}
       {!user && <div className="emptyCart">No hay productos</div>}
       {user && (
         <>

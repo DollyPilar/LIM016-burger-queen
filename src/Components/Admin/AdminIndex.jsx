@@ -3,7 +3,6 @@ import React from "react";
 import { LowNavBar } from "../NavBar/NavBarEmployees/SideNavBar.jsx";
 import "./AdminIndex.css";
 import { useNavigate, Outlet } from "react-router-dom";
-import { NavBarEmployee } from "../NavBar/NavBarEmployees/NavBarEmployee.jsx";
 // import { NavBarEmployee } from "../HomePage/NavBar/NavBarEmployees/NavBarEmployee.jsx";
 
 function Admin() {

@@ -5,7 +5,7 @@ import { doc, setDoc, collection, getDocs } from "firebase/firestore";
 //import { Products } from "./Products/Products.jsx";
 import { IndividualProduct } from "./Products/IndividualProduct.jsx";
 import { IndividualFilteredProduct } from "./Products/IndividualFilteredProduct.jsx";
-import { NavBar } from "../HomePage/NavBar/NavBar";
+// import { NavBar } from "../HomePage/NavBar/NavBar";
 import "./IndexClient.css";
 import Swal from "sweetalert2";
 
@@ -118,7 +118,7 @@ export const IndexClient = () => {
 
   return (
     <React.Fragment>
-      <NavBar />
+      {/* <NavBar /> */}
       <div className="storeContainer">
         <div className="categoriesContainer">
           <button className="btnProduct" onClick={showAllProducts}>

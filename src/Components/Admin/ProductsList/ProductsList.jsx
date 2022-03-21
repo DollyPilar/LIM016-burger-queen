@@ -8,8 +8,8 @@ import {
   //   deleteDoc,
 } from "firebase/firestore";
 import { db } from "../../../firebase/firebase-config.jsx";
-
-import "./ProductList.css";
+import { FaTrash } from "react-icons/fa";
+import "./ProductsList.css";
 
 export const ProductList = () => {
   const [products, setProducts] = useState([]);

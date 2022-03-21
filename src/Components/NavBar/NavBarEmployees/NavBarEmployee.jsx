@@ -1,7 +1,6 @@
 import React from "react";
 import { FaSignOutAlt } from "react-icons/fa";
-import PawLogo from "../../../../assets/PawLogo.png";
-import { auth } from "../../../../firebase/firebase-config.jsx";
+import { auth } from "../../../firebase/firebase-config.jsx";
 import { signOut } from "firebase/auth";
 import "./NavBarEmployee.css";
 // import Swal from 'sweetalert2';
