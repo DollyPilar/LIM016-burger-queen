@@ -1,0 +1,44 @@
+.purcharseOrderStoreFinal {
+  /* border: 1px solid #7d7171; */
+  box-shadow: 7px 2px 23px 2px rgb(0 0 0 / 22%);
+  margin-bottom: 1rem;
+  display: flex;
+  width: 33rem;
+  flex-direction: column;
+  padding: 0.7rem;
+  grid-gap: 1.1rem;
+  gap: 1.1rem;
+  border-radius: 0.5rem;
+  margin-top: 1.5rem;
+}
+.purcharseOrderStoreFinal p {
+  font-size: 1.4rem;
+}
+.rowStoreTableFinal {
+  display: flex;
+  gap: 0.5rem;
+}
+.rowStoreTablePriceFinal {
+  display: flex;
+  gap: 0.5rem;
+}
+.btnStoreContainerFinal {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+}
+.purchaseOrdeTableFinal {
+  border-collapse: collapse;
+  table-layout: fixed;
+  width: 100%;
+  font-size: 1.2rem;
+}
+.purchaseOrdeTableFinal td,
+.purchaseOrdeTableFinal th {
+  /* border: 1px solid black; */
+  padding: 8px;
+}
+
+.purchaseOrdeTableFinal tbody tr td {
+  text-align: center;
+}

@@ -1,13 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import dogHome from "../../assets/dogHome.png";
-import { NavBar } from "./NavBar/NavBar.jsx";
 import "./HomePage.css";
 
 export const HomePage = () => {
   return (
     <React.Fragment>
-      <NavBar />
       <div className="homePageContainer">
         <div className="homeInfoContainer">
           <div>
@@ -16,7 +14,7 @@ export const HomePage = () => {
             </h2>
           </div>
           <div className="btnContainer">
-            <Link to="/LogIn">
+            <Link to="login">
               <button className="btnBuyHomePage">Compra ahora</button>
             </Link>
           </div>

@@ -1,0 +1,15 @@
+.buttonCancel {
+  background-color: white;
+  color: #ce73ff;
+  border: 3px solid #ce73ff;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.7rem;
+  font-weight: bolder;
+  width: 100%;
+  height: 3rem;
+}
+.buttonCancel:hover {
+  color: #aa3be6;
+  border: 3px solid #aa3be6;
+}
