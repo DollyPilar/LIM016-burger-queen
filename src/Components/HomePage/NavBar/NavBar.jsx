@@ -6,13 +6,13 @@ import { auth } from "../../../firebase/firebase-config";
 import { signOut } from "firebase/auth";
 import "./NavBar.css";
 import Swal from 'sweetalert2';
-import { useNavigate} from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
 export const NavBar = () => {
   
 
   // console.log(userState);
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
   const logOut = () => {
     Swal.fire({
       title: '¿Está seguro de que desea cerrar sesión?',
@@ -23,7 +23,8 @@ export const NavBar = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         signOut(auth); 
-        navigate("/");
+        // navigate("/");
+        <Navigate to="/" />
       }
     })
   };
