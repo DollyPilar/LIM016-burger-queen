@@ -38,7 +38,7 @@ export const AddStaffForm = () => {
 
   const handleInputAdmin = (e) => {
     const { name, value } = e.target;
-    console.log(e.target.value);
+    // console.log(e.target.value);
     setState({ ...state, [name]: value });
   };
 

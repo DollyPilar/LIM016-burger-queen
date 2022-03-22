@@ -4,10 +4,10 @@
 
   align-items: center;
   position: fixed;
-  top: 7rem;
-  width: 100%;
+  top: 17rem;
+  width: 80%;
   gap: 2rem;
-  left: 3rem;
+  left: 11rem;
 }
 .adminForm {
   display: flex;

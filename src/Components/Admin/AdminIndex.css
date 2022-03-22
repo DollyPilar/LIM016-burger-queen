@@ -29,3 +29,22 @@
 .logoAdmin {
   width: 60%;
 }
+.topNav {
+  width: 100%;
+  display: flex;
+  gap: 34rem;
+  position: fixed;
+  top: 0rem;
+  left: 0rem;
+  height: 4rem;
+  align-items: center;
+  justify-content: center;
+}
+.topNavName {
+  font-size: 1.7rem;
+  color: black;
+}
+.logOutIcon {
+  color: black;
+  font-size: 1.5rem;
+}

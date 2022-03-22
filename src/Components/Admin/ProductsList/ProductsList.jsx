@@ -4,8 +4,8 @@ import {
   query,
   where,
   onSnapshot,
-  //   doc,
-  //   deleteDoc,
+  doc,
+  deleteDoc,
 } from "firebase/firestore";
 import { db } from "../../../firebase/firebase-config.jsx";
 import { FaTrash } from "react-icons/fa";
@@ -65,13 +65,10 @@ export const ProductList = () => {
                 />
               </div>
               <h3 className="productInfoCardName">{product.Nombre}</h3>
-              {/* <h3 className="productInfoCardName">{product.ID}</h3> */}
               <h3 className="productInfoCard">S./{product.Precio}</h3>
               <FaTrash
                 className="productInfoCard"
                 onClick={() => handleDeleteProduct(product.ID)}
-                // data-id={product.ID}
-                // id={product.ID}
               />
             </div>
           ))}

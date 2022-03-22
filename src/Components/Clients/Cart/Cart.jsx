@@ -41,6 +41,7 @@ export const Cart = () => {
       isMounted = false;
     };
   }, []);
+  console.log(user);
 
   const [cartProducts, setCartProducts] = useState([]);
 

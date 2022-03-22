@@ -17,30 +17,29 @@ import "./OrderToSent.css";
 function Store() {
   const [orders, setOrders] = useState("");
 
-  useEffect(() => {
-    let isMounted = true;
-    const shoppArray = [];
+  const getOrdersSentCol = () => {
     const collRef = collection(db, "compras");
     const order = query(
       collRef,
-      where("finalProducts.shoppingState", "==", "Pedido realizado"),
+      where("finalProducts.shoppingState", "==", "Pedido a preparar"),
       orderBy("finalProducts.dateOfShopping", "desc")
     );
     onSnapshot(order, (querySnapshot) => {
+      const shoppArray = [];
       querySnapshot.forEach((doc) => {
         let data = doc.data();
         data.ID = doc.id;
         shoppArray.push(data);
       });
-    });
-    if (isMounted) {
       setOrders(shoppArray);
-    }
-    // };
-    return () => {
-      isMounted = false;
-    };
+      // setOrders([]);
+    });
+  };
+
+  useEffect(() => {
+    getOrdersSentCol();
   }, []);
+  console.log(orders);
 
   const updateState = async (compra) => {
     const prodRef = doc(db, "compras", compra.ID);
@@ -67,9 +66,9 @@ function Store() {
       }
     });
   };
-
   return (
     <React.Fragment>
+      <p>jdbugduwgeoygwe7gwo8e7g</p>
       <div className="storeBoxContainer">
         {orders.length > 0 && (
           <div className="storeBox">

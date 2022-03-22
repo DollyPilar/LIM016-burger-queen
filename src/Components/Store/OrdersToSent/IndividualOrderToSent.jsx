@@ -3,7 +3,7 @@ import "./IndividualOrderToSent.css";
 import { hourAndDate } from "../../../functions/projectFunctions";
 
 export const IndividualOrderToSent = ({ order, updateState, cancelShop }) => {
-  //console.log(order);
+  console.log(",," + order);
   const handleUpdateState = () => {
     updateState(order);
   };

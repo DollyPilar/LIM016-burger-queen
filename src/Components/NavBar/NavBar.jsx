@@ -42,8 +42,14 @@ export const NavBar = () => {
           <div className="logoNavContainer">
             <img src={PawLogo} alt="Happy Paws" className="logoNav" />
           </div>
-          <Link to="/">Inicio</Link>
-          <Link to="product">Tienda</Link>
+          <div className="inicioTiends">
+            <Link to="/" className="inicio">
+              Inicio
+            </Link>
+            <Link to="product" className="inicio">
+              Tienda
+            </Link>
+          </div>
         </div>
 
         <div className="iconContainer">

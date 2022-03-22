@@ -4,18 +4,22 @@
   display: flex;
   align-content: center;
   align-items: center;
-  justify-content: space-between;
+  /* justify-content: space-between; */
+  height: 5rem;
+  gap: 48rem;
+  background: #bb53f3;
 }
 .highBarEmployee {
   display: flex;
   gap: 1rem;
   align-items: center;
+  margin-left: 1rem;
 }
 .infoEmployee {
   font-size: 2rem;
-  color: #7d7171;
+  color: #fcfcfc;
 }
 .navBarIconEmployee {
-  color: #7d7171;
+  color: #fcfcfc;
   font-size: 2.4rem;
 }

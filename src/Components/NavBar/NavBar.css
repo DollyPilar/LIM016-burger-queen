@@ -6,6 +6,7 @@
   justify-content: space-between;
   align-items: center;
   gap: 24rem;
+  background: #bb53f3;
 }
 
 .swal2-styled.swal2-confirm {
@@ -16,6 +17,16 @@
 }
 .TopBarContainer {
   display: flex;
+  gap: 2rem;
+}
+.inicioTiends {
+  display: flex;
+  gap: 2rem;
+}
+.inicio {
+  color: white;
+  font-size: 1.5rem;
+  text-decoration: none;
 }
 
 .logoNavContainer {

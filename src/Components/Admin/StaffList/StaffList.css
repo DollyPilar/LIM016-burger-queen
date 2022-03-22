@@ -3,66 +3,29 @@
   overflow: scroll;
   border: none;
   top: 10rem;
-  margin-left: 2rem;
-  background: red;
+  left: 12rem;
+  height: 36rem;
+  width: 57rem;
 }
-.firstRowStaff {
-  display: flex;
-  align-items: center;
+
+.staffTable {
+  border-collapse: collapse;
+  table-layout: fixed;
+  width: 100%;
+  font-size: 1.2rem;
+}
+.staffTable td,
+.staffTable th {
+  /* border: 1px solid black; */
+  padding: 8px;
+}
+.staffTable th {
+  font-size: 1.6rem;
+}
+.staffTable tbody tr td {
+  text-align: center;
+  font-size: 1.5rem;
+}
+.staffTable tbody tr {
   border-bottom: 1px solid #7a7a7a;
-  gap: 2rem;
-  margin-bottom: 1rem;
-  margin-left: 10rem;
-  margin-top: 1.6rem;
-}
-.cardStaffName {
-  font-size: 1.5rem;
-  color: #7a7a7a;
-  padding: 0.5rem;
-  margin-left: 0rem;
-}
-.cardStaffEmail {
-  font-size: 1.5rem;
-  color: #7a7a7a;
-  padding: 0.5rem;
-  margin-left: 7rem;
-}
-.cardStaffRol {
-  font-size: 1.5rem;
-  color: #7a7a7a;
-  padding: 0.5rem;
-  margin-left: 9rem;
-}
-.IndividualStaffCard {
-  background-color: blue;
-  color: black;
-  border-bottom: 1px solid #7a7a7a;
-  display: flex;
-  align-items: center;
-  gap: 8rem;
-  height: 100%;
-  width: 39rem;
-  margin-left: 15rem;
-}
-/* .staffName {
-  font-size: 1.4rem;
-  color: #7a7a7a;
-  width: 0rem;
-  text-align: center;
-}
-.staffEmail {
-  font-size: 1.4rem;
-  color: #7a7a7a;
-  width: 15rem;
-  text-align: center;
-}
-.staffRol {
-  font-size: 1.4rem;
-  color: #7a7a7a;
-  width: 5rem;
-  text-align: center;
-} */
-.staffInfo {
-  color: black;
-  font-size: 1.4rem;
 }

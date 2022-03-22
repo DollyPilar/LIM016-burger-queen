@@ -1,31 +1,29 @@
 .productsCardContainerAdmin {
   position: fixed;
   height: 40rem;
-  width: 35rem;
+  width: 52rem;
   top: 10rem;
-  left: 2.5rem;
+  left: 16.5rem;
   overflow: scroll;
-}
-.individualProductCard {
-  /* position:fixed;
-    top:10rem; */
-  border-bottom: 1px solid #7a7a7a;
-  display: flex;
-  align-items: center;
-  gap: 3rem;
 }
 .firstRowCard {
   display: flex;
   align-items: center;
   border-bottom: 1px solid #7a7a7a;
-  gap: 2rem;
+  gap: 0rem;
   margin-bottom: 1rem;
 }
 .cardName {
   font-size: 1.5rem;
   color: #7a7a7a;
   padding: 0.5rem;
-  margin-left: 6rem;
+  margin-left: 15rem;
+}
+.individualProductCard {
+  border-bottom: 1px solid #7a7a7a;
+  display: flex;
+  align-items: center;
+  gap: 4rem;
 }
 .cardImg {
   height: 5rem;
@@ -37,12 +35,12 @@
 .productInfoCard {
   font-size: 1.4rem;
   color: #7a7a7a;
-  width: 5rem;
+  width: 4.2rem;
   text-align: center;
 }
 .productInfoCardName {
   font-size: 1.4rem;
   color: #7a7a7a;
-  width: 11rem;
+  width: 24rem;
   text-align: center;
 }

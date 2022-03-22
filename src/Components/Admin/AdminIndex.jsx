@@ -3,6 +3,7 @@ import React from "react";
 import { LowNavBar } from "../NavBar/NavBarEmployees/SideNavBar.jsx";
 import "./AdminIndex.css";
 import { useNavigate, Outlet } from "react-router-dom";
+import { FaSignOutAlt } from "react-icons/fa";
 // import { NavBarEmployee } from "../HomePage/NavBar/NavBarEmployees/NavBarEmployee.jsx";
 
 function Admin() {
@@ -31,10 +32,16 @@ function Admin() {
     navigate("orderhistory");
     console.log("click en orderhistory");
   };
-
+  const logOut = () => {
+    console.log("click");
+  };
   return (
     <React.Fragment>
-      {/* <NavBarEmployee text="Administrador" name={user} /> */}
+      <div className="topNav">
+        <p className="topNavName">Bienvenida Dolly</p>
+        <FaSignOutAlt className="logOutIcon" onClick={logOut} />
+      </div>
+      <h2>Reporte Semanal</h2>
       <LowNavBar
         goHome={goHome}
         goStaff={goStaff}

@@ -26,6 +26,9 @@
   height: 34rem;
   color: #7a7a7a;
   text-align: center;
+  position: fixed;
+  top: 13rem;
+  left: 25rem;
 }
 
 .inputAddProducts {

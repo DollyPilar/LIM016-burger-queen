@@ -15,10 +15,10 @@ export const StoreIndex = () => {
       <div>
         <NavBarEmployee text="Almacen" nameEmployee="ejemplo" />
         <div className="btnContainerStore">
-          <Link to="/store" className="infoUnderline">
+          <Link to="/store" style={{ width: "12rem" }}>
             <ButtonCancel name="Por alistar" />
           </Link>
-          <Link to="ordersent" className="infoUnderline">
+          <Link to="ordersent" style={{ width: "12rem" }}>
             <ButtonCancel name="Listos" />
           </Link>
         </div>
