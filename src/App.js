@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-filename-extension */
 import React from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import LogIn from "./Components/Login/login.jsx";
 import Register from "./Components/Register/register.jsx";
 import { AddStaff } from "./Components/Admin/AddStaff/AddStaff.jsx";
@@ -14,20 +14,18 @@ import { AddProducts } from "./Components/Admin/AddProducts/AddProducts.jsx";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/LogIn" element={<LogIn />} />
-        <Route path="/Register" element={<Register />} />
-        <Route path="/product" element={<Home />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/Admin" element={<Admin />} />
-        <Route path="/Delivery" element={<Delivery />} />
-        <Route path="/AddStaff" element={<AddStaff />} />
-        <Route path="/Store" element={<Dolly />} />
-        <Route path="/AddProducts" element={<AddProducts />} />
-      </Routes>
-    </BrowserRouter>
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/LogIn" element={<LogIn />} />
+      <Route path="/Register" element={<Register />} />
+      <Route path="/product" element={<Home />} />
+      <Route path="/cart" element={<Cart />} />
+      <Route path="/Admin" element={<Admin />} />
+      <Route path="/Delivery" element={<Delivery />} />
+      <Route path="/AddStaff" element={<AddStaff />} />
+      <Route path="/Store" element={<Dolly />} />
+      <Route path="/AddProducts" element={<AddProducts />} />
+    </Routes>
   );
 }
 
