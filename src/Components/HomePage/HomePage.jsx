@@ -1,5 +1,5 @@
 import React from "react";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import dogHome from "../../assets/dogHome.png";
 // import { NavBar } from "./NavBar/NavBar.jsx";
 import "./HomePage.css";
@@ -18,9 +18,9 @@ export const HomePage = () => {
             </h2>
           </div>
           <div className="btnContainer">
-            {/* <Link to="/LogIn">
+            <Link to="/LogIn">
               <button className="btnBuyHomePage">Compra ahora</button>
-            </Link> */}
+            </Link>
           </div>
         </div>
 
