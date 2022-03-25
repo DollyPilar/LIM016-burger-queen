@@ -30,21 +30,25 @@
   width: 60%;
 }
 .topNav {
-  width: 100%;
-  display: flex;
-  gap: 34rem;
-  position: fixed;
-  top: 0rem;
-  left: 0rem;
-  height: 4rem;
-  align-items: center;
-  justify-content: center;
+    width: 100%;
+    display: flex;
+    grid-gap: 19rem;
+    position: fixed;
+    top: 1.5rem;
+    left: 15rem;
+    height: 4rem;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
 }
+
 .topNavName {
-  font-size: 1.7rem;
+  font-size: 2rem;
   color: black;
+  font-weight: bolder;
 }
-.logOutIcon {
-  color: black;
-  font-size: 1.5rem;
+
+.outAdmin {
+  color: #ce73ff;
+  font-size: 2.5rem;
 }

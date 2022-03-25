@@ -1,9 +1,14 @@
 .lowBarAdmin {
   background: #9311d9;
-  /* color: white; */
   position: fixed;
   width: 13%;
   display: flex;
+  grid-gap: 2.5rem;
+  gap: 2.5rem;
+  flex-direction: column;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
 
   gap: 2.5rem;
   /* top: 2.5rem;

@@ -52,6 +52,7 @@ function AdminHome() {
 
   return (
     <React.Fragment>
+      <h2 className="titleAdmin">Reporte Semanal</h2>
       <div className="statisticsContainer">
         <div className="statisticCard">
           <p className="statisticInfo">Total de clientes</p>

@@ -1,9 +1,15 @@
 .statisticsContainer {
   position: fixed;
-  top: 10rem;
+  top: 16rem;
   display: flex;
+  grid-gap: 2rem;
   gap: 2rem;
   left: 17.5rem;
+}
+.titleAdmin{
+  position: fixed;
+  top: 10rem;
+  left: 35rem;
 }
 .statisticCard {
   display: flex;

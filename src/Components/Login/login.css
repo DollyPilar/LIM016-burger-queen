@@ -40,12 +40,13 @@
   margin-bottom: 1rem;
 }
 .goToRegister {
-  display: flex;
   width: 100%;
+  background-color: transparent;
+  /* display: flex;
   align-items: center;
   gap: 7rem;
-  /* flex-direction: column; */
-  background-color: transparent;
+  flex-direction: column; 
+   */
 }
 
 .errLogIn {
@@ -62,7 +63,8 @@
   background-color: transparent;
   color: #7d7171;
   font-size: 1.3rem;
-  width: 13.5rem;
+  width: 14.5rem;
+  margin-left: 4rem;
   text-align: justify;
 }
 .infoUnderline {

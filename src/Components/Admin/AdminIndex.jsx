@@ -39,9 +39,9 @@ function Admin() {
     <React.Fragment>
       <div className="topNav">
         <p className="topNavName">Bienvenida Dolly</p>
-        <FaSignOutAlt className="logOutIcon" onClick={logOut} />
+        <FaSignOutAlt className="outAdmin" onClick={logOut} />
       </div>
-      <h2>Reporte Semanal</h2>
+      
       <LowNavBar
         goHome={goHome}
         goStaff={goStaff}
