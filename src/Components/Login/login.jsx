@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { doc, getDoc } from "firebase/firestore";
-import { auth, db } from "../../firebase/firebase-config.jsx";
-import { NavBar } from "../HomePage/NavBar/NavBar.jsx";
-import "./login.css";
+// import { signInWithEmailAndPassword } from "firebase/auth";
+// import { doc, getDoc } from "firebase/firestore";
+// import { db } from "../../firebase/firebase-config.jsx";
+import "./Login.css";
 import logo from "../../assets/dogLogIn.png";
+import { signInUser, getUserProfile } from "../../firebase/auth.js";
 
 function Log() {
   const [errorMsg, setErrorMsg] = useState("");
@@ -30,10 +30,10 @@ function Log() {
       setErrorMsg("No puedes dejar campos vacíos");
     } else {
       try {
-        const client = await signInWithEmailAndPassword(auth, email, password);
+        const client = await signInUser(email, password);
         if (client.user.emailVerified) {
-          const docRef = doc(db, "users", client.user.uid);
-          const docSnap = await getDoc(docRef);
+          // const docRef = doc(db, "users", client.user.uid);
+          const docSnap = await getUserProfile(client.user.uid);
           //console.log (docSnap.doc.data())
           const userRol = docSnap.data().rol;
           if (userRol === "client") {
@@ -62,7 +62,6 @@ function Log() {
 
   return (
     <React.Fragment>
-      <NavBar />
       <div className="logInContainer">
         <div className="logoContainer">
           <div className="welcomeContainer">

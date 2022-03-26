@@ -5,43 +5,40 @@ import PawLogo from "../../../assets/PawLogo.png";
 import { auth } from "../../../firebase/firebase-config";
 import { signOut } from "firebase/auth";
 import "./NavBar.css";
-import Swal from 'sweetalert2';
-import { Navigate } from "react-router-dom";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 export const NavBar = () => {
-  
-
   // console.log(userState);
-  // const navigate = useNavigate()
+  const navigate = useNavigate();
   const logOut = () => {
     Swal.fire({
-      title: '¿Está seguro de que desea cerrar sesión?',
+      title: "¿Está seguro de que desea cerrar sesión?",
       showCancelButton: true,
-      confirmButtonColor: '#FFFFFF',
-      cancelButtonColor: '#bb53f3',
-      confirmButtonText: 'Ok',
+      confirmButtonColor: "#FFFFFF",
+      cancelButtonColor: "#bb53f3",
+      confirmButtonText: "Ok",
     }).then((result) => {
       if (result.isConfirmed) {
-        signOut(auth); 
-        // navigate("/");
-        <Navigate to="/" />
+        signOut(auth);
+        navigate("/");
       }
-    })
+    });
   };
 
   return (
     <React.Fragment>
       <div className="navBarContainer">
         <div className="logoIconsContainer">
-        <div className="lowBarContainer">
-          <div className="logoNavContainer">
-            <img src={PawLogo} alt="Happy Paws" className="logoNav" />
+          <div className="lowBarContainer">
+            <div className="logoNavContainer">
+              <img src={PawLogo} alt="Happy Paws" className="logoNav" />
+            </div>
+            <Link to="/">INICIO</Link>
+            <Link to="/product">TIENDA</Link>
+            <Link to="/">SOBRE NOSOTROS</Link>
           </div>
-          <Link to="/">INICIO</Link>
-          <Link to="/product">TIENDA</Link>
-          <Link to="/">SOBRE NOSOTROS</Link>
-        </div>
-          
+
           <div className="iconContainer">
             <Link to="/LogIn">
               {" "}
@@ -52,14 +49,11 @@ export const NavBar = () => {
               <FaShoppingCart className="navBarIcon" />
             </Link>
 
-            
-              <button className="logOut" onClick={logOut}>
-                <FaSignOutAlt className="navBarIcon" />
-              </button>
-          
+            <button className="logOut" onClick={logOut}>
+              <FaSignOutAlt className="navBarIcon" />
+            </button>
           </div>
         </div>
-        
       </div>
     </React.Fragment>
   );

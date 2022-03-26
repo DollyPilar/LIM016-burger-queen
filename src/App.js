@@ -1,10 +1,10 @@
 /* eslint-disable react/jsx-filename-extension */
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import LogIn from "./Components/Login/login.jsx";
+import LogIn from "./Components/Login/Login.jsx";
 import Register from "./Components/Register/register.jsx";
 import { AddStaff } from "./Components/Admin/AddStaff/AddStaff.jsx";
-import Admin from "./Components/Admin/admin.jsx";
+import Admin from "./Components/Admin/Admin.jsx";
 import Delivery from "./Components/Delivery/Delivery.jsx";
 import Dolly from "./Components/Store/Store.jsx";
 import Home from "./Components/Clients/Home.jsx";

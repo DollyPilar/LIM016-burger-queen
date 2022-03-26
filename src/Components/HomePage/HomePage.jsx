@@ -1,26 +1,24 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import dogHome from "../../assets/dogHome.png";
-// import { NavBar } from "./NavBar/NavBar.jsx";
 import "./HomePage.css";
 
 export const HomePage = () => {
+  const navigate = useNavigate();
+  const goToLogIn = () => {
+    navigate("/LogIn");
+  };
   return (
     <React.Fragment>
-      {/* <NavBar /> */}
-      <h1>Pilar</h1>
-      <p>CARRITO</p>
       <div className="homePageContainer">
         <div className="homeInfoContainer">
           <div>
-            <h2>
-              ¡BIENVENIDX A <span>HAPPY PAWS</span>!
-            </h2>
+            <h2>¡BIENVENIDX A HAPPY PAWS!</h2>
           </div>
           <div className="btnContainer">
-            <Link to="/LogIn">
-              <button className="btnBuyHomePage">Compra ahora</button>
-            </Link>
+            <button className="btnBuyHomePage" onClick={goToLogIn}>
+              Compra ahora
+            </button>
           </div>
         </div>
 
