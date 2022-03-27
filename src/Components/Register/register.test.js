@@ -1,27 +1,27 @@
 import React from "react";
 import { screen, render } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
-import Register  from "./Register.jsx";
+import Register from "./Register.jsx";
 
-beforeEach (() => {
-    render(
+beforeEach(() => {
+  render(
     <BrowserRouter>
-        <Register/>
-    </BrowserRouter>);
-})
+      <Register />
+    </BrowserRouter>
+  );
+});
 
 test("should render the form elements", () => {
-    const inputEl = screen.getByPlaceholderText(/nombre completo/i)
-    const btnEl = screen.getByRole("button", { name: /registrar/i})
+  const inputEl = screen.getByPlaceholderText(/nombre completo/i);
+  const btnEl = screen.getByRole("button", { name: /registrar/i });
+  const imgEl = screen.getByAltText("logo");
 
-    expect(inputEl).toBeInTheDocument()
-    expect(btnEl).toBeInTheDocument()
-})
+  expect(inputEl).toBeInTheDocument();
+  expect(btnEl).toBeInTheDocument();
+  expect(imgEl).toBeInTheDocument();
+});
 
-
-
-
-// ejemplo unitario
+// sí sirve
 // describe("Register", () => {
 //     it("must display elements", () => {
 //       render(
@@ -33,26 +33,17 @@ test("should render the form elements", () => {
 //     });
 //   });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//sirve2
+// describe("Register", () => {
+//     it("must display an input", () => {
+//       render(
+//         <BrowserRouter>
+//           <Register />
+//         </BrowserRouter>
+//       );
+//       expect(screen.getByPlaceholderText(/nombre completo/i)).toBeInTheDocument();
+//     });
+//   });
 
 // import React from "react";
 // import { screen, render } from "@testing-library/react";
@@ -67,4 +58,3 @@ test("should render the form elements", () => {
 //       expect(screen.queryByRole(/registrar/i)).toBeInTheDocument();
 //     });
 //   });
-
