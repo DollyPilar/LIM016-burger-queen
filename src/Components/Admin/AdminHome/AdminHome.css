@@ -35,11 +35,19 @@
   color: #ce73ff;
   font-size: 3rem;
 }
-.adminImgContainer {
+.imgTextContainer {
   position: fixed;
-  width: 37rem;
-  top: 21rem;
-  left: 24rem;
+  display: flex;
+  width: 48rem;
+  top: 26rem;
+  left: 16rem;
+  /* border: 1px solid black; */
+  align-items: center;
+}
+.adminText {
+  text-align: justify;
+  color: #7a7a7a;
+  font-size: 2rem;
 }
 .adminImg {
   width: 100%;

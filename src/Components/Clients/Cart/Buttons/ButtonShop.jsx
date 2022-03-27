@@ -1,5 +1,5 @@
 import React from "react";
-import { auth, db } from "../../../../firebase/firebase-config.jsx";
+import { db } from "../../../../firebase/firebase-config.jsx";
 import {
   addDoc,
   collection,
@@ -9,15 +9,20 @@ import {
 } from "firebase/firestore";
 import Swal from "sweetalert2";
 import { ButtonAccept } from "../../../../Globals/Buttons/ButtonAccept/ButtonAccept.jsx";
-export const ButtonShop = ({ cartProducts, user, totalQty, totalPrice }) => {
-  //   const handleShop = async () => {
-  //     console.log(totalQty, totalPrice, user, cartProducts);
-  //   };
+import { useAuth } from "../../../Route/AuthContext.jsx";
+
+export const ButtonShop = ({
+  cartProducts,
+  userName,
+  totalQty,
+  totalPrice,
+}) => {
+  const { user } = useAuth();
   const createShoppingColl = async () => {
     const finalProducts = {
-      buyerID: auth.currentUser.uid,
-      shoppingState: "Pedido realizado",
-      buyerName: user,
+      buyerID: user.uid,
+      shoppingState: "Pedido a preparar",
+      buyerName: userName,
       dateOfShopping: Date.now(),
       finalQuantity: totalQty,
       finalPrice: totalPrice,
@@ -38,12 +43,12 @@ export const ButtonShop = ({ cartProducts, user, totalQty, totalPrice }) => {
         showConfirmButton: false,
         timer: 2500,
       });
-      const q = collection(db, "cart" + auth.currentUser.uid);
+      const q = collection(db, "cart" + user.uid);
 
       const querySnapshot = await getDocs(q);
       querySnapshot.forEach((docc) => {
         const docId = docc.id;
-        const prodRef = doc(db, "cart" + auth.currentUser.uid, docId);
+        const prodRef = doc(db, "cart" + user.uid, docId);
         deleteDoc(prodRef);
       });
     } catch (e) {

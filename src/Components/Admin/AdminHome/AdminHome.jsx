@@ -74,8 +74,12 @@ function AdminHome() {
           </div>
         </div>
       </div>
-      <div className="adminImgContainer">
+      <div className="imgTextContainer">
         <img src={admin} alt="logo" className="adminImg" />
+        <p className="adminText">
+          En este espacio podrás administrar la información acerca de tus
+          pedidos, ventas y clientes.
+        </p>
       </div>
     </React.Fragment>
   );

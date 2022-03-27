@@ -39,7 +39,7 @@ function Store() {
   useEffect(() => {
     getOrdersSentCol();
   }, []);
-  console.log(orders);
+  // console.log(orders);
 
   const updateState = async (compra) => {
     const prodRef = doc(db, "compras", compra.ID);

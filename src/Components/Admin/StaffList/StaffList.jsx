@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../../firebase/firebase-config.jsx";
+import { FaUser } from "react-icons/fa";
 
 import "./StaffList.css";
 
@@ -51,7 +52,13 @@ export const StaffList = () => {
             {staffs.map((staff, index) => (
               <tbody key={index}>
                 <tr>
-                  <td>{staff.name}</td>
+                  {/* <td className="iconUser">
+                   
+                  </td> */}
+                  <td className="iconUser">
+                    {" "}
+                    {<FaUser style={{ color: "#7a7a7a" }} />} {staff.name}
+                  </td>
                   <td>{staff.email}</td>
                   <td>{staff.rol}</td>
                 </tr>

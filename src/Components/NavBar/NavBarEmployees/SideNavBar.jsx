@@ -44,20 +44,20 @@ export const LowNavBar = ({
         <h3 className="lowBarInfo" onClick={handleGoHome}>
           Home
         </h3>
+        <h3 className="lowBarInfo" onClick={handleGoProduct}>
+          Productos
+        </h3>
+        <h3 className="lowBarInfo" onClick={handleGoAddProduct}>
+          Añadir productos
+        </h3>
         <h3 className="lowBarInfo" onClick={handleGoStaff}>
           Empleados
         </h3>
         <h3 className="lowBarInfo" onClick={handleGoAddStaff}>
-          Agregar Empleado
-        </h3>
-        <h3 className="lowBarInfo" onClick={handleGoProduct}>
-          Productos
+          Añadir Empleado
         </h3>
         <h3 className="lowBarInfo" onClick={handleGOrderHistory}>
           Historial de Pedidos
-        </h3>
-        <h3 className="lowBarInfo" onClick={handleGoAddProduct}>
-          Agregar productos
         </h3>
       </div>
     </Fragment>

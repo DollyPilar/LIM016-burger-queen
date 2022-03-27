@@ -7,9 +7,14 @@ import { signOut } from "firebase/auth";
 import "./NavBar.css";
 import Swal from "sweetalert2";
 import { useNavigate, Outlet } from "react-router-dom";
+import { useAuth } from "../Route/AuthContext.jsx";
 
 export const NavBar = () => {
-  // console.log(userState);
+  const { user } = useAuth();
+  // console.log(user);
+  // useEffect(() => {
+  //   user;
+  // }, []);
 
   const isMounted = useRef(true);
 
@@ -21,6 +26,7 @@ export const NavBar = () => {
       confirmButtonColor: "#FFFFFF",
       cancelButtonColor: "#bb53f3",
       confirmButtonText: "Ok",
+      cancelButtonText: "Cancelar",
     }).then((result) => {
       if (result.isConfirmed) {
         if (isMounted.current) {
@@ -62,7 +68,7 @@ export const NavBar = () => {
             <FaShoppingCart className="navBarIcon" />
           </Link>
 
-          {auth.currentUser === null ? (
+          {user === null ? (
             ""
           ) : (
             <FaSignOutAlt className="navBarIcon" onClick={logOut} />

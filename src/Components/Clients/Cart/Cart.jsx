@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { auth, db } from "../../../firebase/firebase-config.jsx";
-import { onAuthStateChanged } from "firebase/auth";
+import { db } from "../../../firebase/firebase-config.jsx";
+
 import { IndividualCartProduct } from "./IndividualCartProduct.jsx";
 import { ButtonCancelShop } from "./Buttons/ButtonCancel.jsx";
 import { ButtonShop } from "./Buttons/ButtonShop.jsx";
+import { useAuth } from "../../Route/AuthContext.jsx";
 import "./Cart.css";
 import {
   doc,
@@ -15,52 +16,49 @@ import {
 
 export const Cart = () => {
   // función que trae el nombre del usuario que está logueado
-  const [user, setUser] = useState(null);
+  const [userName, setUserName] = useState(null);
+  const { user } = useAuth();
 
   useEffect(() => {
     // let userName = [];
     let isMounted = true;
-    onAuthStateChanged(auth, async (userr) => {
-      if (userr) {
-        const docRef = doc(db, "users", userr.uid);
-        try {
-          const docSnap = await getDoc(docRef);
-          const snap = docSnap.data();
-          if (isMounted) {
-            setUser(snap.name);
-          }
-        } catch (e) {
-          console.log(e);
-        }
-      } else {
-        console.log("no hay usuario");
-      }
-    });
+    if (user) {
+      const docRef = doc(db, "users", user.uid);
 
+      const docSnap = getDoc(docRef);
+      docSnap.then((doc) => {
+        const snap = doc.data();
+        if (isMounted) {
+          setUserName(snap.name);
+        }
+      });
+    } else {
+      console.log("no hay usuario");
+    }
     return () => {
       isMounted = false;
     };
-  }, []);
-  console.log(user);
+  }, [user]);
+  // console.log(user);
 
   const [cartProducts, setCartProducts] = useState([]);
 
   useEffect(() => {
     let isMounted = true;
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        onSnapshot(collection(db, "cart" + user.uid), (snapshot) => {
-          const newCartProduct = snapshot.docs.map((doc) => doc.data());
-          if (isMounted) {
-            setCartProducts(newCartProduct);
-          }
-        });
-      }
-    });
+    // onAuthStateChanged(auth, (user) => {
+    if (user) {
+      onSnapshot(collection(db, "cart" + user.uid), (snapshot) => {
+        const newCartProduct = snapshot.docs.map((doc) => doc.data());
+        if (isMounted) {
+          setCartProducts(newCartProduct);
+        }
+      });
+    }
+    // });
     return () => {
       isMounted = false;
     };
-  }, []);
+  }, [user]);
 
   // obteniendo la cantidad de CartProducts en un array separado
   const quantityArr = cartProducts.map((carProduct) => {
@@ -81,13 +79,34 @@ export const Cart = () => {
   // reduciendo el valor del Precio final en un valor único
   const totalPrice = totalPriceArr.reduce((acc, cur) => acc + cur, 0);
 
-  const cartProductIncrease = (cartProduct) => {
+  const cartProductIncrease = async (cartProduct) => {
     // console.log(cartProduct, "funciona");
 
     const quantityProduct = cartProduct.quantity + 1;
     const totalProductPrice = quantityProduct * cartProduct.Precio;
     // actualizando Firebase
-    onAuthStateChanged(auth, async (user) => {
+    // onAuthStateChanged(auth, async (user) => {
+    if (user) {
+      const prodRef = doc(db, "cart" + user.uid, cartProduct.ID);
+      try {
+        await updateDoc(prodRef, {
+          quantity: quantityProduct,
+          TotalProductPrice: totalProductPrice,
+        });
+      } catch (e) {
+        console.log(e);
+      }
+    }
+    // });
+  }; // termina product increase
+
+  const cartProductDecrease = async (cartProduct) => {
+    // Product = cartProduct;
+    if (cartProduct.quantity > 1) {
+      // puedes seguir quitando
+      const quantityProduct = cartProduct.quantity - 1;
+      const totalProductPrice = quantityProduct * cartProduct.Precio;
+      // onAuthStateChanged(auth, async (user) => {
       if (user) {
         const prodRef = doc(db, "cart" + user.uid, cartProduct.ID);
         try {
@@ -99,28 +118,7 @@ export const Cart = () => {
           console.log(e);
         }
       }
-    });
-  }; // termina product increase
-
-  const cartProductDecrease = (cartProduct) => {
-    // Product = cartProduct;
-    if (cartProduct.quantity > 1) {
-      // puedes seguir quitando
-      const quantityProduct = cartProduct.quantity - 1;
-      const totalProductPrice = quantityProduct * cartProduct.Precio;
-      onAuthStateChanged(auth, async (user) => {
-        if (user) {
-          const prodRef = doc(db, "cart" + user.uid, cartProduct.ID);
-          try {
-            await updateDoc(prodRef, {
-              quantity: quantityProduct,
-              TotalProductPrice: totalProductPrice,
-            });
-          } catch (e) {
-            console.log(e);
-          }
-        }
-      });
+      // });
     }
   };
 
@@ -150,7 +148,7 @@ export const Cart = () => {
                   </div>
                   <div className="cartInfo">
                     {/* <p>Nombre: pru</p> */}
-                    <p>Nombre: {user}</p>
+                    <p>Nombre: {userName}</p>
                   </div>
                   <div className="cartInfo">
                     <p>Total de productos:</p>
@@ -164,7 +162,7 @@ export const Cart = () => {
                     <ButtonCancelShop />
                     <ButtonShop
                       cartProducts={cartProducts}
-                      user={user}
+                      userName={userName}
                       totalQty={totalQty}
                       totalPrice={totalPrice}
                     />
