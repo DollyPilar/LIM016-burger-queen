@@ -16,9 +16,11 @@ export const HomePage = () => {
             <h2>¡BIENVENIDX A HAPPY PAWS!</h2>
           </div>
           <div className="btnContainer">
+            {/* <Link to="login"> */}
             <button className="btnBuyHomePage" onClick={goToLogIn}>
               Compra ahora
             </button>
+            {/* </Link> */}
           </div>
         </div>
 

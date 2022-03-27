@@ -1,0 +1,33 @@
+.lowBarAdmin {
+  background: #9311d9;
+  position: fixed;
+  width: 13%;
+  display: flex;
+  gap: 2.5rem;
+  flex-direction: column;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  border-bottom-right-radius: 1rem;
+  border-top-right-radius: 1rem;
+}
+.lowBarInfo {
+  color: #ffffff;
+  font-size: 1.4rem;
+  text-align: center;
+}
+.lowBarInfo:hover {
+  padding: 0.5rem;
+  border-bottom: 2px solid white;
+  width: 90%;
+}
+.lowBarlogoNav {
+  width: 9.5rem;
+  position: fixed;
+  left: 2.4rem;
+  z-index: 99;
+  top: 54px;
+}
+.lowBarLogo {
+  width: 59%;
+}

@@ -2,20 +2,51 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   position: relative;
-  top: 10rem;
+  top: 9rem;
+  height: 33rem;
 }
-
-.logoSection {
+.registerForm {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 2.5rem;
+  box-shadow: 5px 6px 36px 3px rgb(0 0 0 / 20%);
+  border-radius: 1.5rem;
+  padding: 1.5rem;
+  width: 68%;
+  height: 100%;
+  color: white;
+  text-align: center;
+  margin-left: 8rem;
+}
+.registerForm h4 {
+  color: #7d7171;
+  font-size: 1.7rem;
+  margin-bottom: 1rem;
 }
 
-.logoSection h2 {
-  color: white;
-  font-size: 3.5rem;
-  text-align: center;
+.errorRegister {
+  color: #f25c5c;
+  background: #fcd2d2;
+  font-size: 1.3rem;
+  height: 3rem;
+  padding: 0.5rem;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.btnRegister:hover {
+  color: black;
+}
+.goToLogIN {
+  background-color: transparent;
+  width: 100%;
+  /*display: flex;
+  align-items: center;
+  gap: 7rem;
+   flex-direction: column; */
+  
 }
 
 .welcomeSection {
@@ -23,99 +54,23 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 4rem;
+  margin-top: 7rem;
 }
 
 .logoRegister {
   width: 85%;
 }
 
-.formSection {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.inputRegister {
-  width: 80%;
-  height: 3rem;
-  padding: 0.5rem;
-  border:  1px solid #7d7171;
-  border-radius: 5px;
-}
-
-.inputRegister:focus {
-  border: white;
-}
-.inputRegister::placeholder {
-  font-size: 1.3rem;
-  color: #7a7a7a;
-}
-
-.btnRegister {
-  background-color: #ce73ff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  color: white;
-  font-size: 1.7rem;
-  font-weight: bolder;
-  width: 80%;
-  height: 3rem;
-}
-
-.btnRegister:hover {
-  color: black;
-}
-
-.registerForm {
-  margin-top: 2.5rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 1.5rem;
-  background-color: rgba(255, 255, 255, 0.25);
-  box-shadow: 5px 6px 36px 3px rgb(0 0 0 / 20%);
-  border-radius: 5%;
-  padding: 1.5em;
-  width: 72%;
-  height: 100%;
-  color: white;
-  text-align: center;
-}
-.registerForm h4 {
-  font-size: 1.9rem;
-  color: #ce73ff;
-}
-
-.errorAlrt{
-  color: #F25C5C;
-  background: #FCD2D2;
-  font-size: 1.3rem;
-  height: 3rem;
-  padding: 0.5rem;
-  border-radius: 5px;
-}
-
-.btnRegister:hover {
-  color: black;
-}
-.containerGoToLogIN {
-  display: flex;
-  flex-direction: column;
-  background-color: transparent;
-}
 .infoRegister {
   background-color: transparent;
-  color: black;
+  color: #7d7171;
   font-size: 1.3rem;
+  width: 14.5rem;
+  margin-left: 3.5rem;
+  text-align: justify;
 }
 .goToLogIn {
-  text-decoration: underline;
+  font-size: 1.4rem;
   color: #ce73ff;
-  font-size: 1.3rem;
-  font-weight: bolder;
+  font-weight: 900;
 }
-

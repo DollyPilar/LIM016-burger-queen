@@ -1,0 +1,41 @@
+.staffContainer {
+  position: fixed;
+  overflow: scroll;
+  border: none;
+  top: 10rem;
+  left: 12rem;
+  height: 36rem;
+  width: 57rem;
+}
+
+.staffTable {
+  border-collapse: collapse;
+  table-layout: fixed;
+  width: 100%;
+  font-size: 1.2rem;
+}
+.staffTable td,
+.staffTable th {
+  /* border: 1px solid black; */
+  padding: 8px;
+}
+.staffTable th {
+  font-size: 1.6rem;
+}
+.staffTable tbody tr td {
+  text-align: center;
+  font-size: 1.5rem;
+}
+.staffTable tbody tr {
+  border-bottom: 1px solid #7a7a7a;
+}
+.pleaseWaitStaff {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 12rem;
+}
+.waitStaff {
+  font-size: 4rem;
+  color: #7d7171;
+}

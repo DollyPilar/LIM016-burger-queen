@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { auth, db } from "../../../firebase/firebase-config.jsx";
 import { onAuthStateChanged } from "firebase/auth";
-import { CartProducts } from "./CartProducts.jsx";
-import { ButtonCancel } from "./Buttons/ButtonCancel.jsx";
-import { ButtonShop } from "./Buttons/ButtonShop/ButtonShop.jsx";
-import { NavBar } from "../../HomePage/NavBar/NavBar.jsx";
+import { IndividualCartProduct } from "./IndividualCartProduct.jsx";
+import { ButtonCancelShop } from "./Buttons/ButtonCancel.jsx";
+import { ButtonShop } from "./Buttons/ButtonShop.jsx";
 import "./Cart.css";
 import {
   doc,
@@ -17,41 +16,51 @@ import {
 export const Cart = () => {
   // función que trae el nombre del usuario que está logueado
   const [user, setUser] = useState(null);
-    
+
   useEffect(() => {
-    let userName = false;
-    const getUserName =async()=>{
-    const docRef = doc(db, "users", auth.currentUser.uid);
-    try {
-      const docSnap = await getDoc(docRef);
-      const userInfo = docSnap.data();
-      if (!userName) {
-        setUser(userInfo.name);
+    // let userName = [];
+    let isMounted = true;
+    onAuthStateChanged(auth, async (userr) => {
+      if (userr) {
+        const docRef = doc(db, "users", userr.uid);
+        try {
+          const docSnap = await getDoc(docRef);
+          const snap = docSnap.data();
+          if (isMounted) {
+            setUser(snap.name);
+          }
+        } catch (e) {
+          console.log(e);
+        }
+      } else {
+        console.log("no hay usuario");
       }
-    } catch (e) {
-      console.log(e);
-    }}
-    getUserName()
+    });
+
     return () => {
-      userName = true;
+      isMounted = false;
     };
   }, []);
+  console.log(user);
 
-  // el estado de los carritos
   const [cartProducts, setCartProducts] = useState([]);
 
-  useEffect(
-    () =>
-      onAuthStateChanged(auth, (user) => {
-        if (user) {
-          onSnapshot(collection(db, "cart" + user.uid), (snapshot) => {
-            const newCartProduct = snapshot.docs.map((doc) => doc.data());
+  useEffect(() => {
+    let isMounted = true;
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        onSnapshot(collection(db, "cart" + user.uid), (snapshot) => {
+          const newCartProduct = snapshot.docs.map((doc) => doc.data());
+          if (isMounted) {
             setCartProducts(newCartProduct);
-          });
-        }
-      }),
-    []
-  );
+          }
+        });
+      }
+    });
+    return () => {
+      isMounted = false;
+    };
+  }, []);
 
   // obteniendo la cantidad de CartProducts en un array separado
   const quantityArr = cartProducts.map((carProduct) => {
@@ -117,47 +126,50 @@ export const Cart = () => {
 
   return (
     <React.Fragment>
-      <NavBar />
       {!user && <div className="emptyCart">No hay productos</div>}
       {user && (
         <>
           <>
             {cartProducts.length > 0 && (
-              <div className="classProductsContainer">
-                <div className="positionFixedCart">
-                  <CartProducts
-                    cartProducts={cartProducts}
-                    cartProductIncrease={cartProductIncrease}
-                    cartProductDecrease={cartProductDecrease}
-                  />
-                  </div>
+              <div className="cartContainer">
+                <div className="cartProducts">
+                  {cartProducts.map((cartProduct) => (
+                    // console.log(cartProduct)
+                    <IndividualCartProduct
+                      key={cartProduct.ID}
+                      cartProduct={cartProduct}
+                      cartProductIncrease={cartProductIncrease}
+                      cartProductDecrease={cartProductDecrease}
+                    />
+                  ))}
+                </div>
 
-                  <div className="cartSummary">
-                    <div className="title">
-                      <h3>Resumen de compra</h3>
-                    </div>
-                    <div className="name">
-                      <p>Nombre: {user}</p>
-                    </div>
-                    <div className="cartInfo">
-                      <p>Número total de productos:</p>
-                      <p>{totalQty}</p>
-                    </div>
-                    <div className="cartInfo">
-                      <p> Precio a pagar:</p>
-                      <p>S/.{totalPrice}</p>
-                    </div>
-                    <div className="buttonsContainer">
-                      <ButtonCancel />
-                      <ButtonShop
-                        cartProducts={cartProducts}
-                        user={user}
-                        totalQty={totalQty}
-                        totalPrice={totalPrice}
-                      />
-                    </div>
+                <div className="cartSummaryContainer">
+                  <div className="cartInfo">
+                    <h3>Resumen de compra</h3>
                   </div>
-                
+                  <div className="cartInfo">
+                    {/* <p>Nombre: pru</p> */}
+                    <p>Nombre: {user}</p>
+                  </div>
+                  <div className="cartInfo">
+                    <p>Total de productos:</p>
+                    <p>{totalQty}</p>
+                  </div>
+                  <div className="cartInfo">
+                    <p> Precio a pagar:</p>
+                    <p>S/.{totalPrice}</p>
+                  </div>
+                  <div className="buttonsContainer">
+                    <ButtonCancelShop />
+                    <ButtonShop
+                      cartProducts={cartProducts}
+                      user={user}
+                      totalQty={totalQty}
+                      totalPrice={totalPrice}
+                    />
+                  </div>
+                </div>
               </div>
             )}
             {cartProducts.length < 1 && (

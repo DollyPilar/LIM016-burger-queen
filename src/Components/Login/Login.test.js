@@ -3,7 +3,7 @@ import {
   screen,
   render,
   fireEvent,
-  findByDisplayValue,
+  // findByDisplayValue,
 } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
 import LogIn from "./Login.jsx";
@@ -16,19 +16,21 @@ beforeEach(() => {
   );
 });
 
-test("should show my input", () => {
-  const input = screen.getByPlaceholderText(/correo/i);
-  expect(input).toBeInTheDocument();
+test("should show my inputs", () => {
+  const inputEmail = screen.getByPlaceholderText(/correo/i);
+  const inputPassword = screen.getByPlaceholderText(/contraseña/i);
+  expect(inputEmail).toBeInTheDocument();
+  expect(inputPassword).toBeInTheDocument();
 });
-test("should input", async () => {
+test("should accept a value in input email", async () => {
   const input = screen.getByPlaceholderText(/correo/i);
   const btn = screen.getByRole("button", { name: /INICIAR SESIÓN/i });
   fireEvent.change(input, { target: { value: "email@email.com" } });
-
-  // expect(input.value).toMatch("email@email.com");
   fireEvent.click(btn);
-  // const errMsg = screen.getByText(/No puedes dejar campos vacíos/i);
-  // expect(errMsg).toBeInTheDocument();
-  // fireEvent.change(input, { target: { value: "test" } });
-  // expect(errMsg).not.toBeInTheDocument();
+});
+test("should accept a value in input password", async () => {
+  const input = screen.getByPlaceholderText(/contraseña/i);
+  const btn = screen.getByRole("button", { name: /INICIAR SESIÓN/i });
+  fireEvent.change(input, { target: { value: "789456123" } });
+  fireEvent.click(btn);
 });

@@ -18,13 +18,12 @@ export const IndividualProduct = ({ individualProduct, addToCart }) => {
           />
         </div>
         <div className="boxContainerInfo">
-        <div className="infoBoxContainer">
-        <div className="productInfo">{individualProduct.Nombre}</div>
-        <div className="productInfo">S/.{individualProduct.Precio}</div>
-        </div>
-        <div className="btnAddContainer">
-        <FaPlusCircle className="addIcon" onClick={handleAddToCart} /> 
-        </div>
+          <p className="productTitle">{individualProduct.Nombre}</p>
+
+          <div className="addPriceContainer">
+            <p className="productInfo">S/.{individualProduct.Precio}</p>
+            <FaPlusCircle className="addIcon" onClick={handleAddToCart} />
+          </div>
         </div>
       </div>
     </React.Fragment>
