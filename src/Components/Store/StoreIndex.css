@@ -1,0 +1,10 @@
+.btnContainerStore {
+  width: 100%;
+  display: flex;
+  gap: 2rem;
+  position: fixed;
+  top: 8rem;
+  height: 6rem;
+  justify-content: center;
+  /* left: 20rem; */
+}
