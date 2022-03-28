@@ -9,8 +9,8 @@ import { ButtonAccept } from "../../Globals/Buttons/ButtonAccept/ButtonAccept.js
 import logo from "../../assets/peoplewithdogjpg.jpg";
 
 function Log() {
-  const [errorMsg, setErrorMsg] = useState("");
   const isMounted = useRef(true);
+  const [errorMsg, setErrorMsg] = useState("");
   let navigate = useNavigate();
   const initialState = {
     email: "",

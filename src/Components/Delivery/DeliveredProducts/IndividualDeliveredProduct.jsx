@@ -2,7 +2,6 @@ import React from "react";
 import { hourAndDate } from "../../../functions/projectFunctions";
 import "./IndividualDeliveredProduct.css";
 export const IndividualDeliveredProduct = ({ delivery }) => {
-  console.log(delivery);
   return (
     <React.Fragment>
       <div className="purcharseOrderStoreFinal">

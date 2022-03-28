@@ -13,7 +13,8 @@ import "./OrderSent.css";
 
 function Store() {
   const [ordersSent, setOrdersSent] = useState("");
-  const getOrdersSentCol = () => {
+  useEffect(() => {
+    let isMounted = true;
     const collRef = collection(db, "compras");
     const order = query(
       collRef,
@@ -27,15 +28,16 @@ function Store() {
         data.ID = doc.id;
         shoppArray.push(data);
       });
-      setOrdersSent(shoppArray);
+      if (isMounted) {
+        setOrdersSent(shoppArray);
+      }
+      return () => {
+        isMounted = false;
+      };
       // setOrders([]);
     });
-  };
-  //console.log(ordersSent);
-
-  useEffect(() => {
-    getOrdersSentCol();
   }, []);
+  //console.log(ordersSent);
   return (
     <React.Fragment>
       <div className="orderSentContainer">

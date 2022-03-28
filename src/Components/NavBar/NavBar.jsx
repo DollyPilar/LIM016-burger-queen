@@ -11,6 +11,15 @@ import { useAuth } from "../Route/AuthContext.jsx";
 
 export const NavBar = () => {
   const { user } = useAuth();
+  const navigate = useNavigate();
+  const goToStore = ()=>{
+    if (user){
+     navigate("product")
+    } 
+    else {
+      navigate("login")
+    }
+  }
   // console.log(user);
   // useEffect(() => {
   //   user;
@@ -18,7 +27,7 @@ export const NavBar = () => {
 
   const isMounted = useRef(true);
 
-  const navigate = useNavigate();
+  
   const logOut = () => {
     Swal.fire({
       title: "¿Está seguro de que desea cerrar sesión?",
@@ -53,9 +62,10 @@ export const NavBar = () => {
             <Link to="/" className="inicio">
               Inicio
             </Link>
-            <Link to="product" className="inicio">
+            {/* <Link to="product" className="inicio">
               Tienda
-            </Link>
+            </Link> */}
+            <h2 className="inicio" onClick={goToStore}>Tienda</h2>
           </div>
         </div>
 

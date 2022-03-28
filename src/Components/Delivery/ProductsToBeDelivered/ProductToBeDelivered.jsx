@@ -3,7 +3,7 @@ import { db } from "../../../firebase/firebase-config.jsx";
 
 import "./ProductToBeDelivered.css";
 import {
-  onSnapshot,
+  getDocs,
   where,
   query,
   orderBy,
@@ -15,26 +15,69 @@ import { IndividualProductToBeDelivered } from "./IndividualProductToBeDelivered
 
 function Delivery() {
   const [deliveries, setDeliveries] = useState("");
-  const getDeliveryColl = () => {
+ // useEffect(() => {
+   // let isMounted = true;
     const collRef = collection(db, "compras");
     const order = query(
       collRef,
       where("finalProducts.shoppingState", "==", "Pedido Listo"),
       orderBy("dateToDelivery", "desc")
     );
-    onSnapshot(order, (querySnapshot) => {
+      const prod = async ()=>{
+        const  querySnapshot = await getDocs(order)
       const delivArray = [];
       querySnapshot.forEach((doc) => {
         let data = doc.data();
         data.ID = doc.id;
         delivArray.push(data);
       });
-      setDeliveries(delivArray);
-    });
-  };
+      if(delivArray.length>0){
+        // if (isMounted) {
+        setDeliveries(delivArray);
+     //}
+      } 
+      }
+  // return () => {
+  //   //isMounted = false;
+  //  prod()
+  // };
+  // }, []);
   useEffect(() => {
-    getDeliveryColl();
-  }, []);
+    prod()
+  },[])
+
+//   useEffect(() => {
+//     let cleanup = () => {};
+//     const collRef = collection(db, "compras");
+//     const order = query(
+//       collRef,
+//       where("finalProducts.shoppingState", "==", "Pedido Listo"),
+//       orderBy("dateToDelivery", "desc")
+//     );
+//     const unsuscribe = onSnapshot(order, (querySnapshot) => {
+//         if (unsuscribe) return; // already cancelled
+// //      ^^^^^^^^^^^^^^^^^^^^
+//         cleanup = shopReference.collection(collName).onSnapshot((snap) => {
+//             let menuList = [];
+//             snap.forEach((doc) => {
+//                 menuList.push({
+//                     id: doc.id,
+//                     ...doc.data(),
+//                 });
+//             });
+//             setMenu(menuList);
+//         });
+//     });
+
+//     return () => {
+//          unsuscribe();
+//           = null;
+//     };
+// }, []);
+
+
+
+
 
   const deliverProduct = async (delivery) => {
     const prodRef = doc(db, "compras", delivery.ID);
@@ -42,10 +85,14 @@ function Delivery() {
       await updateDoc(prodRef, {
         "finalProducts.shoppingState": "Pedido Enviado",
       });
+      setDeliveries("")
     } catch (e) {
       console.log(e);
     }
   };
+  // useEffect(() => {
+  //   deliverProduct() 
+  // }, []);
   return (
     <React.Fragment>
       <div className="deliveredBoxContainer">
