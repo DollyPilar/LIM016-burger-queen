@@ -36,7 +36,7 @@
     "deploy": "gh-pages -d build"
   },
 
-  "homepage": "https://DollyPilar.github.io/LIM016-burger-queen",
+  "homepage": "https://DollyPilar.github.io/LIM016-burger-queen/tree/principal",
   "eslintConfig": {
     "extends": [
       "react-app",
