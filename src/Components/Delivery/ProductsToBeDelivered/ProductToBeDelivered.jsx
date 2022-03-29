@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { db } from "../../../firebase/firebase-config.jsx";
 
 import "./ProductToBeDelivered.css";
@@ -16,7 +16,8 @@ import { IndividualProductToBeDelivered } from "./IndividualProductToBeDelivered
 function Delivery() {
   const [deliveries, setDeliveries] = useState("");
   // useEffect(() => {
-  // let isMounted = true;
+    const isMounted = useRef(true);
+  useEffect(() => {
 
   const prod = async () => {
     const collRef = collection(db, "compras");
@@ -33,19 +34,20 @@ function Delivery() {
       delivArray.push(data);
     });
     if (delivArray.length > 0) {
-      // if (isMounted) {
+       if (isMounted.current) {
       setDeliveries(delivArray);
-      // }
+       }
     }
 
-    // return () => {
-    //   isMounted = false;
-    //   prod();
-    //}
+    
   };
 
-  useEffect(() => {
+  // useEffect(() => {
     prod();
+    return () => {
+      isMounted.current = false;
+      prod();
+    }
   }, []);
   // console.log(deliveries);
 

@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { db } from "../../../firebase/firebase-config.jsx";
 import Swal from "sweetalert2";
 import {
-  onSnapshot,
+  getDocs,
   where,
   query,
   orderBy,
@@ -10,34 +10,39 @@ import {
   updateDoc,
   doc,
   deleteDoc,
+  QueryDocumentSnapshot,
 } from "firebase/firestore";
 import { IndividualOrderToSent } from "./IndividualOrderToSent.jsx";
 import "./OrderToSent.css";
 
 function Store() {
   const [orders, setOrders] = useState("");
+  const isMounted = useRef(true);
+  
 
-  const getOrdersSentCol = () => {
+  useEffect(() => {
     const collRef = collection(db, "compras");
     const order = query(
       collRef,
       where("finalProducts.shoppingState", "==", "Pedido a preparar"),
       orderBy("finalProducts.dateOfShopping", "desc")
     );
-    onSnapshot(order, (querySnapshot) => {
+    const querySnapshot =  getDocs(order);
       const shoppArray = [];
-      querySnapshot.forEach((doc) => {
-        let data = doc.data();
-        data.ID = doc.id;
-        shoppArray.push(data);
-      });
-      setOrders(shoppArray);
-      // setOrders([]);
-    });
-  };
+      querySnapshot.then((query)=>{
+        if (isMounted.current) {
+        query.forEach((doc) => {
+          let data = doc.data();
+          data.ID = doc.id;
+          shoppArray.push(data);
+        });
+        if (shoppArray.length > 0) {
+          setOrders(shoppArray);
+         }
+      }
+      })
 
-  useEffect(() => {
-    getOrdersSentCol();
+    return () => {isMounted.current = false};
   }, []);
   // console.log(orders);
 
@@ -48,6 +53,10 @@ function Store() {
         "finalProducts.shoppingState": "Pedido Listo",
         dateToDelivery: Date.now(),
       });
+      const filteredOrders = orders.filter(
+        (ord) => ord.ID !== compra.ID
+      );
+      setOrders(filteredOrders);
     } catch (e) {
       console.log(e);
     }
