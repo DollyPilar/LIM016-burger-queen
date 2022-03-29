@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/DollyPilar/LIM016-burger-queen/tree/principal/static/css/main.e4ac648f.chunk.css",
+    "main.js": "/DollyPilar/LIM016-burger-queen/tree/principal/static/js/main.6f8c42d0.chunk.js",
+    "main.js.map": "/DollyPilar/LIM016-burger-queen/tree/principal/static/js/main.6f8c42d0.chunk.js.map",
+    "runtime-main.js": "/DollyPilar/LIM016-burger-queen/tree/principal/static/js/runtime-main.73f6b96f.js",
+    "runtime-main.js.map": "/DollyPilar/LIM016-burger-queen/tree/principal/static/js/runtime-main.73f6b96f.js.map",
+    "static/js/2.d2d6f12a.chunk.js": "/DollyPilar/LIM016-burger-queen/tree/principal/static/js/2.d2d6f12a.chunk.js",
+    "static/js/2.d2d6f12a.chunk.js.map": "/DollyPilar/LIM016-burger-queen/tree/principal/static/js/2.d2d6f12a.chunk.js.map",
+    "static/js/3.64351a00.chunk.js": "/DollyPilar/LIM016-burger-queen/tree/principal/static/js/3.64351a00.chunk.js",
+    "static/js/3.64351a00.chunk.js.map": "/DollyPilar/LIM016-burger-queen/tree/principal/static/js/3.64351a00.chunk.js.map",
+    "index.html": "/DollyPilar/LIM016-burger-queen/tree/principal/index.html",
+    "precache-manifest.c7f934079588807dfcab6e64352c0289.js": "/DollyPilar/LIM016-burger-queen/tree/principal/precache-manifest.c7f934079588807dfcab6e64352c0289.js",
+    "service-worker.js": "/DollyPilar/LIM016-burger-queen/tree/principal/service-worker.js",
+    "static/css/main.e4ac648f.chunk.css.map": "/DollyPilar/LIM016-burger-queen/tree/principal/static/css/main.e4ac648f.chunk.css.map",
+    "static/js/2.d2d6f12a.chunk.js.LICENSE.txt": "/DollyPilar/LIM016-burger-queen/tree/principal/static/js/2.d2d6f12a.chunk.js.LICENSE.txt",
+    "static/media/PawLogo.png": "/DollyPilar/LIM016-burger-queen/tree/principal/static/media/PawLogo.8ed7e6b3.png",
+    "static/media/admin.png": "/DollyPilar/LIM016-burger-queen/tree/principal/static/media/admin.8802072f.png",
+    "static/media/dogHome.png": "/DollyPilar/LIM016-burger-queen/tree/principal/static/media/dogHome.72ab5909.png",
+    "static/media/peoplewithdogjpg.jpg": "/DollyPilar/LIM016-burger-queen/tree/principal/static/media/peoplewithdogjpg.aeab6983.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.73f6b96f.js",
+    "static/js/2.d2d6f12a.chunk.js",
+    "static/css/main.e4ac648f.chunk.css",
+    "static/js/main.6f8c42d0.chunk.js"
+  ]
+}
