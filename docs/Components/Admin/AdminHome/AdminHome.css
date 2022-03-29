@@ -1,0 +1,54 @@
+.statisticsContainer {
+  position: fixed;
+  top: 12rem;
+  display: flex;
+  gap: 2rem;
+  left: 17.5rem;
+}
+.titleAdmin {
+  position: fixed;
+  color: #7a7a7a;
+  top: 10rem;
+  left: 35rem;
+}
+.statisticCard {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  box-shadow: 7px 2px 23px 2px rgb(0 0 0 / 22%);
+  width: 15rem;
+  border-radius: 1rem;
+  align-items: center;
+  padding: 1.5rem;
+}
+.secondRow {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  justify-content: center;
+}
+.statisticInfo {
+  font-size: 1.5rem;
+  color: #7a7a7a;
+}
+.adminIcon {
+  color: #ce73ff;
+  font-size: 3rem;
+}
+.imgTextContainer {
+  position: fixed;
+  display: flex;
+  width: 48rem;
+  top: 26rem;
+  left: 16rem;
+  /* border: 1px solid black; */
+  align-items: center;
+}
+.adminText {
+  text-align: justify;
+  color: #7a7a7a;
+  font-size: 2rem;
+}
+.adminImg {
+  width: 100%;
+}

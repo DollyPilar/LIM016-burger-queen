@@ -1,0 +1,8 @@
+.btnContainerDelivery {
+  width: 33rem;
+  display: flex;
+  gap: 2rem;
+  position: fixed;
+  top: 7rem;
+  left: 20rem;
+}

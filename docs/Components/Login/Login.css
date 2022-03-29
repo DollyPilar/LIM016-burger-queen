@@ -1,0 +1,74 @@
+.logInContainer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  position: relative;
+  top: 11rem;
+  height: 33rem;
+}
+
+.welcomeContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 7rem;
+}
+
+.logoLogIn {
+  width: 75%;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2.5rem;
+  box-shadow: 5px 6px 36px 3px rgb(0 0 0 / 20%);
+  border-radius: 1.5rem;
+  padding: 1.5rem;
+  width: 68%;
+  height: 100%;
+  color: white;
+  text-align: center;
+  margin-left: 7rem;
+}
+
+.form h2 {
+  color: #7d7171;
+  font-size: 2.3rem;
+  margin-bottom: 1rem;
+}
+.goToRegister {
+  width: 100%;
+  background-color: transparent;
+  /* display: flex;
+  align-items: center;
+  gap: 7rem;
+  flex-direction: column; 
+   */
+}
+
+.errLogIn {
+  color: #f25c5c;
+  background: #fcd2d2;
+  font-size: 1.3rem;
+  height: 3rem;
+  padding: 0.5rem;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.infoLogin {
+  background-color: transparent;
+  color: #7d7171;
+  font-size: 1.3rem;
+  width: 14.5rem;
+  margin-left: 4rem;
+  text-align: justify;
+}
+.infoUnderline {
+  font-size: 1.4rem;
+  color: #ce73ff;
+  font-weight: 900;
+}
