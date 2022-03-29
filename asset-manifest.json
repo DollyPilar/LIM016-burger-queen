@@ -1,28 +1,28 @@
 {
   "files": {
-    "main.css": "/LIM016-burger-queen/static/css/main.e4ac648f.chunk.css",
-    "main.js": "/LIM016-burger-queen/static/js/main.6c1b7ca7.chunk.js",
-    "main.js.map": "/LIM016-burger-queen/static/js/main.6c1b7ca7.chunk.js.map",
-    "runtime-main.js": "/LIM016-burger-queen/static/js/runtime-main.078d09fd.js",
-    "runtime-main.js.map": "/LIM016-burger-queen/static/js/runtime-main.078d09fd.js.map",
-    "static/js/2.c149cbe5.chunk.js": "/LIM016-burger-queen/static/js/2.c149cbe5.chunk.js",
-    "static/js/2.c149cbe5.chunk.js.map": "/LIM016-burger-queen/static/js/2.c149cbe5.chunk.js.map",
-    "static/js/3.64351a00.chunk.js": "/LIM016-burger-queen/static/js/3.64351a00.chunk.js",
-    "static/js/3.64351a00.chunk.js.map": "/LIM016-burger-queen/static/js/3.64351a00.chunk.js.map",
-    "index.html": "/LIM016-burger-queen/index.html",
-    "precache-manifest.0dc24f99f2a1a45f537774107e8ac034.js": "/LIM016-burger-queen/precache-manifest.0dc24f99f2a1a45f537774107e8ac034.js",
-    "service-worker.js": "/LIM016-burger-queen/service-worker.js",
-    "static/css/main.e4ac648f.chunk.css.map": "/LIM016-burger-queen/static/css/main.e4ac648f.chunk.css.map",
-    "static/js/2.c149cbe5.chunk.js.LICENSE.txt": "/LIM016-burger-queen/static/js/2.c149cbe5.chunk.js.LICENSE.txt",
-    "static/media/PawLogo.png": "/LIM016-burger-queen/static/media/PawLogo.8ed7e6b3.png",
-    "static/media/admin.png": "/LIM016-burger-queen/static/media/admin.8802072f.png",
-    "static/media/dogHome.png": "/LIM016-burger-queen/static/media/dogHome.72ab5909.png",
-    "static/media/peoplewithdogjpg.jpg": "/LIM016-burger-queen/static/media/peoplewithdogjpg.aeab6983.jpg"
+    "main.css": "/LIM016-burger-queen/tree/principal/static/css/main.e4ac648f.chunk.css",
+    "main.js": "/LIM016-burger-queen/tree/principal/static/js/main.a2858171.chunk.js",
+    "main.js.map": "/LIM016-burger-queen/tree/principal/static/js/main.a2858171.chunk.js.map",
+    "runtime-main.js": "/LIM016-burger-queen/tree/principal/static/js/runtime-main.8a44101e.js",
+    "runtime-main.js.map": "/LIM016-burger-queen/tree/principal/static/js/runtime-main.8a44101e.js.map",
+    "static/js/2.5e86450f.chunk.js": "/LIM016-burger-queen/tree/principal/static/js/2.5e86450f.chunk.js",
+    "static/js/2.5e86450f.chunk.js.map": "/LIM016-burger-queen/tree/principal/static/js/2.5e86450f.chunk.js.map",
+    "static/js/3.64351a00.chunk.js": "/LIM016-burger-queen/tree/principal/static/js/3.64351a00.chunk.js",
+    "static/js/3.64351a00.chunk.js.map": "/LIM016-burger-queen/tree/principal/static/js/3.64351a00.chunk.js.map",
+    "index.html": "/LIM016-burger-queen/tree/principal/index.html",
+    "precache-manifest.908a19b7e11621b8262c138cfd55930c.js": "/LIM016-burger-queen/tree/principal/precache-manifest.908a19b7e11621b8262c138cfd55930c.js",
+    "service-worker.js": "/LIM016-burger-queen/tree/principal/service-worker.js",
+    "static/css/main.e4ac648f.chunk.css.map": "/LIM016-burger-queen/tree/principal/static/css/main.e4ac648f.chunk.css.map",
+    "static/js/2.5e86450f.chunk.js.LICENSE.txt": "/LIM016-burger-queen/tree/principal/static/js/2.5e86450f.chunk.js.LICENSE.txt",
+    "static/media/PawLogo.png": "/LIM016-burger-queen/tree/principal/static/media/PawLogo.8ed7e6b3.png",
+    "static/media/admin.png": "/LIM016-burger-queen/tree/principal/static/media/admin.8802072f.png",
+    "static/media/dogHome.png": "/LIM016-burger-queen/tree/principal/static/media/dogHome.72ab5909.png",
+    "static/media/peoplewithdogjpg.jpg": "/LIM016-burger-queen/tree/principal/static/media/peoplewithdogjpg.aeab6983.jpg"
   },
   "entrypoints": [
-    "static/js/runtime-main.078d09fd.js",
-    "static/js/2.c149cbe5.chunk.js",
+    "static/js/runtime-main.8a44101e.js",
+    "static/js/2.5e86450f.chunk.js",
     "static/css/main.e4ac648f.chunk.css",
-    "static/js/main.6c1b7ca7.chunk.js"
+    "static/js/main.a2858171.chunk.js"
   ]
 }
