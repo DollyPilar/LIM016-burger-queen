@@ -68,7 +68,6 @@ function Store() {
   };
   return (
     <React.Fragment>
-      <p>jdbugduwgeoygwe7gwo8e7g</p>
       <div className="storeBoxContainer">
         {orders.length > 0 && (
           <div className="storeBox">
