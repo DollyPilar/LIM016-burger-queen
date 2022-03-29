@@ -10,7 +10,6 @@ import {
   updateDoc,
   doc,
   deleteDoc,
-  QueryDocumentSnapshot,
 } from "firebase/firestore";
 import { IndividualOrderToSent } from "./IndividualOrderToSent.jsx";
 import "./OrderToSent.css";
