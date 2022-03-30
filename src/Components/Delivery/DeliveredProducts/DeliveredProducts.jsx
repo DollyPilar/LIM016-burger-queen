@@ -14,29 +14,34 @@ import { IndividualDeliveredProduct } from "./IndividualDeliveredProduct.jsx";
 
 function Delivery() {
   const [ordersDelivered, setOrdersDelivered] = useState("");
-  const getOrdersDeliveryCol = () => {
-    const collRef = collection(db, "compras");
-    const order = query(
-      collRef,
-      where("finalProducts.shoppingState", "==", "Pedido Enviado"),
-      orderBy("dateToDelivery", "desc")
-    );
-    onSnapshot(order, (querySnapshot) => {
-      const shoppArray = [];
-      querySnapshot.forEach((doc) => {
-        let data = doc.data();
-        data.ID = doc.id;
-        shoppArray.push(data);
-      });
-      setOrdersDelivered(shoppArray);
-      // setOrders([]);
-    });
-  };
-  //console.log(ordersSent);
-
   useEffect(() => {
+    let isMounted = false;
+    const getOrdersDeliveryCol = () => {
+      const collRef = collection(db, "compras");
+      const order = query(
+        collRef,
+        where("finalProducts.shoppingState", "==", "Pedido Enviado"),
+        orderBy("dateToDelivery", "desc")
+      );
+      onSnapshot(order, (querySnapshot) => {
+        const shoppArray = [];
+        querySnapshot.forEach((doc) => {
+          let data = doc.data();
+          data.ID = doc.id;
+          shoppArray.push(data);
+        });
+        if (!isMounted) {
+          setOrdersDelivered(shoppArray);
+        }
+      });
+    };
+    //console.log(ordersSent);
+
     getOrdersDeliveryCol();
-  }, []);
+    return () => {
+      isMounted = true;
+    };
+  }, [ordersDelivered]);
   //console.log(ordersDelivered);
   return (
     <React.Fragment>

@@ -14,30 +14,34 @@ import "./OrderSent.css";
 function Store() {
   const [ordersSent, setOrdersSent] = useState("");
   useEffect(() => {
-    let isMounted = true;
-    const collRef = collection(db, "compras");
-    const order = query(
-      collRef,
-      where("finalProducts.shoppingState", "==", "Pedido Listo"),
-      orderBy("dateToDelivery", "desc")
-    );
-    onSnapshot(order, (querySnapshot) => {
-      const shoppArray = [];
-      querySnapshot.forEach((doc) => {
-        let data = doc.data();
-        data.ID = doc.id;
-        shoppArray.push(data);
+    let isMounted = false;
+    const getOrdersStoreCol = () => {
+      const collRef = collection(db, "compras");
+      const order = query(
+        collRef,
+        where("finalProducts.shoppingState", "==", "Pedido Listo"),
+        orderBy("dateToDelivery", "desc")
+      );
+      onSnapshot(order, (querySnapshot) => {
+        const shoppArray = [];
+        querySnapshot.forEach((doc) => {
+          let data = doc.data();
+          data.ID = doc.id;
+          shoppArray.push(data);
+        });
+        if (data.length > 0) {
+          if (!isMounted) {
+            setOrdersSent(shoppArray);
+          }
+        }
       });
-      if (isMounted) {
-        setOrdersSent(shoppArray);
-      }
-      return () => {
-        isMounted = false;
-      };
-      // setOrders([]);
-    });
-  }, []);
-  //console.log(ordersSent);
+    };
+    getOrdersStoreCol();
+    return () => {
+      isMounted = true;
+    };
+  }, [ordersSent]);
+  //console.log("=>", ordersSent);
   return (
     <React.Fragment>
       <div className="orderSentContainer">

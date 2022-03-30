@@ -15,38 +15,37 @@ import { IndividualProductToBeDelivered } from "./IndividualProductToBeDelivered
 
 function Delivery() {
   const [deliveries, setDeliveries] = useState("");
-  // useEffect(() => {
-  // let isMounted = true;
-
-  const prod = async () => {
-    const collRef = collection(db, "compras");
-    const order = query(
-      collRef,
-      where("finalProducts.shoppingState", "==", "Pedido Listo"),
-      orderBy("dateToDelivery", "desc")
-    );
-    const querySnapshot = await getDocs(order);
-    const delivArray = [];
-    querySnapshot.forEach((doc) => {
-      let data = doc.data();
-      data.ID = doc.id;
-      delivArray.push(data);
-    });
-    if (delivArray.length > 0) {
-      // if (isMounted) {
-      setDeliveries(delivArray);
-      // }
-    }
-
-    // return () => {
-    //   isMounted = false;
-    //   prod();
-    //}
-  };
-
   useEffect(() => {
+    let isMounted = false;
+
+    const prod = async () => {
+      const collRef = collection(db, "compras");
+      const order = query(
+        collRef,
+        where("finalProducts.shoppingState", "==", "Pedido Listo"),
+        orderBy("dateToDelivery", "desc")
+      );
+      const querySnapshot = await getDocs(order);
+      const delivArray = [];
+      querySnapshot.forEach((doc) => {
+        let data = doc.data();
+        data.ID = doc.id;
+        delivArray.push(data);
+      });
+      if (data.length > 0) {
+        if (!isMounted) {
+          setDeliveries(delivArray);
+        }
+      }
+    };
     prod();
-  }, []);
+    return () => {
+      isMounted = true;
+    };
+
+    // useEffect(() => {
+    // prod();
+  }, [deliveries]);
   // console.log(deliveries);
 
   const deliverProduct = async (delivery) => {

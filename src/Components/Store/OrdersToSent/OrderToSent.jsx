@@ -17,28 +17,33 @@ import "./OrderToSent.css";
 function Store() {
   const [orders, setOrders] = useState("");
 
-  const getOrdersSentCol = () => {
-    const collRef = collection(db, "compras");
-    const order = query(
-      collRef,
-      where("finalProducts.shoppingState", "==", "Pedido a preparar"),
-      orderBy("finalProducts.dateOfShopping", "desc")
-    );
-    onSnapshot(order, (querySnapshot) => {
-      const shoppArray = [];
-      querySnapshot.forEach((doc) => {
-        let data = doc.data();
-        data.ID = doc.id;
-        shoppArray.push(data);
-      });
-      setOrders(shoppArray);
-      // setOrders([]);
-    });
-  };
-
   useEffect(() => {
+    let isMounted = false;
+    const getOrdersSentCol = () => {
+      const collRef = collection(db, "compras");
+      const order = query(
+        collRef,
+        where("finalProducts.shoppingState", "==", "Pedido a preparar"),
+        orderBy("finalProducts.dateOfShopping", "desc")
+      );
+      onSnapshot(order, (querySnapshot) => {
+        const shoppArray = [];
+        querySnapshot.forEach((doc) => {
+          let data = doc.data();
+          data.ID = doc.id;
+          shoppArray.push(data);
+        });
+        if (!isMounted) {
+          setOrders(shoppArray);
+        }
+      });
+    };
+
     getOrdersSentCol();
-  }, []);
+    return () => {
+      isMounted = true;
+    };
+  }, [orders]);
   // console.log(orders);
 
   const updateState = async (compra) => {
