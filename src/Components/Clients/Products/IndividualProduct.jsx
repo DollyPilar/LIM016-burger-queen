@@ -3,7 +3,6 @@ import { FaPlusCircle } from "react-icons/fa";
 import "./IndividualProduct.css";
 
 export const IndividualProduct = ({ individualProduct, addToCart }) => {
-  // console.log(individualProduct);
   const handleAddToCart = () => {
     addToCart(individualProduct);
   };

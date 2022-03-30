@@ -30,7 +30,7 @@ function AdminHome() {
       });
       setProducts(productsArray);
     } catch (e) {
-      console.log(e);
+      console.log(e.message);
     }
   };
   useEffect(() => {

@@ -52,7 +52,7 @@ export const ButtonShop = ({
         deleteDoc(prodRef);
       });
     } catch (e) {
-      console.log(e);
+      console.log(e.message);
     }
   };
   return (

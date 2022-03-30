@@ -23,8 +23,6 @@ export const StoreIndex = () => {
           setUserName(snap.name);
         }
       });
-    } else {
-      console.log("no hay usuario");
     }
     return () => {
       isMounted = false;

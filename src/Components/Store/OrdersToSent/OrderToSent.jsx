@@ -44,7 +44,6 @@ function Store() {
       isMounted = true;
     };
   }, [orders]);
-  // console.log(orders);
 
   const updateState = async (compra) => {
     const prodRef = doc(db, "compras", compra.ID);
@@ -54,7 +53,7 @@ function Store() {
         dateToDelivery: Date.now(),
       });
     } catch (e) {
-      console.log(e);
+      console.log(e.message);
     }
   };
 

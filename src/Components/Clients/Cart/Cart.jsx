@@ -32,14 +32,11 @@ export const Cart = () => {
           setUserName(snap.name);
         }
       });
-    } else {
-      console.log("no hay usuario");
     }
     return () => {
       isMounted = false;
     };
   }, [user]);
-  // console.log(user);
 
   const [cartProducts, setCartProducts] = useState([]);
 
@@ -64,24 +61,19 @@ export const Cart = () => {
   const quantityArr = cartProducts.map((carProduct) => {
     return carProduct.quantity;
   });
-  // console.log(quantityArr)
 
   // reduciendo el valor del número total de productos en un valor único
   let totalQty = quantityArr.reduce((acc, cur) => acc + cur, 0);
-  //console.log(totalQty)
 
   // obteniendo el Precio final de CartProducts en un array separado
   const totalPriceArr = cartProducts.map((carProduct) => {
     return carProduct.TotalProductPrice;
   });
-  // console.log(quantityArr)
 
   // reduciendo el valor del Precio final en un valor único
   const totalPrice = totalPriceArr.reduce((acc, cur) => acc + cur, 0);
 
   const cartProductIncrease = async (cartProduct) => {
-    // console.log(cartProduct, "funciona");
-
     const quantityProduct = cartProduct.quantity + 1;
     const totalProductPrice = quantityProduct * cartProduct.Precio;
     // actualizando Firebase
@@ -94,7 +86,7 @@ export const Cart = () => {
           TotalProductPrice: totalProductPrice,
         });
       } catch (e) {
-        console.log(e);
+        console.log(e.message);
       }
     }
     // });
@@ -115,7 +107,7 @@ export const Cart = () => {
             TotalProductPrice: totalProductPrice,
           });
         } catch (e) {
-          console.log(e);
+          console.log(e.message);
         }
       }
       // });
@@ -132,7 +124,6 @@ export const Cart = () => {
               <div className="cartContainer">
                 <div className="cartProducts">
                   {cartProducts.map((cartProduct) => (
-                    // console.log(cartProduct)
                     <IndividualCartProduct
                       key={cartProduct.ID}
                       cartProduct={cartProduct}

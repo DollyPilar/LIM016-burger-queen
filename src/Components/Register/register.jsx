@@ -69,7 +69,6 @@ function Register() {
         setState("");
         e.target.reset();
       } catch (error) {
-        console.log(error.code);
         if (error.code === "auth/email-already-in-use") {
           setErrorMsg("El correo ya está en uso");
         } else if (error.code === "auth/weak-password") {

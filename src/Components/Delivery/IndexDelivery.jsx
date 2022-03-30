@@ -22,8 +22,6 @@ export const IndexDelivery = () => {
           setUserName(snap.name);
         }
       });
-    } else {
-      console.log("no hay usuario");
     }
     return () => {
       isMounted = false;

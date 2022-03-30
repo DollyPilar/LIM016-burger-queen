@@ -27,12 +27,11 @@ function Store() {
         querySnapshot.forEach((doc) => {
           let data = doc.data();
           data.ID = doc.id;
+
           shoppArray.push(data);
         });
-        if (data.length > 0) {
-          if (!isMounted) {
-            setOrdersSent(shoppArray);
-          }
+        if (!isMounted) {
+          setOrdersSent(shoppArray);
         }
       });
     };
@@ -41,7 +40,7 @@ function Store() {
       isMounted = true;
     };
   }, [ordersSent]);
-  //console.log("=>", ordersSent);
+
   return (
     <React.Fragment>
       <div className="orderSentContainer">

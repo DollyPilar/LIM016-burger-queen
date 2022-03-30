@@ -65,7 +65,7 @@ export const AddStaffForm = () => {
         cellphone,
       });
     } catch (e) {
-      console.log(e);
+      console.log(e.message);
     }
   };
 

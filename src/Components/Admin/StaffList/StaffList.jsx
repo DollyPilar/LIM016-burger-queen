@@ -22,21 +22,14 @@ export const StaffList = () => {
       });
       setStaffs(staffsArray);
     } catch (e) {
-      console.log(e);
+      console.log(e.message);
     }
   };
-  //console.log(products);
 
   useEffect(() => {
     getStaffs();
   }, []);
 
-  // if (staffs.length > 0) {
-  //   staffs.map((staff) => console.log("f" + staff.name));
-  // }
-  //   else {
-  //     console.log("no hay");
-  //   }
   return (
     <React.Fragment>
       <div className="staffContainer">

@@ -7,7 +7,7 @@ import { ButtonCancel } from "../../../../Globals/Buttons/ButtonCancel/ButtonCan
 
 export const ButtonCancelShop = () => {
   const { user } = useAuth();
-  // console.log(user.uid);
+
   const deleteShop = async () => {
     const q = collection(db, "cart" + user.uid);
 

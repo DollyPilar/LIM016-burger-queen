@@ -30,23 +30,18 @@ function Delivery() {
       querySnapshot.forEach((doc) => {
         let data = doc.data();
         data.ID = doc.id;
+
         delivArray.push(data);
       });
-      if (data.length > 0) {
-        if (!isMounted) {
-          setDeliveries(delivArray);
-        }
+      if (!isMounted) {
+        setDeliveries(delivArray);
       }
     };
     prod();
     return () => {
       isMounted = true;
     };
-
-    // useEffect(() => {
-    // prod();
   }, [deliveries]);
-  // console.log(deliveries);
 
   const deliverProduct = async (delivery) => {
     const prodRef = doc(db, "compras", delivery.ID);
@@ -59,7 +54,7 @@ function Delivery() {
       );
       setDeliveries(filteredDeliveries);
     } catch (e) {
-      console.log(e);
+      console.log(e.message);
     }
   };
   // useEffect(() => {

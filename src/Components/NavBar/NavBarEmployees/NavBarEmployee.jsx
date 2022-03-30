@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 import "./NavBarEmployee.css";
 
 export const NavBarEmployee = ({ text, nameEmployee }) => {
-  // console.log(userState);
   const navigate = useNavigate();
   const isMounted = useRef(true);
   const logOut = () => {

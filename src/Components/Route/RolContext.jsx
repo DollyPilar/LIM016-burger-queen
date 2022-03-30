@@ -25,12 +25,11 @@ export function RolProvider({ children }) {
         });
         setRol(rolsArray);
       } catch (e) {
-        console.log(e);
+        console.log(e.message);
       }
     };
     getRols();
   }, []);
-  //   console.log(rol);
 
   return (
     <rolContext.Provider

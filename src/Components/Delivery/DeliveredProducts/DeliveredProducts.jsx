@@ -35,14 +35,13 @@ function Delivery() {
         }
       });
     };
-    //console.log(ordersSent);
 
     getOrdersDeliveryCol();
     return () => {
       isMounted = true;
     };
   }, [ordersDelivered]);
-  //console.log(ordersDelivered);
+
   return (
     <React.Fragment>
       <div className="deliveryBoxContainer">

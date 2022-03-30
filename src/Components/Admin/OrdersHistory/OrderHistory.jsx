@@ -26,7 +26,6 @@ export const OrderHistory = () => {
   useEffect(() => {
     getProducts();
   }, []);
-  // console.log(products);
   return (
     <React.Fragment>
       <div className="historyBoxContainer">

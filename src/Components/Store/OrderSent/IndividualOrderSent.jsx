@@ -3,7 +3,6 @@ import "./IndividualOrderSent.css";
 import { hourAndDate } from "../../../functions/projectFunctions.jsx";
 
 export const IndividualOrderSent = ({ orderSent }) => {
-  //   console.log(orderSent);
   return (
     <React.Fragment>
       <div className="purcharseOrderStoreSent">

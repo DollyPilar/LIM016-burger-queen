@@ -39,10 +39,9 @@ export const Shop = () => {
       });
       setProducts(productsArray);
     } catch (e) {
-      console.log(e);
+      console.log(e.message);
     }
   };
-  //console.log(products);
 
   useEffect(() => {
     getProducts();
@@ -52,7 +51,6 @@ export const Shop = () => {
 
   // función que añade los productos al carrito
   const addToCart = async (product) => {
-    console.log("diste click");
     const quantity = 1;
     const Precio = product.Precio;
     const TotalProductPrice = quantity * Precio;
@@ -82,10 +80,9 @@ export const Shop = () => {
         timer: 2500,
       });
     } catch (e) {
-      console.log(e);
+      console.log(e.message);
     }
   };
-  // console.log(uid)
 
   // se muestran los tipos en la tah span
   const [spans] = useState([

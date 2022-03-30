@@ -30,23 +30,21 @@ export const ProductList = () => {
         setProducts(delivArray);
       });
     } catch (e) {
-      console.log(e);
+      console.log(e.message);
     }
   };
   useEffect(() => {
     getProducts();
   }, []);
   const handleDeleteProduct = async (e) => {
-    // console.log(e);
-
     const prodRef = doc(db, "products", e);
     try {
       await deleteDoc(prodRef);
     } catch (e) {
-      console.log(e);
+      console.log(e.message);
     }
   };
-  //console.log(products);
+
   return (
     <React.Fragment>
       <div className="productsCardContainerAdmin">

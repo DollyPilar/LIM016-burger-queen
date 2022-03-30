@@ -36,13 +36,13 @@ export const AddProducts = () => {
     try {
       await uploadBytes(fotoRef, file);
     } catch (e) {
-      console.log(e);
+      console.log(e.message);
     }
     getDownloadURL(fotoRef)
       .then((URL) => {
         setProductPhoto(URL);
       })
-      .catch((e) => console.log(e));
+      .catch((e) => console.log(e.message));
   };
   const addProducts = async (e) => {
     e.preventDefault();
