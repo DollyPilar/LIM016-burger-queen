@@ -41,7 +41,7 @@ Cliente, administrador, área de almacén y área de delivery.
 | Usuarios | Objetivo |
 | --- | --- |
 | Cliente | Usuario que solo tendrá permitido acceder a la sección de la tienda donde podrá seleccionar los productos deseados y realizar la compra. |
-| Administrador | Este usuario tiene acceso a la sección de "añadir productos" y "agregar empleados", además de poder visualizar todas las otras vistas de la plataforma. |
+| Administrador | Este usuario tiene acceso a la sección de "añadir productos" y "agregar empleados", además de poder visualizar las otras vistas de la plataforma. |
 | Almacén | El área del almacén podrá visualizar los pedidos entrantes para posteriormente marcarlos como "encontrados" o cancelarlos si no tuvieran suficiente stock del producto solicitado|
 | Delivery | El área del delivery es la última instancia por donde la compra pasará después de ser marcada como "encontrada" por el área del almacén. Finalmente, serán los encargados de realizar el envío de dicho producto al cliente.<br> <br>
 
@@ -76,19 +76,19 @@ Después de ya realizar el primer prototipo en Canva, procedimos a realizar el p
 
 <p align center>
 <img width="500" height="350" src="src/assets/welcome.gif">
-</p><br><br>
+</p><br>
 
 ### **Vista Cliente:** <br>
 
 <p align center>
 <img width="500" height="350" src="src/assets/cliente.gif">
-</p><br><br>
+</p><br>
 
 ### **Vista Administrador:** <br>
 
 <p align center>
 <img width="500" height="350" src="src/assets/admin.gif">
-</p><br><br>
+</p><br>
 
 ### **Vista almacén y delivery:** <br>
 
