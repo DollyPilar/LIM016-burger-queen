@@ -1,56 +1,74 @@
-/* Naranja: #FFA46C
-Marron: #C2845E
-Marron #gris: B29B8B
-gris: #CFCFCF
-fondo: #FFFAF8
-negro: #3C3C3C */
-.letra{
-    font-size: 5rem;
+.logInContainer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  position: relative;
+  top: 11rem;
+  height: 33rem;
 }
-.logInContainer{
-    display:flex;
-    flex-direction: row;
-}
-.logoContainer{
-   
-    width:50%;
 
-    /* float: left; */
+.welcomeContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 7rem;
 }
-.formContainer{
-    /* float: right; */
-    display:flex;
-    flex-direction: column;
-    justify-content: center;
-    background-color: pink;
-    width:50%;
+
+.logoLogIn {
+  width: 75%;
 }
-.logo{
-    width:100%;
-    height: 100%;
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2.5rem;
+  box-shadow: 5px 6px 36px 3px rgb(0 0 0 / 20%);
+  border-radius: 1.5rem;
+  padding: 1.5rem;
+  width: 68%;
+  height: 100%;
+  color: white;
+  text-align: center;
+  margin-left: 7rem;
 }
-/* .Logo{
-    display: flex;
-    justify-content: center;
+
+.form h2 {
+  color: #7d7171;
+  font-size: 2.3rem;
+  margin-bottom: 1rem;
 }
-.Buttons{
-    display: flex;
-    justify-content: center;
-    gap:4rem;
+.goToRegister {
+  width: 100%;
+  background-color: transparent;
+  /* display: flex;
+  align-items: center;
+  gap: 7rem;
+  flex-direction: column; 
+   */
 }
-.styleBtn{
-    background-color: #FFA46C;
-    width: 15rem;
-    height: 5rem;
-    color:white;
-    font-size: 2rem;
-    border-radius: 2rem;
-    border:none;
+
+.errLogIn {
+  color: #f25c5c;
+  background: #fcd2d2;
+  font-size: 1.3rem;
+  height: 3rem;
+  padding: 0.5rem;
+  border-radius: 5px;
+  width: 100%;
 }
-.styleBtn:hover{
-    background-color: #C2845E ;
+
+.infoLogin {
+  background-color: transparent;
+  color: #7d7171;
+  font-size: 1.3rem;
+  width: 14.5rem;
+  margin-left: 4rem;
+  text-align: justify;
 }
-.link{
-    text-decoration: none;
-    color: white;
-} */
+.infoUnderline {
+  font-size: 1.4rem;
+  color: #ce73ff;
+  font-weight: 900;
+}

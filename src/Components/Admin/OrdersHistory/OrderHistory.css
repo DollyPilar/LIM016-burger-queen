@@ -1,0 +1,71 @@
+.historyBoxContainer {
+  position: fixed;
+  height: 36rem;
+  width: 56%;
+  top: 9rem;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  left: 21rem;
+}
+.productsBoxHistory {
+  display: flex;
+  flex-direction: column;
+  /* grid-template-rows: repeat(1, 1fr); */
+  justify-items: center;
+  width: 50%;
+}
+.purcharseOrderStoreHistory {
+  /* border: 1px solid #7d7171; */
+  box-shadow: 7px 2px 23px 2px rgb(0 0 0 / 22%);
+  margin-bottom: 1rem;
+  display: flex;
+  width: 33rem;
+  flex-direction: column;
+  padding: 0.7rem;
+  grid-gap: 1.1rem;
+  gap: 1.1rem;
+  border-radius: 0.5rem;
+  margin-top: 1.5rem;
+  margin-left: 3rem;
+}
+.purcharseOrderStoreHistory p {
+  font-size: 1.4rem;
+}
+.rowStoreTableHistory {
+  display: flex;
+  gap: 0.5rem;
+}
+.rowStoreTablePriceHistory {
+  display: flex;
+  gap: 0.5rem;
+}
+.btnStoreContainerHistory {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+}
+.purchaseOrdeTableHistory {
+  border-collapse: collapse;
+  table-layout: fixed;
+  width: 100%;
+  font-size: 1.2rem;
+}
+.purchaseOrdeTableHistory td,
+.purchaseOrdeTableHistory th {
+  /* border: 1px solid black; */
+  padding: 8px;
+}
+
+.purchaseOrdeTableHistory tbody tr td {
+  text-align: center;
+}
+.pleaseWaitHistory {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 12rem;
+}
+.waitHistory {
+  font-size: 4rem;
+  color: #7d7171;
+}

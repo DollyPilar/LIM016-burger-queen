@@ -1,0 +1,24 @@
+.deliveredBoxContainer {
+  position: fixed;
+  height: 38rem;
+  width: 100%;
+  top: 13rem;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.deliveredBox {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-items: center;
+  width: 100%;
+}
+.pleaseWaitDelivered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 12rem;
+}
+.waitDelivered {
+  font-size: 4rem;
+  color: #7d7171;
+}

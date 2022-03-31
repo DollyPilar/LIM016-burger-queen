@@ -1,0 +1,42 @@
+.homePageContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.homeInfoContainer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin-left: 4rem;
+  margin-top: 10.3rem;
+}
+.btnContainer {
+  display: flex;
+  align-items: center;
+}
+.btnBuyHomePage {
+  background: transparent;
+  color: #bb53f3;
+  font-size: 1.8rem;
+  padding: 1rem;
+  border-radius: 0.7rem;
+  outline: none;
+  border: 5px solid #bb53f3;
+  font-weight: bolder;
+}
+
+.homeInfoContainer h2 {
+  padding: 0.5rem;
+  font-size: 3.5rem;
+  color: #bb53f3;
+}
+span {
+  color: #bb53f3;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.homeBackgroundImg {
+  margin-left: 4rem;
+  position: relative;
+  top: 0.7rem;
+}
