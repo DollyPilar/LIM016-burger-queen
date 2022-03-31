@@ -72,3 +72,28 @@
   color: #ce73ff;
   font-weight: 900;
 }
+
+@media (min-width: 1200px){
+  .logInContainer{
+    top: 6.5rem;
+    height: 0rem;
+    gap: 12rem;
+    position: fixed;
+  }
+  .welcomeContainer{
+    margin-top: 2rem;
+    margin-left: 5rem;
+  }
+  .logoLogIn{
+    width: 30rem;
+  }
+  .form{
+    width: 23rem;
+    height: 32rem;
+    gap: 1.8rem;
+  }
+  .errLogIn{
+    font-size: 1.2rem;
+  }
+
+}

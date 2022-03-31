@@ -53,3 +53,19 @@
   font-size: 2.5rem;
   color: white;
 }
+
+@media (min-width: 1200px){
+  .navBarContainer{
+    height: 4.5rem;
+  }
+  .navBarIcon{
+    font-size: 1.9rem;
+  }
+  .logoNav{
+    width: 49%;
+    margin-left: 1.2rem;
+  }
+  .inicio{
+    font-size: 1.5rem;
+  }
+}

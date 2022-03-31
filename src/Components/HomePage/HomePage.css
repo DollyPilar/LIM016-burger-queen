@@ -40,3 +40,27 @@ span {
   position: relative;
   top: 0.7rem;
 }
+
+@media (min-width: 1200px) {
+
+  .homeInfoContainer {
+    margin-left: 15rem;
+  }
+  .btnContainer {
+    width: 14rem;
+  }
+  .homeInfoContainer h2{
+    text-align: center;
+    font-size: 2.5rem;
+  }
+
+  .btnBuyHomePage{
+    font-size: 1.5rem;
+    padding: 0.7rem;
+  }
+
+  .homeBackgroundImg {
+    margin-left: 15rem;
+    width: 48rem;
+}
+}

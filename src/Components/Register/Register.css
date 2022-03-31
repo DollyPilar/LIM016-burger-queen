@@ -74,3 +74,19 @@
   color: #ce73ff;
   font-weight: 900;
 }
+@media (min-width: 1200px){
+  .registerContainer{
+    top: 5.5rem;
+    height: 0rem;
+    gap: 16rem;
+    position: fixed;
+  }
+  .welcomeSection{
+    margin-top: 5rem;
+    margin-left: 2rem;
+  }
+  .registerForm{
+    width: 23rem;
+    height: 32rem;
+  }
+}
