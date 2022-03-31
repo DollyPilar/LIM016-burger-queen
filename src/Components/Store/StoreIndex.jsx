@@ -31,7 +31,7 @@ export const StoreIndex = () => {
   return (
     <React.Fragment>
       <div>
-        <NavBarEmployee text="Almacen" nameEmployee={userName} />
+        <NavBarEmployee text="Almacén" nameEmployee={userName} />
         <div className="btnContainerStore">
           <Link to="/store" style={{ width: "12rem" }}>
             <ButtonCancel name="Por alistar" />

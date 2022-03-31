@@ -54,33 +54,10 @@ Puede verlo con más detalle [aquí.](https://www.canva.com/design/DAE4n3Db3as/R
 
 ### **3.2 Prototipo de alta fidelidad**
 
-Después de ya realizar el primer prototipo en Canva, procedimos a realizar el diseño de la plataforma en una herramienta mucho más avanzada como Figma.
+Después de ya realizar el primer prototipo en Canva, procedimos a realizar el prototipo final en Figma. Puede visualizar el prototipo en este [link.](https://www.figma.com/file/7Wfa1lsA28zxarLywHvePF/Happy-paws?node-id=0%3A1)
+<br><br>
 
-#### **Vista Cliente:** <br>
-
-<!-- <p align center>
-<img width="500" height="350" src="src/img/figma1.JPG">
-</p>  -->
-
-#### **Vista Administrador:** <br>
-
-<!-- <p align center>
-<img width="500" height="350" src="src/img/figma1.JPG">
-</p>  -->
-
-#### **Vista Almacén:** <br>
-
-<!-- <p align center>
-<img width="500" height="350" src="src/img/figma1.JPG">
-</p>  -->
-
-#### **Vista Delivery:** <br>
-
-<!-- <p align center>
-<img width="500" height="350" src="src/img/figma1.JPG">
-</p>  -->
-
-## 4. Tecnologías empleadas
+## **4. Tecnologías empleadas**
 
 - React
 - Firebase
@@ -91,8 +68,33 @@ Después de ya realizar el primer prototipo en Canva, procedimos a realizar el d
 - Eslint
 - Figma
 - PWA
+  <br><br>
 
-## 5. Producto final
+## **5. Producto final**
+
+### **Vista bienvenida, registro e inicio de sesión:** <br>
+
+<p align center>
+<img width="500" height="350" src="src/assets/welcome.gif">
+</p><br><br>
+
+### **Vista Cliente:** <br>
+
+<p align center>
+<img width="500" height="350" src="src/assets/cliente.gif">
+</p><br><br>
+
+### **Vista Administrador:** <br>
+
+<p align center>
+<img width="500" height="350" src="src/assets/admin.gif">
+</p><br><br>
+
+### **Vista almacén y delivery:** <br>
+
+<p align center>
+<img width="500" height="350" src="src/assets/store.gif">
+</p><br><br>
 
 ## 6. Desarrolladoras 👩‍💻
 
