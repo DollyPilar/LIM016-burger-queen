@@ -23,14 +23,11 @@ import { Shop } from "./Components/Clients/Shop/Shop.jsx";
 import LogIn from "./Components/Login/Login.jsx";
 import Register from "./Components/Register/Register.jsx";
 import { Cart } from "./Components/Clients/Cart/Cart.jsx";
-// import { ProtectedRoute } from "./Components/Route/ProtectedRoute.jsx";
 import { AuthProvider } from "./Components/Route/AuthContext.jsx";
-import { RolProvider } from "./Components/Route/RolContext.jsx";
 
 function App() {
   return (
     <AuthProvider>
-      <RolProvider>
         <Routes>
           <Route path="/" element={<NavBar />}>
             <Route index element={<HomePage />} />
@@ -39,7 +36,6 @@ function App() {
             <Route path="register" element={<Register />} />
             <Route path="cart" element={<Cart />} />
           </Route>
-          {/* <Route element={<ProtectedRoute allowedRoles={["admin"]} />}> */}
           <Route path="/admin/*" element={<Admin />}>
             <Route index element={<AdminHome />} />
             <Route path="stafflist" element={<StaffList />} />
@@ -48,21 +44,15 @@ function App() {
             <Route path="addProducts" element={<AddProducts />} />
             <Route path="orderhistory" element={<OrderHistory />} />
           </Route>
-          {/* </Route> */}
-          {/* <Route element={<ProtectedRoute allowedRoles={["delivery"]} />}> */}
           <Route path="/delivery/*" element={<IndexDelivery />}>
             <Route index element={<ToBeDelivered />} />
             <Route path="deliveredproducts" element={<Delivered />} />
           </Route>
-          {/* </Route>
-            <Route element={<ProtectedRoute allowedRoles={["store"]} />}> */}
           <Route path="/store/*" element={<StoreIndex />}>
             <Route index element={<OrderToSent />} />
             <Route path="ordersent" element={<OrderSent />} />
           </Route>
-          {/* </Route> */}
         </Routes>
-      </RolProvider>
     </AuthProvider>
   );
 }
