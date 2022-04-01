@@ -63,8 +63,9 @@
     font-size: 1.9rem;
   }
   .logoNav{
-    width: 49%;
     margin-left: 1.2rem;
+    width: 100%;
+    height: 100%;
   }
   .inicio{
     font-size: 1.5rem;
