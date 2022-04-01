@@ -99,7 +99,7 @@ Después de ya realizar el primer prototipo en Canva, procedimos a realizar el p
 ### **Puntuación PWA**
 
 <p align center>
-<img width="500" height="270" src="src/assets/lh.png">
+<img width="500" height="250" src="src/assets/lh.png">
 </p><br><br>
 
 ## 6. Desarrolladoras 👩‍💻
