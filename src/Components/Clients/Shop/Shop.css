@@ -82,6 +82,9 @@
     width: 78rem;
     left: 5rem;
   }
+  .categoriesContainer{
+    left: 25rem;
+  }
 }
 
 .productsBox:last-child {

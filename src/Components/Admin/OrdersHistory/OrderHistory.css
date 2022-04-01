@@ -69,3 +69,8 @@
   font-size: 4rem;
   color: #7d7171;
 }
+@media (min-width: 1200px){
+  .historyBoxContainer{
+    left: 23rem;
+  }
+}

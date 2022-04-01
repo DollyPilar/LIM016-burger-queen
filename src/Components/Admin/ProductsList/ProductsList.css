@@ -54,3 +54,10 @@
   font-size: 4rem;
   color: #7d7171;
 }
+
+@media (min-width: 1200px){
+  .productsCardContainerAdmin{
+    top: 8.5rem;
+    left: 22.5rem;
+  }
+}

@@ -52,3 +52,14 @@
 .adminImg {
   width: 100%;
 }
+
+@media (min-width: 1200px){
+  .imgTextContainer{
+    top: 19rem;
+    left: 23.5rem;
+  }
+  .statisticsContainer{
+    top: 9rem;
+    left: 23.5rem;
+  }
+}

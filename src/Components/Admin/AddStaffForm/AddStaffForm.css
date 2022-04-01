@@ -59,3 +59,10 @@
   color: #d90606;
   font-size: 1.6rem;
 }
+
+@media (min-width: 1200px){
+  .adminFormSection{
+    top: 10rem;
+    left: 14rem;
+  }
+}

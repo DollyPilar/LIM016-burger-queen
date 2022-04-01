@@ -31,3 +31,9 @@
 .lowBarLogo {
   width: 59%;
 }
+@media (min-width: 1200px){
+  .lowBarlogoNav{
+    top: 27px;
+    left: 2.8rem;
+  }
+}

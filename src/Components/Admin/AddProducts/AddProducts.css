@@ -49,3 +49,12 @@
   padding: 0.5rem;
   border-radius: 5px;
 }
+@media (min-width: 1200px){
+  .addProductsForm{
+    width: 25rem;
+    height: 29rem;
+    top: 8.5rem;
+    left: 34rem;
+  }
+  
+}

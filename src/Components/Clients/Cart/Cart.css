@@ -53,3 +53,11 @@
   position: relative;
   top: 22rem;
 }
+@media (min-width: 1200px){
+  .cartProducts{
+    margin-left: 6rem;
+  }
+  .cartSummaryContainer{
+    left: 54rem;
+  }
+}

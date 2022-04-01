@@ -6,3 +6,8 @@
   top: 7rem;
   left: 20rem;
 }
+@media (min-width: 1200px){
+  .btnContainerDelivery{
+    left: 26rem;
+  }
+}

@@ -55,3 +55,19 @@
   border-radius: 0.2rem;
   font-size: 3.5rem;
 }
+
+@media (min-width: 1200px){
+.cartProduct{
+  width: 37rem;
+  height: 5rem;
+  padding: 1.5rem;
+}
+.addDecreaseQuantity{
+  height: 5rem;
+}
+.btnCart{
+  font-size: 1.3rem;
+}
+
+
+}

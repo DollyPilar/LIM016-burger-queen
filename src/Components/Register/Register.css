@@ -82,11 +82,14 @@
     position: fixed;
   }
   .welcomeSection{
-    margin-top: 5rem;
-    margin-left: 2rem;
+    margin-top: 2rem;
   }
   .registerForm{
     width: 23rem;
     height: 32rem;
+    gap: 1rem;
+  }
+  .errorRegister{
+    font-size: 1.2rem;
   }
 }

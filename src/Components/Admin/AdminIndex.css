@@ -50,3 +50,8 @@
   color: #ce73ff;
   font-size: 2.5rem;
 }
+@media (min-width: 1200px){
+  .topNav{
+    left: 6rem;
+  }
+}
