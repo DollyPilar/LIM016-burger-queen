@@ -102,7 +102,6 @@ Después de ya realizar el primer prototipo en Canva, procedimos a realizar el p
 <img width="500" height="250" src="src/assets/lh.png">
 </p><br><br>
 
-## 6. Desarrolladoras 👩‍💻
+## 6. Desarrolladora👩‍💻
 
-- [Natalia Bravo](https://github.com/Natalia7919)
 - [Dolly Ochoa](https://github.com/DollyPilar)
